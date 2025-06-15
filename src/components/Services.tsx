@@ -2,6 +2,7 @@
 
 import { FileCheck, Shield, BarChart3, Clock, Users, Award, CheckCircle, ArrowRight, DollarSign, Calendar } from 'lucide-react'
 import { useState } from 'react'
+import Link from 'next/link'
 
 export default function Services() {
   const [selectedService, setSelectedService] = useState<number | null>(null)
@@ -37,7 +38,8 @@ export default function Services() {
       description: 'Ongoing compliance support and consultation services.',
       price: 'From $150/hour',
       features: ['Monthly compliance reviews', 'Policy development', 'Staff training', 'Regulatory updates'],
-      color: 'from-green-500 to-green-600'
+      color: 'from-green-500 to-green-600',
+      link: '/services/compliance-consulting'
     },
     {
       icon: BarChart3,
@@ -45,7 +47,8 @@ export default function Services() {
       description: 'Additional financial reporting and analysis services.',
       price: 'From $500',
       features: ['Custom financial reports', 'Trend analysis', 'Performance metrics', 'Board presentations'],
-      color: 'from-purple-500 to-purple-600'
+      color: 'from-purple-500 to-purple-600',
+      link: '/services/financial-reporting'
     },
     {
       icon: Users,
@@ -53,7 +56,8 @@ export default function Services() {
       description: 'Trust account setup assistance and staff training programs.',
       price: 'From $1,000',
       features: ['Trust account setup', 'Procedure documentation', 'Staff training sessions', 'Best practice guidance'],
-      color: 'from-gold-500 to-gold-600'
+      color: 'from-gold-500 to-gold-600',
+      link: '/services/setup-training'
     }
   ]
 
@@ -158,10 +162,15 @@ export default function Services() {
                 ))}
               </div>
 
-              <a href="#contact" className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl inline-flex items-center">
-                Book Your Audit
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </a>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link href="/payment" className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl inline-flex items-center justify-center">
+                  Book Your Audit
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+                <a href="#contact" className="border-2 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 font-semibold py-4 px-8 rounded-xl hover:border-blue-500 dark:hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 inline-flex items-center justify-center">
+                  Learn More
+                </a>
+              </div>
             </div>
 
             <div>
@@ -218,9 +227,9 @@ export default function Services() {
                     ))}
                   </ul>
 
-                  <button className="w-full py-3 px-4 border-2 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 font-semibold rounded-xl hover:border-blue-500 dark:hover:border-gold-500 hover:text-blue-600 dark:hover:text-gold-400 transition-all duration-300">
+                  <Link href={service.link} className="w-full py-3 px-4 border-2 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 font-semibold rounded-xl hover:border-blue-500 dark:hover:border-gold-500 hover:text-blue-600 dark:hover:text-gold-400 transition-all duration-300 text-center block">
                     Learn More
-                  </button>
+                  </Link>
                 </div>
               </div>
             ))}
@@ -264,9 +273,9 @@ export default function Services() {
                   ))}
                 </ul>
 
-                <button className={`w-full py-3 px-4 rounded-xl font-semibold transition-all duration-300 ${tier.popular ? 'bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white' : 'border-2 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 hover:border-blue-500 dark:hover:border-gold-500 hover:text-blue-600 dark:hover:text-gold-400'}`}>
+                <Link href="/payment" className={`w-full py-3 px-4 rounded-xl font-semibold transition-all duration-300 text-center block ${tier.popular ? 'bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white' : 'border-2 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 hover:border-blue-500 dark:hover:border-gold-500 hover:text-blue-600 dark:hover:text-gold-400'}`}>
                   Choose {tier.name}
-                </button>
+                </Link>
               </div>
             ))}
           </div>
