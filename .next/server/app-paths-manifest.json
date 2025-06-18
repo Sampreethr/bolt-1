@@ -1,4 +1,5 @@
 {
-  "/page": "app/page.js",
-  "/services/compliance-consulting/page": "app/services/compliance-consulting/page.js"
+  "/not-found": "app/not-found.js",
+  "/services/financial-reporting/page": "app/services/financial-reporting/page.js",
+  "/page": "app/page.js"
 }

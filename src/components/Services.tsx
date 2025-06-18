@@ -12,7 +12,7 @@ export default function Services() {
     title: 'Trust Account Auditing',
     subtitle: 'Our Core Service',
     description: 'Comprehensive annual trust account audits for law firms and real estate agencies across Australia.',
-    price: 'From $299',
+    price: 'From $2,500',
     duration: '7-14 business days',
     features: [
       'ASIC compliant audit procedures',
@@ -36,7 +36,7 @@ export default function Services() {
       icon: Shield,
       title: 'Compliance Consulting',
       description: 'Ongoing compliance support and consultation services.',
-      price: 'From $99/hour',
+      price: 'From $150/hour',
       features: ['Monthly compliance reviews', 'Policy development', 'Staff training', 'Regulatory updates'],
       color: 'from-green-500 to-green-600',
       link: '/services/compliance-consulting'
@@ -45,7 +45,7 @@ export default function Services() {
       icon: BarChart3,
       title: 'Financial Reporting',
       description: 'Additional financial reporting and analysis services.',
-      price: 'From $199',
+      price: 'From $500',
       features: ['Custom financial reports', 'Trend analysis', 'Performance metrics', 'Board presentations'],
       color: 'from-purple-500 to-purple-600',
       link: '/services/financial-reporting'
@@ -54,7 +54,7 @@ export default function Services() {
       icon: Users,
       title: 'Setup & Training',
       description: 'Trust account setup assistance and staff training programs.',
-      price: 'From $299',
+      price: 'From $1,000',
       features: ['Trust account setup', 'Procedure documentation', 'Staff training sessions', 'Best practice guidance'],
       color: 'from-gold-500 to-gold-600',
       link: '/services/setup-training'
@@ -64,7 +64,7 @@ export default function Services() {
   const pricingTiers = [
     {
       name: 'Standard Audit',
-      price: '$199',
+      price: '$2,500',
       duration: '14 business days',
       features: [
         'Complete trust account audit',
@@ -77,7 +77,7 @@ export default function Services() {
     },
     {
       name: 'Express Audit',
-      price: '$249',
+      price: '$3,500',
       duration: '7 business days',
       features: [
         'Priority audit processing',
@@ -91,7 +91,7 @@ export default function Services() {
     },
     {
       name: 'Premium Package',
-      price: '$299',
+      price: '$4,500',
       duration: '7 business days',
       features: [
         'Express audit processing',

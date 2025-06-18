@@ -48,7 +48,7 @@ export default function SetupTraining() {
   const packages = [
     {
       name: 'Basic Setup',
-      price: '$149',
+      price: '$1,000',
       duration: '1-2 days',
       features: [
         'Trust account setup',
@@ -60,7 +60,7 @@ export default function SetupTraining() {
     },
     {
       name: 'Complete Package',
-      price: '$249',
+      price: '$2,500',
       duration: '3-5 days',
       features: [
         'Full trust account setup',
@@ -74,7 +74,7 @@ export default function SetupTraining() {
     },
     {
       name: 'Premium Implementation',
-      price: '$299',
+      price: '$4,000',
       duration: '1-2 weeks',
       features: [
         'Enterprise-level setup',
