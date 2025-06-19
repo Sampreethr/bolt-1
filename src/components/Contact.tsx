@@ -30,9 +30,9 @@ export default function Contact() {
   ]
 
   const urgencyLevels = [
-    { value: 'urgent', label: 'Urgent (Within 7 days)', color: 'text-red-600' },
-    { value: 'standard', label: 'Standard (Within 14 days)', color: 'text-blue-600' },
-    { value: 'flexible', label: 'Flexible (Within 30 days)', color: 'text-green-600' }
+    { value: 'urgent', label: 'Urgent (Within 7 days)' },
+    { value: 'standard', label: 'Standard (Within 14 days)' },
+    { value: 'flexible', label: 'Flexible (Within 30 days)' }
   ]
 
   const contactMethods = [
@@ -95,49 +95,45 @@ export default function Contact() {
       title: 'Call Us Now',
       details: ['1300 AUDITS (283 487)', '+61 2 9876 5432'],
       action: 'tel:1300283487',
-      actionText: 'Call Now',
-      color: 'from-green-500 to-green-600'
+      actionText: 'Call Now'
     },
     {
       icon: Mail,
       title: 'Email Us',
       details: ['info@auditspro.com.au', 'urgent@auditspro.com.au'],
       action: 'mailto:info@auditspro.com.au',
-      actionText: 'Send Email',
-      color: 'from-blue-500 to-blue-600'
+      actionText: 'Send Email'
     },
     {
       icon: MapPin,
       title: 'Visit Our Offices',
       details: ['Level 25, 123 Collins Street', 'Melbourne, VIC 3000'],
       action: '#',
-      actionText: 'Get Directions',
-      color: 'from-purple-500 to-purple-600'
+      actionText: 'Get Directions'
     },
     {
       icon: Clock,
       title: 'Business Hours',
       details: ['Mon-Fri: 8:00 AM - 6:00 PM', '24/7 Emergency Support'],
       action: 'tel:1300283487',
-      actionText: 'Emergency Line',
-      color: 'from-gold-500 to-gold-600'
+      actionText: 'Emergency Line'
     }
   ]
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="section-padding bg-light">
+      <div className="max-w-7xl mx-auto container-padding">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-blue-100 to-gold-100 dark:from-blue-900/30 dark:to-gold-900/30 text-blue-700 dark:text-gold-400 text-sm font-medium mb-6">
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary-50 text-primary-700 text-sm font-medium mb-6 border border-primary-200">
             <MessageSquare className="h-4 w-4 mr-2" />
             Contact Us
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             Ready to Book Your
-            <span className="bg-gradient-to-r from-blue-600 to-gold-600 bg-clip-text text-transparent block">Trust Account Audit?</span>
+            <span className="text-primary-600 block">Trust Account Audit?</span>
           </h2>
-          <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Get started with a free consultation. Our team is ready to help you achieve complete compliance and peace of mind.
           </p>
         </div>
@@ -146,21 +142,21 @@ export default function Contact() {
           {/* Contact Information */}
           <div className="lg:col-span-1 space-y-6">
             {contactInfo.map((info, index) => (
-              <div key={index} className="glass-morphism rounded-2xl p-6 transform hover:scale-105 transition-all duration-300">
-                <div className={`inline-flex p-3 rounded-xl bg-gradient-to-r ${info.color} text-white mb-4`}>
+              <div key={index} className="professional-card hover-lift">
+                <div className="inline-flex p-3 rounded-xl bg-primary-500 text-white mb-4">
                   <info.icon className="h-6 w-6" />
                 </div>
-                <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-3">
+                <h3 className="text-lg font-bold text-gray-900 mb-3">
                   {info.title}
                 </h3>
                 {info.details.map((detail, detailIndex) => (
-                  <p key={detailIndex} className="text-slate-600 dark:text-slate-300 mb-1">
+                  <p key={detailIndex} className="text-gray-600 mb-1">
                     {detail}
                   </p>
                 ))}
                 <a
                   href={info.action}
-                  className="inline-flex items-center text-blue-600 dark:text-gold-400 font-semibold hover:text-blue-700 dark:hover:text-gold-300 transition-colors duration-200 mt-3"
+                  className="inline-flex items-center text-primary-600 font-semibold hover:text-primary-700 transition-colors duration-200 mt-3"
                 >
                   {info.actionText}
                   <CheckCircle className="ml-1 h-4 w-4" />
@@ -169,17 +165,17 @@ export default function Contact() {
             ))}
 
             {/* Emergency Contact */}
-            <div className="glass-morphism rounded-2xl p-6 bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 border border-red-200 dark:border-red-800">
+            <div className="professional-card p-6 bg-red-50 border border-red-200">
               <div className="flex items-center space-x-3 mb-4">
-                <AlertCircle className="h-6 w-6 text-red-600 dark:text-red-400" />
-                <h3 className="text-lg font-bold text-slate-900 dark:text-white">Emergency Audit Required?</h3>
+                <AlertCircle className="h-6 w-6 text-red-600" />
+                <h3 className="text-lg font-bold text-gray-900">Emergency Audit Required?</h3>
               </div>
-              <p className="text-slate-600 dark:text-slate-300 mb-4 text-sm">
+              <p className="text-gray-600 mb-4 text-sm">
                 Need an urgent audit due to regulatory deadlines or compliance issues?
               </p>
               <a
                 href="tel:1300283487"
-                className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 inline-flex items-center justify-center"
+                className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 inline-flex items-center justify-center"
               >
                 <Phone className="mr-2 h-5 w-5" />
                 Call Emergency Line
@@ -189,10 +185,10 @@ export default function Contact() {
 
           {/* Contact Form */}
           <div className="lg:col-span-2">
-            <div className="glass-morphism rounded-3xl p-8">
+            <div className="professional-card clean-shadow-lg p-8">
               <div className="flex items-center space-x-3 mb-6">
-                <Calendar className="h-6 w-6 text-blue-600 dark:text-gold-400" />
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-white">
+                <Calendar className="h-6 w-6 text-primary-600" />
+                <h3 className="text-2xl font-bold text-gray-900">
                   Book Your Audit
                 </h3>
               </div>
@@ -201,11 +197,11 @@ export default function Contact() {
                 {/* Personal Information */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                       Full Name *
                     </label>
                     <div className="relative">
-                      <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-slate-400" />
+                      <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
                       <input
                         type="text"
                         id="name"
@@ -213,7 +209,7 @@ export default function Contact() {
                         required
                         value={formData.name}
                         onChange={handleChange}
-                        className={`w-full pl-10 pr-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-800 text-slate-900 dark:text-white transition-colors duration-200 ${errors.name ? 'border-red-500' : 'border-slate-300 dark:border-slate-600'}`}
+                        className={`input-field pl-10 ${errors.name ? 'border-red-500' : ''}`}
                         placeholder="Your full name"
                       />
                     </div>
@@ -221,11 +217,11 @@ export default function Contact() {
                   </div>
                   
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                       Email Address *
                     </label>
                     <div className="relative">
-                      <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-slate-400" />
+                      <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
                       <input
                         type="email"
                         id="email"
@@ -233,7 +229,7 @@ export default function Contact() {
                         required
                         value={formData.email}
                         onChange={handleChange}
-                        className={`w-full pl-10 pr-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-800 text-slate-900 dark:text-white transition-colors duration-200 ${errors.email ? 'border-red-500' : 'border-slate-300 dark:border-slate-600'}`}
+                        className={`input-field pl-10 ${errors.email ? 'border-red-500' : ''}`}
                         placeholder="your.email@example.com"
                       />
                     </div>
@@ -244,36 +240,36 @@ export default function Contact() {
                 {/* Business Information */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
                       Phone Number
                     </label>
                     <div className="relative">
-                      <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-slate-400" />
+                      <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
                       <input
                         type="tel"
                         id="phone"
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="w-full pl-10 pr-4 py-3 border border-slate-300 dark:border-slate-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-800 text-slate-900 dark:text-white transition-colors duration-200"
+                        className="input-field pl-10"
                         placeholder="(02) 1234 5678"
                       />
                     </div>
                   </div>
                   
                   <div>
-                    <label htmlFor="businessName" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                    <label htmlFor="businessName" className="block text-sm font-medium text-gray-700 mb-2">
                       Business Name
                     </label>
                     <div className="relative">
-                      <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-slate-400" />
+                      <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
                       <input
                         type="text"
                         id="businessName"
                         name="businessName"
                         value={formData.businessName}
                         onChange={handleChange}
-                        className="w-full pl-10 pr-4 py-3 border border-slate-300 dark:border-slate-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-800 text-slate-900 dark:text-white transition-colors duration-200"
+                        className="input-field pl-10"
                         placeholder="Your business name"
                       />
                     </div>
@@ -282,7 +278,7 @@ export default function Contact() {
 
                 {/* Business Type */}
                 <div>
-                  <label htmlFor="businessType" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                  <label htmlFor="businessType" className="block text-sm font-medium text-gray-700 mb-2">
                     Business Type *
                   </label>
                   <select
@@ -291,7 +287,7 @@ export default function Contact() {
                     required
                     value={formData.businessType}
                     onChange={handleChange}
-                    className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-800 text-slate-900 dark:text-white transition-colors duration-200 ${errors.businessType ? 'border-red-500' : 'border-slate-300 dark:border-slate-600'}`}
+                    className={`input-field ${errors.businessType ? 'border-red-500' : ''}`}
                   >
                     <option value="">Select your business type</option>
                     {businessTypes.map((type, index) => (
@@ -304,7 +300,7 @@ export default function Contact() {
                 {/* Audit Details */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="trustAccountPeriod" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                    <label htmlFor="trustAccountPeriod" className="block text-sm font-medium text-gray-700 mb-2">
                       Trust Account Period
                     </label>
                     <input
@@ -313,13 +309,13 @@ export default function Contact() {
                       name="trustAccountPeriod"
                       value={formData.trustAccountPeriod}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-800 text-slate-900 dark:text-white transition-colors duration-200"
+                      className="input-field"
                       placeholder="e.g., 1 July 2023 - 30 June 2024"
                     />
                   </div>
                   
                   <div>
-                    <label htmlFor="currentAuditor" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                    <label htmlFor="currentAuditor" className="block text-sm font-medium text-gray-700 mb-2">
                       Current Auditor (if any)
                     </label>
                     <input
@@ -328,7 +324,7 @@ export default function Contact() {
                       name="currentAuditor"
                       value={formData.currentAuditor}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-800 text-slate-900 dark:text-white transition-colors duration-200"
+                      className="input-field"
                       placeholder="Current auditor name"
                     />
                   </div>
@@ -336,7 +332,7 @@ export default function Contact() {
 
                 {/* Urgency Level */}
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-3">
+                  <label className="block text-sm font-medium text-gray-700 mb-3">
                     Urgency Level
                   </label>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -350,8 +346,8 @@ export default function Contact() {
                           onChange={handleChange}
                           className="sr-only"
                         />
-                        <div className={`p-4 border-2 rounded-xl cursor-pointer transition-all duration-200 ${formData.urgency === level.value ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20' : 'border-slate-300 dark:border-slate-600 hover:border-blue-300'}`}>
-                          <div className={`font-semibold ${level.color} dark:text-gold-400`}>
+                        <div className={`p-4 border-2 rounded-xl cursor-pointer transition-all duration-200 ${formData.urgency === level.value ? 'border-primary-500 bg-primary-50' : 'border-gray-300 hover:border-primary-300'}`}>
+                          <div className="font-semibold text-gray-900">
                             {level.label}
                           </div>
                         </div>
@@ -362,7 +358,7 @@ export default function Contact() {
 
                 {/* Preferred Contact Method */}
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-3">
+                  <label className="block text-sm font-medium text-gray-700 mb-3">
                     Preferred Contact Method
                   </label>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -376,9 +372,9 @@ export default function Contact() {
                           onChange={handleChange}
                           className="sr-only"
                         />
-                        <div className={`p-4 border-2 rounded-xl cursor-pointer transition-all duration-200 flex items-center space-x-3 ${formData.preferredContact === method.value ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20' : 'border-slate-300 dark:border-slate-600 hover:border-blue-300'}`}>
-                          <method.icon className="h-5 w-5 text-blue-600 dark:text-gold-400" />
-                          <span className="font-medium text-slate-900 dark:text-white">{method.label}</span>
+                        <div className={`p-4 border-2 rounded-xl cursor-pointer transition-all duration-200 flex items-center space-x-3 ${formData.preferredContact === method.value ? 'border-primary-500 bg-primary-50' : 'border-gray-300 hover:border-primary-300'}`}>
+                          <method.icon className="h-5 w-5 text-primary-600" />
+                          <span className="font-medium text-gray-900">{method.label}</span>
                         </div>
                       </label>
                     ))}
@@ -387,7 +383,7 @@ export default function Contact() {
 
                 {/* Message */}
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
                     Message *
                   </label>
                   <textarea
@@ -397,7 +393,7 @@ export default function Contact() {
                     required
                     value={formData.message}
                     onChange={handleChange}
-                    className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-800 text-slate-900 dark:text-white transition-colors duration-200 resize-none ${errors.message ? 'border-red-500' : 'border-slate-300 dark:border-slate-600'}`}
+                    className={`input-field resize-none ${errors.message ? 'border-red-500' : ''}`}
                     placeholder="Please describe your auditing needs, any specific requirements, or questions you have..."
                   />
                   {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
@@ -407,7 +403,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={isSubmitted}
-                  className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 disabled:from-green-600 disabled:to-green-700 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl disabled:scale-100 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
+                  className="w-full btn-primary disabled:bg-green-600 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
                 >
                   {isSubmitted ? (
                     <>
@@ -423,12 +419,12 @@ export default function Contact() {
                 </button>
 
                 {isSubmitted && (
-                  <div className="glass-morphism rounded-xl p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800">
+                  <div className="professional-card p-4 bg-green-50 border border-green-200">
                     <div className="flex items-center space-x-3">
-                      <CheckCircle className="h-6 w-6 text-green-600 dark:text-green-400" />
+                      <CheckCircle className="h-6 w-6 text-green-600" />
                       <div>
-                        <h4 className="font-semibold text-green-800 dark:text-green-200">Request Received!</h4>
-                        <p className="text-green-700 dark:text-green-300 text-sm">
+                        <h4 className="font-semibold text-green-800">Request Received!</h4>
+                        <p className="text-green-700 text-sm">
                           We'll contact you within 2 hours during business hours. For urgent matters, please call us directly.
                         </p>
                       </div>
@@ -436,7 +432,7 @@ export default function Contact() {
                   </div>
                 )}
 
-                <p className="text-sm text-slate-600 dark:text-slate-400 text-center">
+                <p className="text-sm text-gray-600 text-center">
                   We typically respond within 2 hours during business hours. For urgent matters, please call us directly at 1300 AUDITS.
                 </p>
               </form>

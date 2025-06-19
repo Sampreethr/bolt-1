@@ -1,9 +1,8 @@
 {
   "/_not-found": "app/_not-found.js",
+  "/page": "app/page.js",
   "/services/compliance-consulting/page": "app/services/compliance-consulting/page.js",
-  "/payment/page": "app/payment/page.js",
-  "/services/setup-training/page": "app/services/setup-training/page.js",
   "/services/financial-reporting/page": "app/services/financial-reporting/page.js",
-  "/services/trust-account-auditing/page": "app/services/trust-account-auditing/page.js",
-  "/page": "app/page.js"
+  "/services/setup-training/page": "app/services/setup-training/page.js",
+  "/payment/page": "app/payment/page.js"
 }
