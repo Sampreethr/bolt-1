@@ -2,29 +2,80 @@
   "name": "audits-pro-website",
   "version": "0.1.0",
   "private": true,
+  "description": "Professional trust account auditing services website for AuditsPro Australia",
+  "keywords": [
+    "trust account audit",
+    "ASIC auditing",
+    "legal auditing",
+    "real estate audit",
+    "Australia auditing services"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "type-check": "tsc --noEmit",
+    "build:analyze": "ANALYZE=true next build",
+    "clean": "rm -rf .next",
+    "test": "echo \"No tests specified\" && exit 0"
   },
   "dependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/forms": "^0.5.10",
+    "@tailwindcss/typography": "^0.5.16",
     "framer-motion": "^10.16.16",
     "lucide-react": "^0.344.0",
-    "next": "14.0.4",
+    "next": "^15.3.5",
     "next-themes": "^0.2.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
     "@types/node": "^20.10.5",
     "@types/react": "^18.2.45",
     "@types/react-dom": "^18.2.18",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
     "autoprefixer": "^10.4.21",
     "eslint": "^8.56.0",
     "eslint-config-next": "14.0.4",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "postcss": "^8.5.5",
+    "prettier": "^3.1.1",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=18.17.0",
+    "npm": ">=9.6.7"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all",
+      "iOS >= 12",
+      "Android >= 5"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/auditspro/website.git"
+  },
+  "license": "UNLICENSED",
+  "author": {
+    "name": "AuditsPro Australia",
+    "email": "info@auditspro.com.au",
+    "url": "https://auditspro.com.au"
   }
 }

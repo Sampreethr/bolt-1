@@ -18,7 +18,7 @@ export default function Contact() {
   })
 
   const [isSubmitted, setIsSubmitted] = useState(false)
-  const [errors, setErrors] = useState<{[key: string]: string}>({})
+  const [errors, setErrors] = useState({})
 
   const businessTypes = [
     'Law Firm',
@@ -42,7 +42,7 @@ export default function Contact() {
   ]
 
   const validateForm = () => {
-    const newErrors: {[key: string]: string} = {}
+    const newErrors = {}
     
     if (!formData.name.trim()) newErrors.name = 'Name is required'
     if (!formData.email.trim()) newErrors.email = 'Email is required'
@@ -54,7 +54,7 @@ export default function Contact() {
     return Object.keys(newErrors).length === 0
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
     
     if (!validateForm()) return
@@ -79,7 +79,7 @@ export default function Contact() {
     })
   }
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (e) => {
     const { name, value } = e.target
     setFormData(prev => ({ ...prev, [name]: value }))
     
@@ -142,8 +142,8 @@ export default function Contact() {
           {/* Contact Information */}
           <div className="lg:col-span-1 space-y-6">
             {contactInfo.map((info, index) => (
-              <div key={index} className="professional-card hover-lift">
-                <div className="inline-flex p-3 rounded-xl bg-primary-500 text-white mb-4">
+              <div key={index} className="bg-white rounded-2xl p-6 border-2 border-gray-200 shadow-lg hover:shadow-xl hover:border-primary-300 transition-all duration-300 transform hover:-translate-y-1">
+                <div className="inline-flex p-3 rounded-xl bg-primary-500 text-white mb-4 shadow-md">
                   <info.icon className="h-6 w-6" />
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 mb-3">
@@ -165,7 +165,7 @@ export default function Contact() {
             ))}
 
             {/* Emergency Contact */}
-            <div className="professional-card p-6 bg-red-50 border border-red-200">
+            <div className="bg-white rounded-2xl p-6 border-2 border-red-200 shadow-lg hover:shadow-xl hover:border-red-300 transition-all duration-300 transform hover:-translate-y-1 bg-gradient-to-br from-red-50 to-orange-50">
               <div className="flex items-center space-x-3 mb-4">
                 <AlertCircle className="h-6 w-6 text-red-600" />
                 <h3 className="text-lg font-bold text-gray-900">Emergency Audit Required?</h3>
@@ -175,7 +175,7 @@ export default function Contact() {
               </p>
               <a
                 href="tel:1300283487"
-                className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 inline-flex items-center justify-center"
+                className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 inline-flex items-center justify-center shadow-md hover:shadow-lg"
               >
                 <Phone className="mr-2 h-5 w-5" />
                 Call Emergency Line
@@ -185,7 +185,7 @@ export default function Contact() {
 
           {/* Contact Form */}
           <div className="lg:col-span-2">
-            <div className="professional-card clean-shadow-lg p-8">
+            <div className="bg-white rounded-2xl p-8 border-2 border-gray-200 shadow-xl hover:shadow-2xl transition-all duration-300">
               <div className="flex items-center space-x-3 mb-6">
                 <Calendar className="h-6 w-6 text-primary-600" />
                 <h3 className="text-2xl font-bold text-gray-900">
@@ -209,7 +209,11 @@ export default function Contact() {
                         required
                         value={formData.name}
                         onChange={handleChange}
-                        className={`input-field pl-10 ${errors.name ? 'border-red-500' : ''}`}
+                        className={`w-full pl-10 pr-4 py-3 border-2 rounded-xl bg-white text-gray-900 placeholder-gray-500 transition-all duration-200 focus:outline-none focus:ring-0 ${
+                          errors.name 
+                            ? 'border-red-300 focus:border-red-500 bg-red-50' 
+                            : 'border-gray-200 focus:border-primary-500 hover:border-gray-300'
+                        }`}
                         placeholder="Your full name"
                       />
                     </div>
@@ -229,7 +233,11 @@ export default function Contact() {
                         required
                         value={formData.email}
                         onChange={handleChange}
-                        className={`input-field pl-10 ${errors.email ? 'border-red-500' : ''}`}
+                        className={`w-full pl-10 pr-4 py-3 border-2 rounded-xl bg-white text-gray-900 placeholder-gray-500 transition-all duration-200 focus:outline-none focus:ring-0 ${
+                          errors.email 
+                            ? 'border-red-300 focus:border-red-500 bg-red-50' 
+                            : 'border-gray-200 focus:border-primary-500 hover:border-gray-300'
+                        }`}
                         placeholder="your.email@example.com"
                       />
                     </div>
@@ -251,7 +259,7 @@ export default function Contact() {
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="input-field pl-10"
+                        className="w-full pl-10 pr-4 py-3 border-2 border-gray-200 rounded-xl bg-white text-gray-900 placeholder-gray-500 transition-all duration-200 focus:outline-none focus:ring-0 focus:border-primary-500 hover:border-gray-300"
                         placeholder="(02) 1234 5678"
                       />
                     </div>
@@ -269,7 +277,7 @@ export default function Contact() {
                         name="businessName"
                         value={formData.businessName}
                         onChange={handleChange}
-                        className="input-field pl-10"
+                        className="w-full pl-10 pr-4 py-3 border-2 border-gray-200 rounded-xl bg-white text-gray-900 placeholder-gray-500 transition-all duration-200 focus:outline-none focus:ring-0 focus:border-primary-500 hover:border-gray-300"
                         placeholder="Your business name"
                       />
                     </div>
@@ -287,7 +295,11 @@ export default function Contact() {
                     required
                     value={formData.businessType}
                     onChange={handleChange}
-                    className={`input-field ${errors.businessType ? 'border-red-500' : ''}`}
+                    className={`w-full px-4 py-3 border-2 rounded-xl bg-white text-gray-900 transition-all duration-200 focus:outline-none focus:ring-0 ${
+                      errors.businessType 
+                        ? 'border-red-300 focus:border-red-500 bg-red-50' 
+                        : 'border-gray-200 focus:border-primary-500 hover:border-gray-300'
+                    }`}
                   >
                     <option value="">Select your business type</option>
                     {businessTypes.map((type, index) => (
@@ -309,7 +321,7 @@ export default function Contact() {
                       name="trustAccountPeriod"
                       value={formData.trustAccountPeriod}
                       onChange={handleChange}
-                      className="input-field"
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl bg-white text-gray-900 placeholder-gray-500 transition-all duration-200 focus:outline-none focus:ring-0 focus:border-primary-500 hover:border-gray-300"
                       placeholder="e.g., 1 July 2023 - 30 June 2024"
                     />
                   </div>
@@ -324,7 +336,7 @@ export default function Contact() {
                       name="currentAuditor"
                       value={formData.currentAuditor}
                       onChange={handleChange}
-                      className="input-field"
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl bg-white text-gray-900 placeholder-gray-500 transition-all duration-200 focus:outline-none focus:ring-0 focus:border-primary-500 hover:border-gray-300"
                       placeholder="Current auditor name"
                     />
                   </div>
@@ -346,7 +358,11 @@ export default function Contact() {
                           onChange={handleChange}
                           className="sr-only"
                         />
-                        <div className={`p-4 border-2 rounded-xl cursor-pointer transition-all duration-200 ${formData.urgency === level.value ? 'border-primary-500 bg-primary-50' : 'border-gray-300 hover:border-primary-300'}`}>
+                        <div className={`p-4 border-2 rounded-xl cursor-pointer transition-all duration-200 ${
+                          formData.urgency === level.value 
+                            ? 'border-primary-500 bg-primary-50 shadow-md' 
+                            : 'border-gray-200 hover:border-primary-300 hover:bg-gray-50'
+                        }`}>
                           <div className="font-semibold text-gray-900">
                             {level.label}
                           </div>
@@ -372,7 +388,11 @@ export default function Contact() {
                           onChange={handleChange}
                           className="sr-only"
                         />
-                        <div className={`p-4 border-2 rounded-xl cursor-pointer transition-all duration-200 flex items-center space-x-3 ${formData.preferredContact === method.value ? 'border-primary-500 bg-primary-50' : 'border-gray-300 hover:border-primary-300'}`}>
+                        <div className={`p-4 border-2 rounded-xl cursor-pointer transition-all duration-200 flex items-center space-x-3 ${
+                          formData.preferredContact === method.value 
+                            ? 'border-primary-500 bg-primary-50 shadow-md' 
+                            : 'border-gray-200 hover:border-primary-300 hover:bg-gray-50'
+                        }`}>
                           <method.icon className="h-5 w-5 text-primary-600" />
                           <span className="font-medium text-gray-900">{method.label}</span>
                         </div>
@@ -393,7 +413,11 @@ export default function Contact() {
                     required
                     value={formData.message}
                     onChange={handleChange}
-                    className={`input-field resize-none ${errors.message ? 'border-red-500' : ''}`}
+                    className={`w-full px-4 py-3 border-2 rounded-xl bg-white text-gray-900 placeholder-gray-500 resize-none transition-all duration-200 focus:outline-none focus:ring-0 ${
+                      errors.message 
+                        ? 'border-red-300 focus:border-red-500 bg-red-50' 
+                        : 'border-gray-200 focus:border-primary-500 hover:border-gray-300'
+                    }`}
                     placeholder="Please describe your auditing needs, any specific requirements, or questions you have..."
                   />
                   {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
@@ -403,7 +427,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={isSubmitted}
-                  className="w-full btn-primary disabled:bg-green-600 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
+                  className="w-full bg-primary-500 hover:bg-primary-600 disabled:bg-green-600 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg disabled:cursor-not-allowed flex items-center justify-center space-x-2 min-h-[56px]"
                 >
                   {isSubmitted ? (
                     <>
@@ -419,7 +443,7 @@ export default function Contact() {
                 </button>
 
                 {isSubmitted && (
-                  <div className="professional-card p-4 bg-green-50 border border-green-200">
+                  <div className="bg-white rounded-xl p-4 border-2 border-green-200 shadow-lg bg-gradient-to-br from-green-50 to-emerald-50">
                     <div className="flex items-center space-x-3">
                       <CheckCircle className="h-6 w-6 text-green-600" />
                       <div>
@@ -436,6 +460,140 @@ export default function Contact() {
                   We typically respond within 2 hours during business hours. For urgent matters, please call us directly at 1300 AUDITS.
                 </p>
               </form>
+            </div>
+          </div>
+        </div>
+
+        {/* FIXED: Removed border from FAQ Section completely */}
+        <div className="mt-16 max-w-4xl mx-auto">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-gray-600">
+              Quick answers to common questions about our auditing services
+            </p>
+          </div>
+          
+          <div className="space-y-6">
+            {/* FAQ Item 1 */}
+            <div className="bg-gray-50 rounded-lg p-6 hover:bg-gray-100 transition-colors duration-200">
+              <h3 style={{
+                fontSize: 'clamp(1rem, 2.5vw, 1.25rem)',
+                fontWeight: '600',
+                lineHeight: '1.5',
+                letterSpacing: '-0.01em',
+                marginBottom: '0.75rem',
+                color: 'rgb(17 24 39)'
+              }}>
+                How quickly can you complete our audit?
+              </h3>
+              <p style={{
+                fontSize: 'clamp(0.875rem, 2vw, 1rem)',
+                fontWeight: '400',
+                lineHeight: '1.6',
+                color: 'rgb(75 85 99)',
+                margin: '0'
+              }}>
+                Our standard turnaround time is 7-14 business days. We also offer express services 
+                for urgent requirements, which can be completed within 5-7 business days.
+              </p>
+            </div>
+            
+            {/* FAQ Item 2 */}
+            <div className="bg-gray-50 rounded-lg p-6 hover:bg-gray-100 transition-colors duration-200">
+              <h3 style={{
+                fontSize: 'clamp(1rem, 2.5vw, 1.25rem)',
+                fontWeight: '600',
+                lineHeight: '1.5',
+                letterSpacing: '-0.01em',
+                marginBottom: '0.75rem',
+                color: 'rgb(17 24 39)'
+              }}>
+                Do you service all Australian states?
+              </h3>
+              <p style={{
+                fontSize: 'clamp(0.875rem, 2vw, 1rem)',
+                fontWeight: '400',
+                lineHeight: '1.6',
+                color: 'rgb(75 85 99)',
+                margin: '0'
+              }}>
+                Yes, we provide trust account auditing services across all Australian states and territories. 
+                Our team is familiar with the specific requirements for each jurisdiction.
+              </p>
+            </div>
+            
+            {/* FAQ Item 3 */}
+            <div className="bg-gray-50 rounded-lg p-6 hover:bg-gray-100 transition-colors duration-200">
+              <h3 style={{
+                fontSize: 'clamp(1rem, 2.5vw, 1.25rem)',
+                fontWeight: '600',
+                lineHeight: '1.5',
+                letterSpacing: '-0.01em',
+                marginBottom: '0.75rem',
+                color: 'rgb(17 24 39)'
+              }}>
+                What information do you need to get started?
+              </h3>
+              <p style={{
+                fontSize: 'clamp(0.875rem, 2vw, 1rem)',
+                fontWeight: '400',
+                lineHeight: '1.6',
+                color: 'rgb(75 85 99)',
+                margin: '0'
+              }}>
+                We'll need your trust account statements, transaction records, and reconciliation 
+                documents for the audit period. We'll provide a comprehensive checklist once you engage our services.
+              </p>
+            </div>
+
+            {/* FAQ Item 4 */}
+            <div className="bg-gray-50 rounded-lg p-6 hover:bg-gray-100 transition-colors duration-200">
+              <h3 style={{
+                fontSize: 'clamp(1rem, 2.5vw, 1.25rem)',
+                fontWeight: '600',
+                lineHeight: '1.5',
+                letterSpacing: '-0.01em',
+                marginBottom: '0.75rem',
+                color: 'rgb(17 24 39)'
+              }}>
+                What are your pricing options?
+              </h3>
+              <p style={{
+                fontSize: 'clamp(0.875rem, 2vw, 1rem)',
+                fontWeight: '400',
+                lineHeight: '1.6',
+                color: 'rgb(75 85 99)',
+                margin: '0'
+              }}>
+                We offer transparent, fixed pricing starting from $499 + GST for real estate and property services, 
+                and $1,500 + GST for legal practice audits. No hidden fees, ever.
+              </p>
+            </div>
+
+            {/* FAQ Item 5 */}
+            <div className="bg-gray-50 rounded-lg p-6 hover:bg-gray-100 transition-colors duration-200">
+              <h3 style={{
+                fontSize: 'clamp(1rem, 2.5vw, 1.25rem)',
+                fontWeight: '600',
+                lineHeight: '1.5',
+                letterSpacing: '-0.01em',
+                marginBottom: '0.75rem',
+                color: 'rgb(17 24 39)'
+              }}>
+                Are your auditors ASIC registered?
+              </h3>
+              <p style={{
+                fontSize: 'clamp(0.875rem, 2vw, 1rem)',
+                fontWeight: '400',
+                lineHeight: '1.6',
+                color: 'rgb(75 85 99)',
+                margin: '0'
+              }}>
+                Yes, all our auditors are ASIC registered and maintain current professional certifications. 
+                We're fully qualified to conduct trust account audits across Australia.
+              </p>
             </div>
           </div>
         </div>

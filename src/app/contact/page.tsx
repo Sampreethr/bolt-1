@@ -145,9 +145,9 @@ export default function ContactPage(): JSX.Element {
         }}
       />
       
-      {/* Page Header */}
+      {/* FIXED: Page Header - REMOVED border-b */}
       <section 
-        className="bg-gradient-to-br from-gray-50 to-white py-8 sm:py-12 border-b border-gray-200"
+        className="bg-gradient-to-br from-gray-50 to-white py-8 sm:py-12"
         role="banner"
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
