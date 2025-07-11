@@ -181,13 +181,13 @@ export default function EnhancedAbout(): JSX.Element {
   return (
     <section 
       id="about" 
-      className="py-12 sm:py-16 lg:py-20 bg-white"
+      className="about-enhanced bg-white"
       role="main"
       aria-labelledby="about-heading"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Enhanced Header with consistent styling */}
-        <header className="text-center mb-12 sm:mb-16">
+        <header className="page-header-enhanced text-center">
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary-50 text-primary-700 text-sm font-medium mb-6 border border-primary-200">
             <Building className="h-4 w-4 mr-2" aria-hidden="true" />
             About AuditsPro Australia
@@ -203,7 +203,7 @@ export default function EnhancedAbout(): JSX.Element {
 
         {/* Mission Section with professional styling */}
         <section 
-          className="bg-white rounded-2xl p-8 md:p-12 mb-12 sm:mb-16 border-2 border-gray-200 shadow-lg"
+          className="section-enhanced-spacing bg-white rounded-2xl p-8 md:p-12 border-2 border-gray-200 shadow-lg"
           role="region"
           aria-labelledby="mission-heading"
         >
@@ -247,7 +247,7 @@ export default function EnhancedAbout(): JSX.Element {
 
         {/* How We Work Section with professional styling */}
         <section 
-          className="mb-12 sm:mb-16"
+          className="section-enhanced-spacing"
           role="region" 
           aria-labelledby="process-heading"
         >
@@ -294,7 +294,7 @@ export default function EnhancedAbout(): JSX.Element {
 
         {/* Why Clients Trust Us with professional styling */}
         <section 
-          className="mb-12 sm:mb-16"
+          className="section-enhanced-spacing"
           role="region"
           aria-labelledby="trust-heading"
         >
@@ -345,7 +345,7 @@ export default function EnhancedAbout(): JSX.Element {
         </section>
 
         {/* Team & Actions Section with enhanced styling */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="section-enhanced-spacing grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Team Section with professional styling */}
           <section 
             className="bg-white rounded-2xl p-8 border-2 border-gray-200 shadow-lg"

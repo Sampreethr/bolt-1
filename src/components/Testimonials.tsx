@@ -34,10 +34,10 @@ export default function Testimonials() {
   ]
 
   return (
-    <section id="testimonials" className="section-padding bg-white">
-      <div className="max-w-7xl mx-auto container-padding">
-        {/* Header */}
-        <div className="text-center mb-16">
+    <section id="testimonials" className="testimonials-enhanced bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header with Enhanced Spacing */}
+        <div className="page-header-enhanced text-center">
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary-50 text-primary-700 text-sm font-medium mb-6 border border-primary-200">
             <Star className="h-4 w-4 mr-2" />
             Client Testimonials
@@ -52,11 +52,11 @@ export default function Testimonials() {
           </p>
         </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        {/* Testimonials Grid with Enhanced Spacing */}
+        <div className="section-enhanced-spacing grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {testimonials.map((testimonial, index) => (
             <div key={index} className="group">
-              <div className="professional-card h-full hover-lift relative overflow-hidden">
+              <div className="bg-white rounded-2xl p-6 lg:p-8 border-2 border-gray-200 shadow-lg hover:shadow-xl hover:border-primary-300 transition-all duration-300 transform hover:-translate-y-1 h-full relative overflow-hidden">
                 {/* Quote Icon */}
                 <div className="absolute top-4 right-4 opacity-10">
                   <Quote className="h-12 w-12 text-primary-600" />
@@ -102,7 +102,7 @@ export default function Testimonials() {
         </div>
 
         {/* Trust Indicators */}
-        <div className="professional-card clean-shadow-lg text-center p-8 md:p-12">
+        <div className="bg-white rounded-2xl p-8 md:p-12 border-2 border-gray-200 shadow-lg text-center">
           <h3 className="text-2xl font-bold text-gray-900 mb-6">
             Trusted by Leading Australian Businesses
           </h3>
@@ -130,7 +130,7 @@ export default function Testimonials() {
             Join hundreds of satisfied clients who trust AuditsPro Australia for their auditing needs.
           </p>
           
-          <a href="#contact" className="btn-primary inline-flex items-center">
+          <a href="#contact" className="bg-primary-500 hover:bg-primary-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg inline-flex items-center">
             Become Our Next Success Story
             <Star className="ml-2 h-5 w-5" />
           </a>

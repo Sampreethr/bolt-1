@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import Hero from '@/src/components/Hero'
 import Benefits from '@/src/components/Benefits'
+import ProtectedHomePage from '@/src/components/ProtectedHomePage'
 
 /**
  * Home Page Metadata

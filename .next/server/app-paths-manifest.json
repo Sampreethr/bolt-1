@@ -1,3 +1,19 @@
 {
-  "/page": "app/page.js"
+  "/_not-found/page": "app/_not-found/page.js",
+  "/pricing/page": "app/pricing/page.js",
+  "/services/compliance-consulting/page": "app/services/compliance-consulting/page.js",
+  "/payment/page": "app/payment/page.js",
+  "/services/financial-reporting/page": "app/services/financial-reporting/page.js",
+  "/services/setup-training/page": "app/services/setup-training/page.js",
+  "/welcome/page": "app/welcome/page.js",
+  "/test-db/page": "app/test-db/page.js",
+  "/contact/page": "app/contact/page.js",
+  "/about/page": "app/about/page.js",
+  "/dashboard/page": "app/dashboard/page.js",
+  "/profile/page": "app/profile/page.js",
+  "/login/page": "app/login/page.js",
+  "/signup/page": "app/signup/page.js",
+  "/page": "app/page.js",
+  "/services/page": "app/services/page.js",
+  "/testimonials/page": "app/testimonials/page.js"
 }

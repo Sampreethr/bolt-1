@@ -2,12 +2,11 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 
-// Import your Header and Footer components
-import Header from '@/src/components/Header'
-import Footer from '@/src/components/Footer'
+// Import Authentication Provider
+import { AuthProvider } from '@/src/context/AuthContext'
 
-// Import the AuthProvider
-import { AuthProvider } from '@/src/contexts/AuthContext'
+// Import your ConditionalLayout component
+import ConditionalLayout from '@/src/components/ConditionalLayout'
 
 const inter = Inter({
   // Enhanced subset configuration for better performance
@@ -110,21 +109,29 @@ export const metadata: Metadata = {
 }
 
 /**
- * UPDATED ROOT LAYOUT WITH AUTHENTICATION AND MODAL SUPPORT
+ * ENHANCED ROOT LAYOUT WITH AUTHENTICATION
  * 
- * PROFESSIONAL FEATURES:
- * 1. AuthProvider wraps entire application
- * 2. Professional spacing maintained
- * 3. Enhanced font loading with performance optimization
- * 4. Comprehensive fallback system
- * 5. Cross-device compatibility
- * 6. Modern font rendering optimization
- * 7. CRITICAL: Modal root element for portal rendering
+ * FEATURES:
+ * 1. Authentication Provider wrapper for global auth state
+ * 2. Clean layout structure with conditional header/footer
+ * 3. Professional spacing maintained for regular pages
+ * 4. Clean auth pages without header/footer
+ * 5. Enhanced font loading with performance optimization
+ * 6. Comprehensive fallback system
+ * 7. Cross-device compatibility
+ * 8. Modern font rendering optimization
+ * 9. PROTECTED ROUTES: Only authenticated users can access content
+ * 
+ * Authentication Flow:
+ * 1. Middleware checks authentication (first layer)
+ * 2. AuthProvider manages global state (second layer)
+ * 3. ConditionalLayout handles UI layout (third layer)
+ * 4. Individual components can add protection (fourth layer)
  * 
  * @param children - Page content from Next.js routing
- * @returns Complete page structure with authentication and professional typography
+ * @returns Complete page structure with authentication and conditional layout
  */
-export default function EnhancedRootLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
@@ -175,26 +182,26 @@ export default function EnhancedRootLayout({
           Skip to main content
         </a>
         
-        {/* CRITICAL: Wrap entire app with AuthProvider */}
+        {/* 
+          AUTHENTICATION PROVIDER
+          Wraps the entire app to provide global authentication state
+          This enables:
+          - Global authentication state management
+          - Automatic session restoration
+          - Protected routes functionality
+          - User state across all components
+        */}
         <AuthProvider>
-          {/* Site Header - Fixed Navigation with Auth */}
-          <Header />
-          
-          {/* Main Content Area with professional typography and spacing */}
-          <main 
-            id="main-content" 
-            className="min-h-screen font-sans"
-            role="main"
-          >
+          {/* 
+            CONDITIONAL LAYOUT
+            Handles header/footer display based on route type:
+            - Shows header/footer on regular pages (for authenticated users)
+            - Hides header/footer on auth pages (login, signup, etc.)
+          */}
+          <ConditionalLayout>
             {children}
-          </main>
-          
-          {/* Site Footer */}
-          <Footer />
+          </ConditionalLayout>
         </AuthProvider>
-        
-        {/* CRITICAL: Modal Root for Portal Rendering */}
-        <div id="modal-root"></div>
         
         {/* Enhanced Performance and Font Loading Scripts */}
         <script dangerouslySetInnerHTML={{
@@ -249,9 +256,74 @@ export default function EnhancedRootLayout({
                 fontObserver.observe(el);
               });
             }
+            
+            // Authentication Debug (Development Only)
+            if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
+              console.log('🔐 AuditsPro Authentication System Active');
+              console.log('🛡️ Protected Routes: All content requires authentication');
+              console.log('🔓 Public Routes: /login, /signup, /forgot-password, /reset-password');
+            }
           `
         }} />
       </body>
     </html>
   )
 }
+
+/**
+ * ===============================
+ * AUTHENTICATION ARCHITECTURE SUMMARY
+ * ===============================
+ * 
+ * 🔒 PROTECTION LAYERS:
+ * 
+ * 1. MIDDLEWARE (middleware.ts)
+ *    - First line of defense
+ *    - Runs before any page renders
+ *    - Redirects unauthenticated users to /login
+ *    - Protects all routes except public ones
+ * 
+ * 2. AUTH PROVIDER (AuthContext.tsx)
+ *    - Global authentication state management
+ *    - Automatic session restoration
+ *    - Real-time auth status updates
+ *    - Error handling and recovery
+ * 
+ * 3. CONDITIONAL LAYOUT (ConditionalLayout.tsx)
+ *    - Shows/hides header/footer based on route
+ *    - Clean auth pages without navigation
+ *    - Full website access for authenticated users
+ * 
+ * 4. COMPONENT PROTECTION (Optional)
+ *    - Individual component guards
+ *    - Fine-grained access control
+ *    - Role-based permissions (if needed)
+ * 
+ * 🌐 RESPONSIVE DESIGN:
+ * 
+ * ✅ Mobile Devices (All sizes)
+ * ✅ Tablets (All orientations)
+ * ✅ Laptops & Desktops
+ * ✅ Foldable Devices
+ * ✅ Touch-optimized interactions
+ * ✅ Keyboard navigation
+ * ✅ Screen reader compatibility
+ * 
+ * 🚀 PERFORMANCE FEATURES:
+ * 
+ * ✅ Edge runtime compatible
+ * ✅ Minimal bundle size impact
+ * ✅ Fast authentication checks
+ * ✅ Optimized redirects
+ * ✅ Automatic session refresh
+ * ✅ Memory leak prevention
+ * 
+ * 🔐 SECURITY FEATURES:
+ * 
+ * ✅ Cookie-based sessions (secure)
+ * ✅ Automatic session validation
+ * ✅ CSRF protection via Appwrite
+ * ✅ Secure redirects
+ * ✅ Error handling without data leaks
+ * ✅ Multiple validation layers
+ */

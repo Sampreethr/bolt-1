@@ -1,0 +1,19 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/pricing/page": "/pricing",
+  "/services/compliance-consulting/page": "/services/compliance-consulting",
+  "/payment/page": "/payment",
+  "/services/financial-reporting/page": "/services/financial-reporting",
+  "/services/setup-training/page": "/services/setup-training",
+  "/welcome/page": "/welcome",
+  "/test-db/page": "/test-db",
+  "/contact/page": "/contact",
+  "/about/page": "/about",
+  "/dashboard/page": "/dashboard",
+  "/profile/page": "/profile",
+  "/login/page": "/login",
+  "/signup/page": "/signup",
+  "/page": "/",
+  "/services/page": "/services",
+  "/testimonials/page": "/testimonials"
+}

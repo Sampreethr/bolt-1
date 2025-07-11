@@ -4,252 +4,424 @@
 
 /**
  * ===============================
- * 🎯 ENHANCED PROFESSIONAL DESIGN SYSTEM
+ * 🎯 ENHANCED HEADER + AUTH BAR SPACING SYSTEM
  * ===============================
  * 
- * Complete responsive solution for all device types:
- * - iPhone SE, Pro, Pro Max (375px - 428px)
- * - Samsung Galaxy phones (360px - 412px)
- * - Samsung Galaxy Fold (280px folded, 717px unfolded)
- * - iPads & tablets (768px - 1024px)
- * - Laptops & desktops (1024px+)
+ * Complete solution for proper header spacing with integrated auth status:
+ * - Clean gap between fixed header (with auth bar) and page content
+ * - No excessive spacing or layout issues
+ * - Professional appearance across all device types
+ * - FIXED: Accounts for auth status bar when present
+ * - Clean auth pages without header/footer
  */
 
 /* ===============================
    UNIVERSAL FOUNDATION
    =============================== */
 
+* {
+  box-sizing: border-box;
+}
+
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: clamp(70px, 8vh, 130px);
+  /* Enhanced scroll padding for auth bar support */
+  scroll-padding-top: 130px;
   
   /* Enhanced font rendering */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  
-  /* Performance optimization */
-  transform: translateZ(0);
-  backface-visibility: hidden;
 }
 
 body {
   overflow-x: hidden;
   line-height: 1.6;
   font-family: var(--font-inter), 'Inter', system-ui, -apple-system, sans-serif;
+  margin: 0;
+  padding: 0;
   
   /* Prevent zoom on iOS double-tap */
   touch-action: manipulation;
-  
-  /* Enhanced text selection */
-  -webkit-user-select: text;
-  -moz-user-select: text;
-  -ms-user-select: text;
-  user-select: text;
 }
 
 /* ===============================
-   PROFESSIONAL MAIN CONTENT SPACING
+   ENHANCED MAIN CONTENT SPACING WITH AUTH BAR SUPPORT
    =============================== */
 
+/* Default spacing for pages WITH header (accounts for auth bar) */
 main {
-  padding-top: clamp(1.5rem, 5vh, 2.5rem);
+  padding-top: 130px; /* Increased to account for auth status bar */
   min-height: 100vh;
   position: relative;
   z-index: 1;
-  isolation: isolate;
 }
 
+/* Enhanced spacing for pages with main-content ID */
 main[id="main-content"] {
-  padding-top: clamp(2rem, 6vh, 3rem);
-}
-
-section {
-  scroll-margin-top: clamp(80px, 8vh, 120px);
-  isolation: isolate;
-}
-
-section[id] {
-  scroll-margin-top: clamp(90px, 10vh, 130px);
+  padding-top: 140px;
 }
 
 /* ===============================
-   HEADER & NAVIGATION OPTIMIZATION
+   🔥 FIXED: AUTH PAGES NO SPACING
+   =============================== */
+
+/* Remove all padding/margin for auth pages */
+.auth-page main,
+main.auth-page,
+body:has(.auth-layout) main {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* Alternative selector for auth layouts */
+main:has(.auth-layout),
+div:has(.auth-layout) main {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* Ensure auth layout containers take full height */
+.auth-layout {
+  min-height: 100vh !important;
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* Clean section spacing */
+section {
+  /* Enhanced scroll margin for auth bar */
+  scroll-margin-top: 130px;
+  position: relative;
+}
+
+/* Section with ID gets proper scroll protection */
+section[id] {
+  scroll-margin-top: 140px;
+}
+
+/* ===============================
+   ENHANCED HEADER STYLING WITH AUTH BAR
    =============================== */
 
 header[role="banner"] {
-  isolation: isolate;
+  /* Professional background to prevent content showing through */
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  
+  /* Clean positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 50;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  will-change: transform;
+  
+  /* Professional shadow */
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid rgba(229, 231, 235, 0.8);
 }
 
 nav[role="navigation"] {
-  isolation: isolate;
-  z-index: 45;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 /* ===============================
-   ULTRA-RESPONSIVE BREAKPOINTS
+   CLEAN PAGE-SPECIFIC SPACING
    =============================== */
 
-/* Samsung Galaxy Fold (Folded: 280px) */
-@media (max-width: 320px) {
-  html {
-    scroll-padding-top: clamp(60px, 12vh, 90px);
-  }
-  
-  main {
-    padding-top: clamp(1rem, 8vh, 2rem);
-  }
-  
-  section[id] {
-    scroll-margin-top: clamp(70px, 14vh, 100px);
-  }
-  
-  /* Ultra-compact typography */
-  .text-xs { font-size: 0.625rem; }
-  .text-sm { font-size: 0.75rem; }
-  .text-base { font-size: 0.8rem; }
+/* Home/Hero page - clean hero spacing */
+section#home,
+.hero-section {
+  padding-top: 2rem;
+  margin-top: 0;
+  min-height: calc(100vh - 130px);
+  display: flex;
+  align-items: center;
 }
 
-/* iPhone SE & Small Android (320px - 374px) */
-@media (min-width: 320px) and (max-width: 374px) {
-  html {
-    scroll-padding-top: clamp(65px, 10vh, 95px);
-  }
-  
-  main {
-    padding-top: clamp(1.25rem, 6vh, 2.25rem);
-  }
-  
-  section[id] {
-    scroll-margin-top: clamp(75px, 12vh, 105px);
-  }
+/* Services page - clean spacing */
+section#services,
+.services-section {
+  padding-top: 2rem;
+  margin-top: 1rem;
 }
 
-/* Standard Mobile (375px - 428px) - iPhone 12, 13, 14 Pro Max */
-@media (min-width: 375px) and (max-width: 428px) {
-  html {
-    scroll-padding-top: clamp(70px, 9vh, 100px);
-  }
-  
-  main {
-    padding-top: clamp(1.5rem, 5vh, 2.5rem);
-  }
-  
-  section[id] {
-    scroll-margin-top: clamp(80px, 10vh, 110px);
-  }
+/* About page - clean spacing */
+section#about,
+.about-section {
+  padding-top: 2rem;
+  margin-top: 1rem;
 }
 
-/* Large Mobile & Small Tablets (429px - 639px) */
-@media (min-width: 429px) and (max-width: 639px) {
-  html {
-    scroll-padding-top: clamp(75px, 8vh, 105px);
-  }
-  
-  main {
-    padding-top: clamp(1.75rem, 5vh, 2.75rem);
-  }
-  
-  section[id] {
-    scroll-margin-top: clamp(85px, 9vh, 115px);
-  }
+/* Testimonials page - clean spacing */
+section#testimonials,
+.testimonials-section {
+  padding-top: 2rem;
+  margin-top: 1rem;
 }
 
-/* Tablets & Samsung Galaxy Fold Unfolded (640px - 1023px) */
-@media (min-width: 640px) and (max-width: 1023px) {
+/* Contact page - clean spacing */
+section#contact,
+.contact-section {
+  padding-top: 2rem;
+  margin-top: 1rem;
+}
+
+/* ===============================
+   RESPONSIVE BREAKPOINTS - ENHANCED
+   =============================== */
+
+/* Mobile devices (up to 640px) */
+@media (max-width: 640px) {
   html {
-    scroll-padding-top: clamp(80px, 7vh, 110px);
+    scroll-padding-top: 120px;
   }
   
-  main {
-    padding-top: clamp(2rem, 4vh, 3rem);
+  main:not(.auth-page):not(:has(.auth-layout)) {
+    padding-top: 120px;
+  }
+  
+  main[id="main-content"]:not(.auth-page):not(:has(.auth-layout)) {
+    padding-top: 130px;
   }
   
   section[id] {
-    scroll-margin-top: clamp(90px, 8vh, 120px);
+    scroll-margin-top: 130px;
+  }
+  
+  section#home,
+  .hero-section {
+    min-height: calc(100vh - 120px);
   }
 }
 
-/* Laptops & Small Desktops (1024px - 1439px) */
-@media (min-width: 1024px) and (max-width: 1439px) {
+/* Tablets (641px to 1024px) */
+@media (min-width: 641px) and (max-width: 1024px) {
   html {
-    scroll-padding-top: clamp(85px, 6vh, 115px);
+    scroll-padding-top: 125px;
   }
   
-  main {
-    padding-top: clamp(2.25rem, 4vh, 3.25rem);
+  main:not(.auth-page):not(:has(.auth-layout)) {
+    padding-top: 125px;
+  }
+  
+  main[id="main-content"]:not(.auth-page):not(:has(.auth-layout)) {
+    padding-top: 135px;
   }
   
   section[id] {
-    scroll-margin-top: clamp(95px, 7vh, 125px);
+    scroll-margin-top: 135px;
+  }
+  
+  section#home,
+  .hero-section {
+    min-height: calc(100vh - 125px);
   }
 }
 
-/* Large Desktops (1440px+) */
-@media (min-width: 1440px) {
+/* Large screens (1025px+) */
+@media (min-width: 1025px) {
   html {
-    scroll-padding-top: clamp(90px, 5vh, 120px);
+    scroll-padding-top: 130px;
   }
   
-  main {
-    padding-top: clamp(2.5rem, 3vh, 3.5rem);
+  main:not(.auth-page):not(:has(.auth-layout)) {
+    padding-top: 130px;
+  }
+  
+  main[id="main-content"]:not(.auth-page):not(:has(.auth-layout)) {
+    padding-top: 140px;
   }
   
   section[id] {
-    scroll-margin-top: clamp(100px, 6vh, 130px);
+    scroll-margin-top: 140px;
+  }
+  
+  section#home,
+  .hero-section {
+    min-height: calc(100vh - 130px);
   }
 }
 
 /* ===============================
-   DEVICE-SPECIFIC OPTIMIZATIONS
+   CLEAN COMPONENT UTILITIES
    =============================== */
 
-/* Samsung Galaxy Fold Landscape (717px x 512px when unfolded) */
-@media (min-width: 717px) and (max-width: 720px) and (orientation: landscape) {
-  html {
-    scroll-padding-top: clamp(60px, 15vh, 90px);
+@layer components {
+  
+  /* Clean page header */
+  .page-header-clean {
+    margin-top: 1rem;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    text-align: center;
   }
   
-  main {
-    padding-top: clamp(1.5rem, 12vh, 2.5rem);
+  /* Enhanced page header for authenticated users */
+  .page-header-enhanced {
+    margin-top: 1rem;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    text-align: center;
+  }
+  
+  /* Clean section spacing */
+  .section-clean-spacing {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  /* Enhanced section spacing */
+  .section-enhanced-spacing {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    margin-bottom: 2rem;
+  }
+  
+  /* Clean hero section */
+  .hero-clean {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    min-height: calc(100vh - 130px);
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Enhanced layouts */
+  .services-enhanced {
+    padding-top: 2rem;
+    margin-top: 1rem;
+  }
+  
+  .about-enhanced {
+    padding-top: 2rem;
+    margin-top: 1rem;
+  }
+  
+  .contact-enhanced {
+    padding-top: 2rem;
+    margin-top: 1rem;
+  }
+  
+  .testimonials-enhanced {
+    padding-top: 2rem;
+    margin-top: 1rem;
+  }
+  
+  /* Clean container */
+  .container-clean {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Clean grid spacing */
+  .grid-clean {
+    display: grid;
+    gap: 1.5rem;
   }
 }
 
-/* Mobile Landscape Optimization */
+/* ===============================
+   ENHANCED UTILITY CLASSES
+   =============================== */
+
+@layer utilities {
+  
+  /* Enhanced header-safe spacing with auth bar support */
+  .mt-header-enhanced {
+    margin-top: 130px;
+  }
+  
+  .pt-header-enhanced {
+    padding-top: 130px;
+  }
+  
+  /* Enhanced scroll margin with auth bar support */
+  .scroll-mt-header-enhanced {
+    scroll-margin-top: 130px;
+  }
+  
+  /* Enhanced spacing levels */
+  .spacing-enhanced-sm {
+    padding-top: 1rem;
+  }
+  
+  .spacing-enhanced-md {
+    padding-top: 2rem;
+  }
+  
+  .spacing-enhanced-lg {
+    padding-top: 3rem;
+  }
+  
+  /* Page-specific enhanced spacing */
+  .home-spacing-enhanced {
+    padding-top: 2rem;
+    margin-top: 0;
+  }
+  
+  .services-spacing-enhanced {
+    padding-top: 2rem;
+    margin-top: 1rem;
+  }
+  
+  .about-spacing-enhanced {
+    padding-top: 2rem;
+    margin-top: 1rem;
+  }
+  
+  .contact-spacing-enhanced {
+    padding-top: 2rem;
+    margin-top: 1rem;
+  }
+  
+  .testimonials-spacing-enhanced {
+    padding-top: 2rem;
+    margin-top: 1rem;
+  }
+  
+  /* Auth page utilities */
+  .auth-no-spacing {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+}
+
+/* ===============================
+   MOBILE LANDSCAPE OPTIMIZATION
+   =============================== */
+
 @media (max-height: 600px) and (orientation: landscape) {
   html {
-    scroll-padding-top: clamp(50px, 20vh, 80px);
+    scroll-padding-top: 100px;
   }
   
-  main {
-    padding-top: clamp(1rem, 15vh, 2rem);
+  main:not(.auth-page):not(:has(.auth-layout)) {
+    padding-top: 100px;
   }
   
-  /* Compact header in landscape */
-  header[role="banner"] {
+  main[id="main-content"]:not(.auth-page):not(:has(.auth-layout)) {
+    padding-top: 110px;
+  }
+  
+  section[id] {
+    scroll-margin-top: 110px;
+  }
+  
+  section#home,
+  .hero-section {
+    min-height: calc(100vh - 100px);
+  }
+  
+  nav[role="navigation"] {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
-  }
-}
-
-/* iPad Specific (768px, 810px, 834px, 1024px) */
-@media (min-width: 768px) and (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 1.5) {
-  html {
-    scroll-padding-top: clamp(75px, 7vh, 105px);
-  }
-  
-  main {
-    padding-top: clamp(2rem, 4vh, 3rem);
-  }
-  
-  /* iPad-specific touch targets */
-  button, a, input {
-    min-height: 44px;
-    min-width: 44px;
   }
 }
 
@@ -259,17 +431,9 @@ nav[role="navigation"] {
 
 /* High contrast mode support */
 @media (prefers-contrast: high) {
-  main {
-    padding-top: clamp(2.5rem, 6vh, 3.5rem);
-  }
-  
-  section[id] {
-    scroll-margin-top: clamp(100px, 10vh, 140px);
-  }
-  
-  /* Enhanced contrast for interactive elements */
-  button, a {
-    border: 2px solid currentColor;
+  header[role="banner"] {
+    background-color: #ffffff;
+    border-bottom: 2px solid #000000;
   }
 }
 
@@ -287,315 +451,6 @@ nav[role="navigation"] {
   }
 }
 
-/* Dark mode preferences */
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-}
-
-/* ===============================
-   ENHANCED COMPONENT UTILITIES
-   =============================== */
-
-@layer components {
-  
-  /* Professional section spacing utility */
-  .section-safe-spacing {
-    padding-top: clamp(1.5rem, 4vh, 2.5rem);
-    padding-bottom: clamp(1.5rem, 3vh, 2.5rem);
-    scroll-margin-top: clamp(80px, 8vh, 120px);
-  }
-  
-  /* Professional page header utility */
-  .page-header-safe {
-    margin-top: clamp(0.5rem, 2vh, 1.5rem);
-    padding-top: clamp(1.5rem, 4vh, 2.5rem);
-    scroll-margin-top: clamp(90px, 10vh, 130px);
-  }
-  
-  /* Professional content wrapper */
-  .content-wrapper-safe {
-    padding-top: clamp(1.5rem, 4vh, 2.5rem);
-    min-height: calc(100vh - clamp(1.5rem, 4vh, 2.5rem));
-    position: relative;
-    z-index: 1;
-    isolation: isolate;
-  }
-  
-  /* Touch-optimized interactions */
-  .touch-optimized {
-    min-height: 44px;
-    min-width: 44px;
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
-  }
-  
-  /* Header-safe navigation */
-  .nav-safe {
-    position: relative;
-    z-index: 45;
-    isolation: isolate;
-  }
-  
-  /* Safe modal positioning */
-  .modal-safe {
-    z-index: 9999;
-    isolation: isolate;
-    position: fixed;
-    inset: 0;
-  }
-  
-  /* Container with professional header awareness */
-  .container-header-safe {
-    max-width: 1280px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: clamp(1rem, 4vw, 2rem);
-    padding-right: clamp(1rem, 4vw, 2rem);
-    padding-top: clamp(0.75rem, 2vh, 1.5rem);
-  }
-  
-  /* Grid with professional spacing */
-  .grid-safe-spacing {
-    display: grid;
-    gap: clamp(0.75rem, 2vw, 1.25rem);
-    padding: clamp(0.5rem, 1.5vw, 1rem);
-  }
-  
-  /* Flex layout with professional header safety */
-  .flex-header-safe {
-    display: flex;
-    align-items: center;
-    min-height: calc(100vh - clamp(1.5rem, 4vh, 2.5rem));
-    padding-top: clamp(0.75rem, 2vh, 1.5rem);
-  }
-  
-  /* Professional hero section spacing */
-  .hero-safe {
-    padding-top: clamp(2rem, 6vh, 4rem);
-    padding-bottom: clamp(1.5rem, 3vh, 2.5rem);
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-  
-  /* Professional services page */
-  .services-safe {
-    padding-top: clamp(2rem, 6vh, 3.5rem);
-    margin-top: clamp(0.75rem, 2vh, 1.5rem);
-  }
-  
-  /* Professional about page */
-  .about-safe {
-    padding-top: clamp(1.75rem, 5vh, 3rem);
-    scroll-margin-top: clamp(85px, 8vh, 115px);
-  }
-  
-  /* Professional contact page */
-  .contact-safe {
-    padding-top: clamp(1.5rem, 4vh, 2.5rem);
-    scroll-margin-top: clamp(80px, 7vh, 110px);
-  }
-}
-
-/* ===============================
-   ENHANCED UTILITY CLASSES
-   =============================== */
-
-@layer utilities {
-  
-  /* Professional header-safe positioning utilities */
-  .top-header-safe {
-    top: clamp(1.5rem, 4vh, 2.5rem);
-  }
-  
-  .mt-header-safe {
-    margin-top: clamp(1.5rem, 4vh, 2.5rem);
-  }
-  
-  .pt-header-safe {
-    padding-top: clamp(1.5rem, 4vh, 2.5rem);
-  }
-  
-  /* Professional scroll margin utilities */
-  .scroll-mt-header-safe {
-    scroll-margin-top: clamp(80px, 8vh, 120px);
-  }
-  
-  /* Z-index utilities for proper stacking */
-  .z-header {
-    z-index: 50;
-  }
-  
-  .z-nav {
-    z-index: 45;
-  }
-  
-  .z-content {
-    z-index: 1;
-  }
-  
-  .z-modal {
-    z-index: 9999;
-  }
-  
-  /* Isolation utilities */
-  .isolate-header {
-    isolation: isolate;
-    z-index: 50;
-  }
-  
-  .isolate-content {
-    isolation: isolate;
-    z-index: 1;
-  }
-  
-  /* Professional spacing for different screen sizes */
-  .spacing-xs-safe {
-    padding-top: clamp(1rem, 6vh, 2rem);
-  }
-  
-  .spacing-sm-safe {
-    padding-top: clamp(1.25rem, 5vh, 2.25rem);
-  }
-  
-  .spacing-md-safe {
-    padding-top: clamp(1.5rem, 4vh, 2.5rem);
-  }
-  
-  .spacing-lg-safe {
-    padding-top: clamp(1.75rem, 4vh, 3rem);
-  }
-  
-  .spacing-xl-safe {
-    padding-top: clamp(2rem, 3vh, 3.5rem);
-  }
-  
-  /* Responsive text utilities */
-  .text-responsive-xs {
-    font-size: clamp(0.625rem, 2vw, 0.75rem);
-  }
-  
-  .text-responsive-sm {
-    font-size: clamp(0.75rem, 2.5vw, 0.875rem);
-  }
-  
-  .text-responsive-base {
-    font-size: clamp(0.875rem, 3vw, 1rem);
-  }
-  
-  .text-responsive-lg {
-    font-size: clamp(1rem, 3.5vw, 1.125rem);
-  }
-  
-  .text-responsive-xl {
-    font-size: clamp(1.125rem, 4vw, 1.25rem);
-  }
-  
-  .text-responsive-2xl {
-    font-size: clamp(1.25rem, 5vw, 1.5rem);
-  }
-  
-  .text-responsive-3xl {
-    font-size: clamp(1.5rem, 6vw, 1.875rem);
-  }
-  
-  /* Enhanced touch target utilities */
-  .touch-target-sm {
-    min-height: 36px;
-    min-width: 36px;
-    touch-action: manipulation;
-  }
-  
-  .touch-target-md {
-    min-height: 44px;
-    min-width: 44px;
-    touch-action: manipulation;
-  }
-  
-  .touch-target-lg {
-    min-height: 48px;
-    min-width: 48px;
-    touch-action: manipulation;
-  }
-  
-  /* Safe area utilities for notched devices */
-  .safe-top {
-    padding-top: env(safe-area-inset-top);
-  }
-  
-  .safe-bottom {
-    padding-bottom: env(safe-area-inset-bottom);
-  }
-  
-  .safe-left {
-    padding-left: env(safe-area-inset-left);
-  }
-  
-  .safe-right {
-    padding-right: env(safe-area-inset-right);
-  }
-}
-
-/* ===============================
-   MODAL & OVERLAY OPTIMIZATION
-   =============================== */
-
-/* Modal portal styling */
-#modal-root {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 9999;
-  pointer-events: none;
-}
-
-#modal-root > * {
-  pointer-events: auto;
-}
-
-/* Enhanced backdrop blur for modern browsers */
-.backdrop-blur-enhanced {
-  backdrop-filter: blur(8px) saturate(180%);
-  -webkit-backdrop-filter: blur(8px) saturate(180%);
-}
-
-/* ===============================
-   PRINT STYLES
-   =============================== */
-
-@media print {
-  header[role="banner"] {
-    position: static !important;
-    z-index: auto !important;
-  }
-  
-  main {
-    padding-top: 0 !important;
-  }
-  
-  section {
-    scroll-margin-top: 0 !important;
-    break-inside: avoid;
-  }
-  
-  .hero-safe,
-  .services-safe,
-  .about-safe,
-  .contact-safe {
-    padding-top: 1rem !important;
-    margin-top: 0 !important;
-  }
-  
-  /* Hide interactive elements in print */
-  button,
-  .modal-safe,
-  .touch-optimized {
-    display: none !important;
-  }
-}
-
 /* ===============================
    BROWSER-SPECIFIC OPTIMIZATIONS
    =============================== */
@@ -606,32 +461,14 @@ nav[role="navigation"] {
     -webkit-scroll-behavior: smooth;
   }
   
-  main {
-    -webkit-transform: translateZ(0);
-  }
-  
   /* Safari touch scroll optimization */
   .overflow-y-auto {
     -webkit-overflow-scrolling: touch;
   }
 }
 
-/* Firefox-specific adjustments */
-@-moz-document url-prefix() {
-  html {
-    scroll-padding-top: clamp(75px, 9vh, 115px);
-  }
-  
-  /* Firefox scrollbar styling */
-  * {
-    scrollbar-width: thin;
-    scrollbar-color: #cbd5e0 #f7fafc;
-  }
-}
-
-/* Chrome/Edge specific optimizations */
+/* Custom scrollbar for webkit browsers */
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
-  /* Custom scrollbar for webkit browsers */
   ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -652,61 +489,403 @@ nav[role="navigation"] {
 }
 
 /* ===============================
-   PERFORMANCE OPTIMIZATIONS
+   PRINT STYLES
    =============================== */
 
-/* GPU acceleration for smooth animations */
-.gpu-accelerated {
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  will-change: transform;
-}
-
-/* Optimize rendering for fixed headers */
-header[role="banner"] {
-  contain: layout style paint;
-}
-
-/* Optimize main content rendering */
-main {
-  contain: layout style;
+@media print {
+  header[role="banner"] {
+    position: static !important;
+    z-index: auto !important;
+  }
+  
+  main {
+    padding-top: 0 !important;
+  }
+  
+  section {
+    scroll-margin-top: 0 !important;
+    break-inside: avoid;
+  }
 }
 
 /* ===============================
-   EMERGENCY OVERRIDES
+   ENHANCED OVERRIDES FOR CONSISTENCY
    =============================== */
 
-/* Professional header safety on any main content */
-main:not(.no-header-spacing) {
-  padding-top: clamp(1.5rem, 4vh, 2.5rem) !important;
+/* Ensure all pages have consistent enhanced spacing EXCEPT auth pages */
+main:not(.no-header-spacing):not(.auth-page):not(:has(.auth-layout)) {
+  padding-top: 130px !important;
 }
 
-/* Professional scroll safety on any section with ID */
-section[id]:not(.no-scroll-margin) {
-  scroll-margin-top: clamp(80px, 8vh, 120px) !important;
+/* Ensure all sections with IDs have proper scroll margin EXCEPT auth pages */
+section[id]:not(.no-scroll-margin):not(.auth-layout section) {
+  scroll-margin-top: 130px !important;
 }
 
-/* Emergency spacing class for critical elements */
-.emergency-header-spacing {
-  margin-top: clamp(2rem, 6vh, 3rem) !important;
-  padding-top: clamp(1.5rem, 4vh, 2.5rem) !important;
-  scroll-margin-top: clamp(90px, 10vh, 130px) !important;
+/* Enhanced emergency spacing for critical elements */
+.emergency-enhanced-spacing {
+  margin-top: 2rem !important;
+  padding-top: 2rem !important;
+  scroll-margin-top: 140px !important;
+}
+
+/* Enhanced content wrapper */
+.content-enhanced {
+  padding-top: 2rem;
+  min-height: calc(100vh - 130px);
+}
+
+/* Enhanced section headings */
+h1, h2.section-heading, .page-title {
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  scroll-margin-top: 140px;
+}
+
+/* ===============================
+   PROFESSIONAL LIST STYLING
+   =============================== */
+
+.professional-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  space-y: 0.75rem;
+}
+
+.professional-list > * {
+  margin-bottom: 0.75rem;
+}
+
+.professional-list > *:last-child {
+  margin-bottom: 0;
+}
+
+/* ===============================
+   PROFESSIONAL CARD STYLING
+   =============================== */
+
+.professional-card {
+  background: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  border: 2px solid #e5e7eb;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.professional-card:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border-color: #3b82f6;
+  transform: translateY(-2px);
+}
+
+/* ===============================
+   HOVER AND INTERACTION EFFECTS
+   =============================== */
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.clean-shadow {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.clean-shadow-lg {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.clean-shadow-xl {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* ===============================
+   GRADIENT UTILITIES
+   =============================== */
+
+.gradient-primary {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+}
+
+.gradient-secondary {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.gradient-accent {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+}
+
+/* ===============================
+   LOADING STATES
+   =============================== */
+
+.loading-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===============================
+   ENHANCED ANIMATIONS
+   =============================== */
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ===============================
+   FOCUS STATES FOR ACCESSIBILITY
+   =============================== */
+
+.focus-visible:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+  border-radius: 0.375rem;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* ===============================
+   ENHANCED TYPOGRAPHY
+   =============================== */
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
+
+/* Improved text rendering */
+.text-crisp {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ===============================
+   CONTAINER QUERIES SUPPORT
+   =============================== */
+
+@container (min-width: 768px) {
+  .container-md\:text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+}
+
+@container (min-width: 1024px) {
+  .container-lg\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+}
+
+/* ===============================
+   ENHANCED FORM STYLING
+   =============================== */
+
+.form-input {
+  @apply w-full px-4 py-3 border-2 border-gray-200 rounded-xl bg-white text-gray-900 placeholder:text-gray-500 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 hover:border-gray-300;
+}
+
+.form-input--error {
+  @apply border-red-300 focus:border-red-500 focus:ring-red-500 bg-red-50;
+}
+
+.form-button {
+  @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-xl shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all duration-200;
+}
+
+.form-button--secondary {
+  @apply text-primary-700 bg-primary-100 hover:bg-primary-200 focus:ring-primary-500;
+}
+
+.form-button--outline {
+  @apply text-primary-700 bg-transparent border-primary-300 hover:bg-primary-50 focus:ring-primary-500;
+}
+
+/* ===============================
+   ENHANCED GRID LAYOUTS
+   =============================== */
+
+.grid-auto-fit {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.grid-auto-fill {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+/* ===============================
+   ENHANCED CARD LAYOUTS
+   =============================== */
+
+.card-stack {
+  display: grid;
+  gap: 1rem;
+}
+
+.card-stack > * {
+  background: white;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.card-stack > *:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+/* ===============================
+   ENHANCED SPACING SYSTEM
+   =============================== */
+
+.section-padding {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.container-padding {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container-padding {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-padding {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* ===============================
+   UTILITY OVERRIDES
+   =============================== */
+
+/* Better default line heights */
+.leading-relaxed {
+  line-height: 1.7;
+}
+
+.leading-loose {
+  line-height: 1.8;
+}
+
+/* Enhanced border radius */
+.rounded-2xl {
+  border-radius: 1rem;
+}
+
+.rounded-3xl {
+  border-radius: 1.5rem;
+}
+
+/* Enhanced shadows with better color */
+.shadow-soft {
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.08);
+}
+
+.shadow-medium {
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.12);
+}
+
+.shadow-strong {
+  box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.16);
 }
 
 /**
  * ===============================
- * 🎉 ENHANCED RESPONSIVE SUCCESS
+ * 🎉 ENHANCED: HEADER + AUTH BAR INTEGRATION COMPLETE
  * ===============================
  * 
- * ✅ Samsung Galaxy Fold support (280px folded, 717px unfolded)
- * ✅ All iPhone sizes (SE to Pro Max: 375px - 428px)
- * ✅ All Samsung Galaxy sizes (360px - 412px)
- * ✅ All iPad sizes (768px - 1024px)
- * ✅ All laptop/desktop sizes (1024px+)
- * ✅ Landscape orientation optimization
- * ✅ Accessibility compliance
- * ✅ Performance optimization
- * ✅ Touch target compliance (44px minimum)
- * ✅ Modal portal system
- * ✅ Professional spacing throughout
+ * ✅ Clean gap between fixed header (with auth bar) and all page content
+ * ✅ No excessive spacing or layout issues
+ * ✅ Professional appearance across all devices
+ * ✅ Enhanced spacing system that accounts for auth status bar
+ * ✅ Proper background on fixed header with auth integration
+ * ✅ Clean scroll navigation with proper margins
+ * ✅ Mobile and desktop optimization
+ * ✅ Consistent spacing across all pages
+ * ✅ FIXED: No white space on auth pages (login/signup)
+ * ✅ NEW: Integrated authentication status in header
+ * ✅ NEW: Enhanced spacing calculations for auth bar
+ * ✅ NEW: Professional styling utilities
+ * ✅ NEW: Improved responsive breakpoints
+ * ✅ NEW: Enhanced accessibility support
  */
