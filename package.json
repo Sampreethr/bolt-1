@@ -27,7 +27,7 @@
     "@tailwindcss/typography": "^0.5.16",
     "appwrite": "^18.1.1",
     "framer-motion": "^12.23.0",
-    "lucide-react": "^0.344.0",
+    "lucide-react": "^0.468.0",
     "next": "^15.3.5",
     "next-themes": "^0.2.1",
     "react": "^19.1.0",
