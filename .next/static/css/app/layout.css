@@ -1300,49 +1300,41 @@ body {
   opacity: 0.4;
   cursor: not-allowed;
 }
-/* Clean page header */
-/* Enhanced page header for authenticated users */
-.page-header-enhanced {
-    margin-top: 1rem;
-    padding-top: 2rem;
-    padding-bottom: 1rem;
-    text-align: center;
-  }
-/* Clean section spacing */
+/* Dashboard specific utilities */
+/* Main website utilities */
 .section-clean-spacing {
     padding-top: 2rem;
     padding-bottom: 2rem;
     margin-bottom: 2rem;
   }
-/* Enhanced section spacing */
-.section-enhanced-spacing {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    margin-bottom: 2rem;
-  }
-/* Clean hero section */
 .hero-clean {
     padding-top: 2rem;
     padding-bottom: 2rem;
-    min-height: calc(100vh - 130px);
+    min-height: calc(100vh - 120px);
     display: flex;
     align-items: center;
   }
-/* Enhanced layouts */
-.services-enhanced {
-    padding-top: 2rem;
-    margin-top: 1rem;
+/* Welcome Toast Animation */
+@keyframes slideInFromRight {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
   }
-.about-enhanced {
-    padding-top: 2rem;
-    margin-top: 1rem;
+@keyframes fadeOut {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(100%);
+    }
   }
-.testimonials-enhanced {
-    padding-top: 2rem;
-    margin-top: 1rem;
-  }
-/* Clean container */
-/* Clean grid spacing */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -1424,9 +1416,6 @@ body {
 .bottom-20 {
   bottom: 5rem;
 }
-.bottom-8 {
-  bottom: 2rem;
-}
 .left-0 {
   left: 0;
 }
@@ -1451,14 +1440,23 @@ body {
 .left-3 {
   left: 0.75rem;
 }
+.left-4 {
+  left: 1rem;
+}
 .right-0 {
   right: 0;
+}
+.right-1 {
+  right: 0.25rem;
 }
 .right-2 {
   right: 0.5rem;
 }
 .right-20 {
   right: 5rem;
+}
+.right-3 {
+  right: 0.75rem;
 }
 .right-4 {
   right: 1rem;
@@ -1468,6 +1466,9 @@ body {
 }
 .top-0 {
   top: 0;
+}
+.top-1 {
+  top: 0.25rem;
 }
 .top-1\/2 {
   top: 50%;
@@ -1480,6 +1481,9 @@ body {
 }
 .top-24 {
   top: 6rem;
+}
+.top-3 {
+  top: 0.75rem;
 }
 .top-32 {
   top: 8rem;
@@ -1498,6 +1502,9 @@ body {
 }
 .z-10 {
   z-index: 10;
+}
+.z-30 {
+  z-index: 30;
 }
 .z-40 {
   z-index: 40;
@@ -1519,6 +1526,10 @@ body {
 }
 .col-span-2 {
   grid-column: span 2 / span 2;
+}
+.mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 .mx-auto {
   margin-left: auto;
@@ -1562,6 +1573,9 @@ body {
 }
 .ml-3 {
   margin-left: 0.75rem;
+}
+.ml-6 {
+  margin-left: 1.5rem;
 }
 .ml-auto {
   margin-left: auto;
@@ -1608,6 +1622,9 @@ body {
 .block {
   display: block;
 }
+.inline-block {
+  display: inline-block;
+}
 .inline {
   display: inline;
 }
@@ -1625,6 +1642,9 @@ body {
 }
 .h-0\.5 {
   height: 0.125rem;
+}
+.h-1 {
+  height: 0.25rem;
 }
 .h-1\.5 {
   height: 0.375rem;
@@ -1679,6 +1699,15 @@ body {
 }
 .h-px {
   height: 1px;
+}
+.h-screen {
+  height: 100vh;
+}
+.max-h-0 {
+  max-height: 0;
+}
+.max-h-96 {
+  max-height: 24rem;
 }
 .max-h-\[90vh\] {
   max-height: 90vh;
@@ -1749,6 +1778,9 @@ body {
 .w-8 {
   width: 2rem;
 }
+.w-80 {
+  width: 20rem;
+}
 .w-full {
   width: 100%;
 }
@@ -1795,8 +1827,16 @@ body {
   --tw-translate-x: -50%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
+.-translate-x-full {
+  --tw-translate-x: -100%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
 .-translate-y-1\/2 {
   --tw-translate-y: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.translate-x-0 {
+  --tw-translate-x: 0;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 .translate-y-full {
@@ -1809,6 +1849,10 @@ body {
 }
 .rotate-12 {
   --tw-rotate: 12deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.rotate-180 {
+  --tw-rotate: 180deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 .rotate-3 {
@@ -2009,6 +2053,9 @@ body {
   margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(2rem * var(--tw-space-y-reverse));
 }
+.overflow-auto {
+  overflow: auto;
+}
 .overflow-hidden {
   overflow: hidden;
 }
@@ -2084,8 +2131,17 @@ body {
 .border-b-2 {
   border-bottom-width: 2px;
 }
+.border-l {
+  border-left-width: 1px;
+}
+.border-l-2 {
+  border-left-width: 2px;
+}
 .border-l-4 {
   border-left-width: 4px;
+}
+.border-r {
+  border-right-width: 1px;
 }
 .border-t {
   border-top-width: 1px;
@@ -2124,6 +2180,10 @@ body {
 .border-gray-600 {
   --tw-border-opacity: 1;
   border-color: rgb(75 85 99 / var(--tw-border-opacity, 1));
+}
+.border-gray-700 {
+  --tw-border-opacity: 1;
+  border-color: rgb(55 65 81 / var(--tw-border-opacity, 1));
 }
 .border-green-200 {
   --tw-border-opacity: 1;
@@ -2164,6 +2224,9 @@ body {
   --tw-border-opacity: 1;
   border-color: rgb(239 68 68 / var(--tw-border-opacity, 1));
 }
+.border-red-700\/50 {
+  border-color: rgb(185 28 28 / 0.5);
+}
 .border-slate-200 {
   --tw-border-opacity: 1;
   border-color: rgb(226 232 240 / var(--tw-border-opacity, 1));
@@ -2175,14 +2238,6 @@ body {
 .border-white {
   --tw-border-opacity: 1;
   border-color: rgb(255 255 255 / var(--tw-border-opacity, 1));
-}
-.border-yellow-200 {
-  --tw-border-opacity: 1;
-  border-color: rgb(254 240 138 / var(--tw-border-opacity, 1));
-}
-.border-t-primary-500 {
-  --tw-border-opacity: 1;
-  border-top-color: rgb(59 130 246 / var(--tw-border-opacity, 1));
 }
 .border-t-primary-600 {
   --tw-border-opacity: 1;
@@ -2236,6 +2291,10 @@ body {
 .bg-gray-50 {
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1));
+}
+.bg-gray-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(107 114 128 / var(--tw-bg-opacity, 1));
 }
 .bg-gray-700 {
   --tw-bg-opacity: 1;
@@ -2355,6 +2414,9 @@ body {
   --tw-bg-opacity: 1;
   background-color: rgb(220 38 38 / var(--tw-bg-opacity, 1));
 }
+.bg-red-900\/30 {
+  background-color: rgb(127 29 29 / 0.3);
+}
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
@@ -2381,10 +2443,6 @@ body {
 .bg-yellow-400 {
   --tw-bg-opacity: 1;
   background-color: rgb(250 204 21 / var(--tw-bg-opacity, 1));
-}
-.bg-yellow-50 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(254 252 232 / var(--tw-bg-opacity, 1));
 }
 .bg-yellow-500 {
   --tw-bg-opacity: 1;
@@ -2425,6 +2483,11 @@ body {
 .from-gray-50 {
   --tw-gradient-from: #f9fafb var(--tw-gradient-from-position);
   --tw-gradient-to: rgb(249 250 251 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.from-gray-900 {
+  --tw-gradient-from: #111827 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(17 24 39 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 .from-green-100 {
@@ -2477,9 +2540,17 @@ body {
   --tw-gradient-to: rgb(250 204 21 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
+.via-blue-500 {
+  --tw-gradient-to: rgb(59 130 246 / 0)  var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), #3b82f6 var(--tw-gradient-via-position), var(--tw-gradient-to);
+}
 .via-gray-200 {
   --tw-gradient-to: rgb(229 231 235 / 0)  var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), #e5e7eb var(--tw-gradient-via-position), var(--tw-gradient-to);
+}
+.via-gray-800 {
+  --tw-gradient-to: rgb(31 41 55 / 0)  var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), #1f2937 var(--tw-gradient-via-position), var(--tw-gradient-to);
 }
 .via-primary-600 {
   --tw-gradient-to: rgb(37 99 235 / 0)  var(--tw-gradient-to-position);
@@ -2503,6 +2574,9 @@ body {
 }
 .to-gray-100 {
   --tw-gradient-to: #f3f4f6 var(--tw-gradient-to-position);
+}
+.to-gray-900 {
+  --tw-gradient-to: #111827 var(--tw-gradient-to-position);
 }
 .to-orange-50 {
   --tw-gradient-to: #fff7ed var(--tw-gradient-to-position);
@@ -2565,6 +2639,10 @@ body {
   padding-left: 0.25rem;
   padding-right: 0.25rem;
 }
+.px-1\.5 {
+  padding-left: 0.375rem;
+  padding-right: 0.375rem;
+}
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -2585,6 +2663,10 @@ body {
   padding-left: 2rem;
   padding-right: 2rem;
 }
+.py-0\.5 {
+  padding-top: 0.125rem;
+  padding-bottom: 0.125rem;
+}
 .py-1 {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
@@ -2600,6 +2682,10 @@ body {
 .py-2 {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+}
+.py-2\.5 {
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
 }
 .py-3 {
   padding-top: 0.75rem;
@@ -2762,6 +2848,9 @@ body {
 .leading-tight {
   line-height: 1.15;
 }
+.tracking-wider {
+  letter-spacing: 0.025em;
+}
 .text-blue-100 {
   --tw-text-opacity: 1;
   color: rgb(219 234 254 / var(--tw-text-opacity, 1));
@@ -2769,6 +2858,10 @@ body {
 .text-blue-200 {
   --tw-text-opacity: 1;
   color: rgb(191 219 254 / var(--tw-text-opacity, 1));
+}
+.text-blue-400 {
+  --tw-text-opacity: 1;
+  color: rgb(96 165 250 / var(--tw-text-opacity, 1));
 }
 .text-blue-600 {
   --tw-text-opacity: 1;
@@ -2810,6 +2903,10 @@ body {
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity, 1));
 }
+.text-green-400 {
+  --tw-text-opacity: 1;
+  color: rgb(74 222 128 / var(--tw-text-opacity, 1));
+}
 .text-green-500 {
   --tw-text-opacity: 1;
   color: rgb(34 197 94 / var(--tw-text-opacity, 1));
@@ -2825,6 +2922,10 @@ body {
 .text-green-800 {
   --tw-text-opacity: 1;
   color: rgb(22 101 52 / var(--tw-text-opacity, 1));
+}
+.text-orange-400 {
+  --tw-text-opacity: 1;
+  color: rgb(251 146 60 / var(--tw-text-opacity, 1));
 }
 .text-orange-500 {
   --tw-text-opacity: 1;
@@ -2854,6 +2955,10 @@ body {
   --tw-text-opacity: 1;
   color: rgb(29 78 216 / var(--tw-text-opacity, 1));
 }
+.text-purple-400 {
+  --tw-text-opacity: 1;
+  color: rgb(192 132 252 / var(--tw-text-opacity, 1));
+}
 .text-purple-600 {
   --tw-text-opacity: 1;
   color: rgb(147 51 234 / var(--tw-text-opacity, 1));
@@ -2861,6 +2966,14 @@ body {
 .text-purple-700 {
   --tw-text-opacity: 1;
   color: rgb(126 34 206 / var(--tw-text-opacity, 1));
+}
+.text-red-300 {
+  --tw-text-opacity: 1;
+  color: rgb(252 165 165 / var(--tw-text-opacity, 1));
+}
+.text-red-400 {
+  --tw-text-opacity: 1;
+  color: rgb(248 113 113 / var(--tw-text-opacity, 1));
 }
 .text-red-500 {
   --tw-text-opacity: 1;
@@ -2905,10 +3018,6 @@ body {
 .text-yellow-600 {
   --tw-text-opacity: 1;
   color: rgb(202 138 4 / var(--tw-text-opacity, 1));
-}
-.text-yellow-800 {
-  --tw-text-opacity: 1;
-  color: rgb(133 77 14 / var(--tw-text-opacity, 1));
 }
 .underline {
   text-decoration-line: underline;
@@ -2972,11 +3081,6 @@ body {
   --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
   --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-.ring {
-  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
-  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color);
-  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
 }
 .blur-3xl {
   --tw-blur: blur(64px);
@@ -3218,24 +3322,108 @@ body {
     border-width: 2px;
   }
 }
-/* Enhanced header-safe spacing with auth bar support */
-/* Enhanced scroll margin with auth bar support */
-/* Enhanced spacing levels */
-/* Page-specific enhanced spacing */
-/* Auth page utilities */
+/* Dashboard specific spacing */
+.dashboard-spacing {
+    padding-top: 0;
+    margin-top: 0;
+  }
+/* Main website header-safe spacing */
+/* Responsive helper classes */
 
 /**
  * ===============================
- * 🎯 ENHANCED HEADER + AUTH BAR SPACING SYSTEM
+ * 🎯 FIXED: CLEAN LAYOUT SYSTEM - NO GAPS
  * ===============================
  * 
- * Complete solution for proper header spacing with integrated auth status:
- * - Clean gap between fixed header (with auth bar) and page content
- * - No excessive spacing or layout issues
- * - Professional appearance across all device types
- * - FIXED: Accounts for auth status bar when present
- * - Clean auth pages without header/footer
+ * Clean solution for proper spacing:
+ * - Dashboard pages: Independent layout (no header spacing)
+ * - Main website: Proper header spacing  
+ * - Auth pages: Clean full-screen
+ * - NO MORE DEVELOPMENT BANNERS
  */
+
+/* ===============================
+   PRIMARY COLOR SYSTEM
+   =============================== */
+
+:root {
+  --primary-50: #eff6ff;
+  --primary-100: #dbeafe;
+  --primary-200: #bfdbfe;
+  --primary-300: #93c5fd;
+  --primary-400: #60a5fa;
+  --primary-500: #3b82f6;
+  --primary-600: #2563eb;
+  --primary-700: #1d4ed8;
+  --primary-800: #1e40af;
+  --primary-900: #1e3a8a;
+}
+
+.bg-primary-50 { background-color: var(--primary-50); }
+.bg-primary-100 { background-color: var(--primary-100); }
+.bg-primary-200 { background-color: var(--primary-200); }
+.bg-primary-300 { background-color: var(--primary-300); }
+.bg-primary-400 { background-color: var(--primary-400); }
+.bg-primary-500 { background-color: var(--primary-500); }
+.bg-primary-600 { background-color: var(--primary-600); }
+.bg-primary-700 { background-color: var(--primary-700); }
+.bg-primary-800 { background-color: var(--primary-800); }
+.bg-primary-900 { background-color: var(--primary-900); }
+
+.text-primary-50 { color: var(--primary-50); }
+.text-primary-100 { color: var(--primary-100); }
+.text-primary-200 { color: var(--primary-200); }
+.text-primary-300 { color: var(--primary-300); }
+.text-primary-400 { color: var(--primary-400); }
+.text-primary-500 { color: var(--primary-500); }
+.text-primary-600 { color: var(--primary-600); }
+.text-primary-700 { color: var(--primary-700); }
+.text-primary-800 { color: var(--primary-800); }
+.text-primary-900 { color: var(--primary-900); }
+
+.border-primary-50 { border-color: var(--primary-50); }
+.border-primary-100 { border-color: var(--primary-100); }
+.border-primary-200 { border-color: var(--primary-200); }
+.border-primary-300 { border-color: var(--primary-300); }
+.border-primary-400 { border-color: var(--primary-400); }
+.border-primary-500 { border-color: var(--primary-500); }
+.border-primary-600 { border-color: var(--primary-600); }
+.border-primary-700 { border-color: var(--primary-700); }
+.border-primary-800 { border-color: var(--primary-800); }
+.border-primary-900 { border-color: var(--primary-900); }
+
+.hover\:bg-primary-50:hover { background-color: var(--primary-50); }
+.hover\:bg-primary-100:hover { background-color: var(--primary-100); }
+.hover\:bg-primary-200:hover { background-color: var(--primary-200); }
+.hover\:bg-primary-300:hover { background-color: var(--primary-300); }
+.hover\:bg-primary-400:hover { background-color: var(--primary-400); }
+.hover\:bg-primary-500:hover { background-color: var(--primary-500); }
+.hover\:bg-primary-600:hover { background-color: var(--primary-600); }
+.hover\:bg-primary-700:hover { background-color: var(--primary-700); }
+.hover\:bg-primary-800:hover { background-color: var(--primary-800); }
+.hover\:bg-primary-900:hover { background-color: var(--primary-900); }
+
+.hover\:text-primary-50:hover { color: var(--primary-50); }
+.hover\:text-primary-100:hover { color: var(--primary-100); }
+.hover\:text-primary-200:hover { color: var(--primary-200); }
+.hover\:text-primary-300:hover { color: var(--primary-300); }
+.hover\:text-primary-400:hover { color: var(--primary-400); }
+.hover\:text-primary-500:hover { color: var(--primary-500); }
+.hover\:text-primary-600:hover { color: var(--primary-600); }
+.hover\:text-primary-700:hover { color: var(--primary-700); }
+.hover\:text-primary-800:hover { color: var(--primary-800); }
+.hover\:text-primary-900:hover { color: var(--primary-900); }
+
+.hover\:border-primary-50:hover { border-color: var(--primary-50); }
+.hover\:border-primary-100:hover { border-color: var(--primary-100); }
+.hover\:border-primary-200:hover { border-color: var(--primary-200); }
+.hover\:border-primary-300:hover { border-color: var(--primary-300); }
+.hover\:border-primary-400:hover { border-color: var(--primary-400); }
+.hover\:border-primary-500:hover { border-color: var(--primary-500); }
+.hover\:border-primary-600:hover { border-color: var(--primary-600); }
+.hover\:border-primary-700:hover { border-color: var(--primary-700); }
+.hover\:border-primary-800:hover { border-color: var(--primary-800); }
+.hover\:border-primary-900:hover { border-color: var(--primary-900); }
 
 /* ===============================
    UNIVERSAL FOUNDATION
@@ -3247,10 +3435,7 @@ body {
 
 html {
   scroll-behavior: smooth;
-  /* Enhanced scroll padding for auth bar support */
-  scroll-padding-top: 130px;
-  
-  /* Enhanced font rendering */
+  scroll-padding-top: 120px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -3262,26 +3447,143 @@ body {
   font-family: var(--font-inter), 'Inter', system-ui, -apple-system, sans-serif;
   margin: 0;
   padding: 0;
-  
-  /* Prevent zoom on iOS double-tap */
   touch-action: manipulation;
 }
 
 /* ===============================
-   ENHANCED MAIN CONTENT SPACING WITH AUTH BAR SUPPORT
+   🎯 FIXED: DASHBOARD LAYOUT (NO HEADER SPACING) - UPDATED WITH GAP FIX
    =============================== */
 
-/* Default spacing for pages WITH header (accounts for auth bar) */
-main {
-  padding-top: 130px; /* Increased to account for auth status bar */
+/* Dashboard pages get clean layout with no main header spacing */
+main:has([data-dashboard="true"]),
+.dashboard-layout main,
+.dashboard-page {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* Dashboard-specific container */
+.dashboard-container {
+  min-height: 100vh;
+  background-color: #f9fafb; /* gray-50 */
+}
+
+/* 🎯 CRITICAL GAP FIX: Dashboard main content - NO GAPS */
+.dashboard-main-content {
+  padding: 0 !important;
+  margin: 0 !important;
+  min-height: 100vh;
+  background-color: #f9fafb;
+}
+
+/* 🎯 FIXED SIDEBAR - COMPLETELY FIXED POSITION */
+.dashboard-sidebar {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  height: 100vh !important;
+  background: white;
+  border-right: 1px solid #e5e7eb; /* gray-200 */
+  z-index: 40;
+  overflow: hidden; /* Prevent sidebar itself from scrolling */
+}
+
+/* Only the navigation section should scroll */
+.dashboard-sidebar nav {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+/* Custom scrollbar for webkit browsers */
+.dashboard-sidebar nav::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dashboard-sidebar nav::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dashboard-sidebar nav::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 3px;
+}
+
+.dashboard-sidebar nav::-webkit-scrollbar-thumb:hover {
+  background-color: #94a3b8;
+}
+
+/* Ensure sidebar sections are fixed in their positions */
+.dashboard-sidebar .border-b {
+  position: relative;
+  z-index: 1;
+  background: white;
+}
+
+/* Mobile sidebar adjustments */
+@media (max-width: 1023px) {
+  .dashboard-sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    width: 320px;
+  }
+  
+  .dashboard-sidebar.open {
+    transform: translateX(0);
+  }
+
+  /* 🎯 MOBILE GAP FIX */
+  .dashboard-main-content {
+    margin-left: 0 !important;
+    padding: 0 !important;
+  }
+}
+
+/* Desktop sidebar adjustments */
+@media (min-width: 1024px) {
+  .dashboard-sidebar {
+    width: 256px; /* 64 * 0.25rem = 16rem */
+    position: fixed !important;
+  }
+
+  /* 🎯 DESKTOP GAP FIX - Content directly adjacent to sidebar */
+  .dashboard-main-content {
+    margin-left: 256px; /* Exact sidebar width */
+    padding: 0 !important;
+  }
+}
+
+/* 🎯 DASHBOARD HEADER FIX - Internal padding only */
+.dashboard-header {
+  padding: 1rem 1.5rem;
+  margin: 0 !important;
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* 🎯 DASHBOARD PAGE CONTENT FIX - Internal padding only */
+.dashboard-page-content {
+  padding: 1.5rem;
+  margin: 0 !important;
+}
+
+/* ===============================
+   MAIN WEBSITE LAYOUT (WITH HEADER)
+   =============================== */
+
+/* Default spacing for main website pages WITH header */
+main:not(.dashboard-layout):not(.auth-page) {
+  padding-top: 120px;
   min-height: 100vh;
   position: relative;
   z-index: 1;
 }
 
 /* Enhanced spacing for pages with main-content ID */
-main[id="main-content"] {
-  padding-top: 140px;
+main[id="main-content"]:not(.dashboard-layout):not(.auth-page) {
+  padding-top: 130px;
 }
 
 /* ===============================
@@ -3289,57 +3591,36 @@ main[id="main-content"] {
    =============================== */
 
 /* Remove all padding/margin for auth pages */
-.auth-page main,
+.auth-page,
 main.auth-page,
 body:has(.auth-layout) main {
   padding-top: 0 !important;
   margin-top: 0 !important;
 }
 
-/* Alternative selector for auth layouts */
-main:has(.auth-layout),
-div:has(.auth-layout) main {
-  padding-top: 0 !important;
-  margin-top: 0 !important;
-}
-
-/* Ensure auth layout containers take full height */
-.auth-layout {
-  min-height: 100vh !important;
-  padding-top: 0 !important;
-  margin-top: 0 !important;
-}
-
-/* Clean section spacing */
-section {
-  /* Enhanced scroll margin for auth bar */
-  scroll-margin-top: 130px;
+/* Clean section spacing for main website */
+section:not(.dashboard-section) {
+  scroll-margin-top: 120px;
   position: relative;
 }
 
-/* Section with ID gets proper scroll protection */
-section[id] {
-  scroll-margin-top: 140px;
+section[id]:not(.dashboard-section) {
+  scroll-margin-top: 130px;
 }
 
 /* ===============================
-   ENHANCED HEADER STYLING WITH AUTH BAR
+   HEADER STYLING
    =============================== */
 
 header[role="banner"] {
-  /* Professional background to prevent content showing through */
   background-color: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  
-  /* Clean positioning */
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 50;
-  
-  /* Professional shadow */
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   border-bottom: 1px solid rgba(229, 231, 235, 0.8);
 }
@@ -3350,162 +3631,73 @@ nav[role="navigation"] {
 }
 
 /* ===============================
-   CLEAN PAGE-SPECIFIC SPACING
-   =============================== */
-
-/* Home/Hero page - clean hero spacing */
-section#home,
-.hero-section {
-  padding-top: 2rem;
-  margin-top: 0;
-  min-height: calc(100vh - 130px);
-  display: flex;
-  align-items: center;
-}
-
-/* Services page - clean spacing */
-section#services,
-.services-section {
-  padding-top: 2rem;
-  margin-top: 1rem;
-}
-
-/* About page - clean spacing */
-section#about,
-.about-section {
-  padding-top: 2rem;
-  margin-top: 1rem;
-}
-
-/* Testimonials page - clean spacing */
-section#testimonials,
-.testimonials-section {
-  padding-top: 2rem;
-  margin-top: 1rem;
-}
-
-/* Contact page - clean spacing */
-section#contact,
-.contact-section {
-  padding-top: 2rem;
-  margin-top: 1rem;
-}
-
-/* ===============================
-   RESPONSIVE BREAKPOINTS - ENHANCED
+   RESPONSIVE BREAKPOINTS
    =============================== */
 
 /* Mobile devices (up to 640px) */
 @media (max-width: 640px) {
   html {
-    scroll-padding-top: 120px;
+    scroll-padding-top: 100px;
   }
   
-  main:not(.auth-page):not(:has(.auth-layout)) {
-    padding-top: 120px;
+  main:not(.dashboard-layout):not(.auth-page) {
+    padding-top: 100px;
   }
   
-  main[id="main-content"]:not(.auth-page):not(:has(.auth-layout)) {
-    padding-top: 130px;
+  main[id="main-content"]:not(.dashboard-layout):not(.auth-page) {
+    padding-top: 110px;
   }
   
-  section[id] {
-    scroll-margin-top: 130px;
-  }
-  
-  section#home,
-  .hero-section {
-    min-height: calc(100vh - 120px);
+  section[id]:not(.dashboard-section) {
+    scroll-margin-top: 110px;
   }
 }
 
 /* Tablets (641px to 1024px) */
 @media (min-width: 641px) and (max-width: 1024px) {
   html {
-    scroll-padding-top: 125px;
+    scroll-padding-top: 115px;
   }
   
-  main:not(.auth-page):not(:has(.auth-layout)) {
+  main:not(.dashboard-layout):not(.auth-page) {
+    padding-top: 115px;
+  }
+  
+  main[id="main-content"]:not(.dashboard-layout):not(.auth-page) {
     padding-top: 125px;
   }
   
-  main[id="main-content"]:not(.auth-page):not(:has(.auth-layout)) {
-    padding-top: 135px;
-  }
-  
-  section[id] {
-    scroll-margin-top: 135px;
-  }
-  
-  section#home,
-  .hero-section {
-    min-height: calc(100vh - 125px);
+  section[id]:not(.dashboard-section) {
+    scroll-margin-top: 125px;
   }
 }
 
 /* Large screens (1025px+) */
 @media (min-width: 1025px) {
   html {
-    scroll-padding-top: 130px;
+    scroll-padding-top: 120px;
   }
   
-  main:not(.auth-page):not(:has(.auth-layout)) {
+  main:not(.dashboard-layout):not(.auth-page) {
+    padding-top: 120px;
+  }
+  
+  main[id="main-content"]:not(.dashboard-layout):not(.auth-page) {
     padding-top: 130px;
   }
   
-  main[id="main-content"]:not(.auth-page):not(:has(.auth-layout)) {
-    padding-top: 140px;
-  }
-  
-  section[id] {
-    scroll-margin-top: 140px;
-  }
-  
-  section#home,
-  .hero-section {
-    min-height: calc(100vh - 130px);
+  section[id]:not(.dashboard-section) {
+    scroll-margin-top: 130px;
   }
 }
 
 /* ===============================
-   CLEAN COMPONENT UTILITIES
+   COMPONENT UTILITIES
    =============================== */
 
 /* ===============================
-   ENHANCED UTILITY CLASSES
+   UTILITY CLASSES
    =============================== */
-
-/* ===============================
-   MOBILE LANDSCAPE OPTIMIZATION
-   =============================== */
-
-@media (max-height: 600px) and (orientation: landscape) {
-  html {
-    scroll-padding-top: 100px;
-  }
-  
-  main:not(.auth-page):not(:has(.auth-layout)) {
-    padding-top: 100px;
-  }
-  
-  main[id="main-content"]:not(.auth-page):not(:has(.auth-layout)) {
-    padding-top: 110px;
-  }
-  
-  section[id] {
-    scroll-margin-top: 110px;
-  }
-  
-  section#home,
-  .hero-section {
-    min-height: calc(100vh - 100px);
-  }
-  
-  nav[role="navigation"] {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-  }
-}
 
 /* ===============================
    ACCESSIBILITY & USABILITY
@@ -3534,43 +3726,6 @@ section#contact,
 }
 
 /* ===============================
-   BROWSER-SPECIFIC OPTIMIZATIONS
-   =============================== */
-
-/* Safari-specific enhancements */
-@supports (-webkit-appearance: none) {
-  html {
-    -webkit-scroll-behavior: smooth;
-  }
-  
-  /* Safari touch scroll optimization */
-  .overflow-y-auto {
-    -webkit-overflow-scrolling: touch;
-  }
-}
-
-/* Custom scrollbar for webkit browsers */
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background: #f7fafc;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: #cbd5e0;
-    border-radius: 4px;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: #a0aec0;
-  }
-}
-
-/* ===============================
    PRINT STYLES
    =============================== */
 
@@ -3591,511 +3746,36 @@ section#contact,
 }
 
 /* ===============================
-   ENHANCED OVERRIDES FOR CONSISTENCY
+   ✅ FIXED: NO MORE GAPS OR DEV BANNERS
    =============================== */
 
-/* Ensure all pages have consistent enhanced spacing EXCEPT auth pages */
-main:not(.no-header-spacing):not(.auth-page):not(:has(.auth-layout)) {
-  padding-top: 130px !important;
+/* Ensure dashboard has completely independent layout */
+.dashboard-layout {
+  isolation: isolate;
 }
 
-/* Ensure all sections with IDs have proper scroll margin EXCEPT auth pages */
-section[id]:not(.no-scroll-margin):not(.auth-layout section) {
-  scroll-margin-top: 130px !important;
+.dashboard-layout main {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
 }
 
-/* Enhanced emergency spacing for critical elements */
-.emergency-enhanced-spacing {
-  margin-top: 2rem !important;
-  padding-top: 2rem !important;
-  scroll-margin-top: 140px !important;
+/* Remove any conflicting styles */
+.dashboard-container * {
+  box-sizing: border-box;
 }
 
-/* Enhanced content wrapper */
-.content-enhanced {
-  padding-top: 2rem;
-  min-height: calc(100vh - 130px);
-}
-
-/* Enhanced section headings */
-h1, h2.section-heading, .page-title {
-  margin-top: 1rem;
-  margin-bottom: 1.5rem;
-  scroll-margin-top: 140px;
-}
-
-/* ===============================
-   PROFESSIONAL LIST STYLING
-   =============================== */
-
-.professional-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  space-y: 0.75rem;
-}
-
-.professional-list > * {
-  margin-bottom: 0.75rem;
-}
-
-.professional-list > *:last-child {
-  margin-bottom: 0;
-}
-
-/* ===============================
-   PROFESSIONAL CARD STYLING
-   =============================== */
-
-.professional-card {
-  background: white;
-  border-radius: 1rem;
-  padding: 1.5rem;
-  border: 2px solid #e5e7eb;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  transition: all 0.3s ease;
-}
-
-.professional-card:hover {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  border-color: #3b82f6;
-  transform: translateY(-2px);
-}
-
-/* ===============================
-   HOVER AND INTERACTION EFFECTS
-   =============================== */
-
-.hover-lift:hover {
-  transform: translateY(-4px);
-}
-
-.hover-scale:hover {
-  transform: scale(1.05);
-}
-
-.clean-shadow {
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-}
-
-.clean-shadow-lg {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-}
-
-.clean-shadow-xl {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-}
-
-/* ===============================
-   GRADIENT UTILITIES
-   =============================== */
-
-.gradient-primary {
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-}
-
-.gradient-secondary {
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-}
-
-.gradient-accent {
-  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-}
-
-/* ===============================
-   LOADING STATES
-   =============================== */
-
-.loading-spinner {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  border: 3px solid rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-  border-top-color: #fff;
-  animation: spin 1s ease-in-out infinite;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* ===============================
-   ENHANCED ANIMATIONS
-   =============================== */
-
-.animate-fade-in {
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-.animate-slide-up {
-  animation: slideUp 0.5s ease-out;
-}
-
-.animate-scale-in {
-  animation: scaleIn 0.3s ease-out;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes slideUp {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes scaleIn {
-  from {
-    transform: scale(0.9);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-/* ===============================
-   FOCUS STATES FOR ACCESSIBILITY
-   =============================== */
-
-.focus-visible:focus-visible {
-  outline: 2px solid #3b82f6;
-  outline-offset: 2px;
-  border-radius: 0.375rem;
-}
-
-button:focus-visible,
-a:focus-visible,
-input:focus-visible,
-textarea:focus-visible,
-select:focus-visible {
-  outline: 2px solid #3b82f6;
-  outline-offset: 2px;
-}
-
-/* ===============================
-   ENHANCED TYPOGRAPHY
-   =============================== */
-
-.text-balance {
-  text-wrap: balance;
-}
-
-.text-pretty {
-  text-wrap: pretty;
-}
-
-/* Improved text rendering */
-.text-crisp {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-}
-
-/* ===============================
-   CONTAINER QUERIES SUPPORT
-   =============================== */
-
-@container (min-width: 768px) {
-  .container-md\:text-lg {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
-  }
-}
-
-@container (min-width: 1024px) {
-  .container-lg\:text-xl {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-  }
-}
-
-/* ===============================
-   ENHANCED FORM STYLING
-   =============================== */
-
-.form-input {
-  width: 100%;
-  border-radius: 1.5rem;
-  border-width: 2px;
-  --tw-border-opacity: 1;
-  border-color: rgb(229 231 235 / var(--tw-border-opacity, 1));
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  --tw-text-opacity: 1;
-  color: rgb(17 24 39 / var(--tw-text-opacity, 1));
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 200ms;
-}
-
-.form-input::placeholder {
-  --tw-text-opacity: 1;
-  color: rgb(107 114 128 / var(--tw-text-opacity, 1));
-}
-
-@media (hover: hover) and (pointer: fine) {
-
-  .form-input:hover {
-    --tw-border-opacity: 1;
-    border-color: rgb(209 213 219 / var(--tw-border-opacity, 1));
-  }
-}
-
-.form-input:focus {
-  --tw-border-opacity: 1;
-  border-color: rgb(59 130 246 / var(--tw-border-opacity, 1));
-  outline: 2px solid transparent;
-  outline-offset: 2px;
-  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
-  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
-  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
-  --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(59 130 246 / var(--tw-ring-opacity, 1));
-}
-
-.form-input--error {
-  --tw-border-opacity: 1;
-  border-color: rgb(252 165 165 / var(--tw-border-opacity, 1));
-  --tw-bg-opacity: 1;
-  background-color: rgb(254 242 242 / var(--tw-bg-opacity, 1));
-}
-
-.form-input--error:focus {
-  --tw-border-opacity: 1;
-  border-color: rgb(239 68 68 / var(--tw-border-opacity, 1));
-  --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(239 68 68 / var(--tw-ring-opacity, 1));
-}
-
-.form-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 1.5rem;
-  border-width: 1px;
-  border-color: transparent;
-  --tw-bg-opacity: 1;
-  background-color: rgb(37 99 235 / var(--tw-bg-opacity, 1));
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  font-size: 1rem;
-  line-height: 1.6rem;
-  letter-spacing: 0;
-  font-weight: 500;
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
-  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 200ms;
-}
-
-@media (hover: hover) and (pointer: fine) {
-
-  .form-button:hover {
-    --tw-bg-opacity: 1;
-    background-color: rgb(29 78 216 / var(--tw-bg-opacity, 1));
-  }
-}
-
-.form-button:focus {
-  outline: 2px solid transparent;
-  outline-offset: 2px;
-  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
-  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
-  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
-  --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(59 130 246 / var(--tw-ring-opacity, 1));
-  --tw-ring-offset-width: 2px;
-}
-
-.form-button--secondary {
-  --tw-bg-opacity: 1;
-  background-color: rgb(219 234 254 / var(--tw-bg-opacity, 1));
-  --tw-text-opacity: 1;
-  color: rgb(29 78 216 / var(--tw-text-opacity, 1));
-}
-
-@media (hover: hover) and (pointer: fine) {
-
-  .form-button--secondary:hover {
-    --tw-bg-opacity: 1;
-    background-color: rgb(191 219 254 / var(--tw-bg-opacity, 1));
-  }
-}
-
-.form-button--secondary:focus {
-  --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(59 130 246 / var(--tw-ring-opacity, 1));
-}
-
-.form-button--outline {
-  --tw-border-opacity: 1;
-  border-color: rgb(147 197 253 / var(--tw-border-opacity, 1));
-  background-color: transparent;
-  --tw-text-opacity: 1;
-  color: rgb(29 78 216 / var(--tw-text-opacity, 1));
-}
-
-@media (hover: hover) and (pointer: fine) {
-
-  .form-button--outline:hover {
-    --tw-bg-opacity: 1;
-    background-color: rgb(239 246 255 / var(--tw-bg-opacity, 1));
-  }
-}
-
-.form-button--outline:focus {
-  --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(59 130 246 / var(--tw-ring-opacity, 1));
-}
-
-/* ===============================
-   ENHANCED GRID LAYOUTS
-   =============================== */
-
-.grid-auto-fit {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-}
-
-.grid-auto-fill {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1rem;
-}
-
-/* ===============================
-   ENHANCED CARD LAYOUTS
-   =============================== */
-
-.card-stack {
-  display: grid;
-  gap: 1rem;
-}
-
-.card-stack > * {
-  background: white;
-  border-radius: 0.75rem;
-  padding: 1.5rem;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-  transition: all 0.2s ease;
-}
-
-.card-stack > *:hover {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  transform: translateY(-1px);
-}
-
-/* ===============================
-   ENHANCED SPACING SYSTEM
-   =============================== */
-
-.section-padding {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-}
-
-.container-padding {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-@media (min-width: 640px) {
-  .container-padding {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+/* Ensure proper responsive behavior */
+@media (max-width: 768px) {
+  .dashboard-sidebar {
+    width: 320px; /* 80 * 0.25rem = 20rem = 320px */
   }
 }
 
 @media (min-width: 1024px) {
-  .container-padding {
-    padding-left: 2rem;
-    padding-right: 2rem;
+  .dashboard-sidebar {
+    width: 256px; /* 64 * 0.25rem = 16rem = 256px */
   }
 }
-
-/* ===============================
-   UTILITY OVERRIDES
-   =============================== */
-
-/* Better default line heights */
-.leading-relaxed {
-  line-height: 1.7;
-}
-
-.leading-loose {
-  line-height: 1.8;
-}
-
-/* Enhanced border radius */
-.rounded-2xl {
-  border-radius: 1rem;
-}
-
-.rounded-3xl {
-  border-radius: 1.5rem;
-}
-
-/* Enhanced shadows with better color */
-.shadow-soft {
-  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.08);
-}
-
-.shadow-medium {
-  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.12);
-}
-
-.shadow-strong {
-  box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.16);
-}
-
-/**
- * ===============================
- * 🎉 ENHANCED: HEADER + AUTH BAR INTEGRATION COMPLETE
- * ===============================
- * 
- * ✅ Clean gap between fixed header (with auth bar) and all page content
- * ✅ No excessive spacing or layout issues
- * ✅ Professional appearance across all devices
- * ✅ Enhanced spacing system that accounts for auth status bar
- * ✅ Proper background on fixed header with auth integration
- * ✅ Clean scroll navigation with proper margins
- * ✅ Mobile and desktop optimization
- * ✅ Consistent spacing across all pages
- * ✅ FIXED: No white space on auth pages (login/signup)
- * ✅ NEW: Integrated authentication status in header
- * ✅ NEW: Enhanced spacing calculations for auth bar
- * ✅ NEW: Professional styling utilities
- * ✅ NEW: Improved responsive breakpoints
- * ✅ NEW: Enhanced accessibility support
- */
 
 .selection\:bg-primary-500 *::selection {
   --tw-bg-opacity: 1;
@@ -4279,6 +3959,11 @@ select:focus-visible {
     background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1));
   }
 
+  .hover\:bg-gray-200:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(229 231 235 / var(--tw-bg-opacity, 1));
+  }
+
   .hover\:bg-gray-50:hover {
     --tw-bg-opacity: 1;
     background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1));
@@ -4287,6 +3972,11 @@ select:focus-visible {
   .hover\:bg-green-700:hover {
     --tw-bg-opacity: 1;
     background-color: rgb(21 128 61 / var(--tw-bg-opacity, 1));
+  }
+
+  .hover\:bg-primary-100:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(219 234 254 / var(--tw-bg-opacity, 1));
   }
 
   .hover\:bg-primary-200:hover {
@@ -4364,6 +4054,16 @@ select:focus-visible {
     color: rgb(55 65 81 / var(--tw-text-opacity, 1));
   }
 
+  .hover\:text-gray-800:hover {
+    --tw-text-opacity: 1;
+    color: rgb(31 41 55 / var(--tw-text-opacity, 1));
+  }
+
+  .hover\:text-gray-900:hover {
+    --tw-text-opacity: 1;
+    color: rgb(17 24 39 / var(--tw-text-opacity, 1));
+  }
+
   .hover\:text-green-700:hover {
     --tw-text-opacity: 1;
     color: rgb(21 128 61 / var(--tw-text-opacity, 1));
@@ -4394,9 +4094,19 @@ select:focus-visible {
     color: rgb(29 78 216 / var(--tw-text-opacity, 1));
   }
 
+  .hover\:text-red-300:hover {
+    --tw-text-opacity: 1;
+    color: rgb(252 165 165 / var(--tw-text-opacity, 1));
+  }
+
   .hover\:text-red-600:hover {
     --tw-text-opacity: 1;
     color: rgb(220 38 38 / var(--tw-text-opacity, 1));
+  }
+
+  .hover\:text-red-800:hover {
+    --tw-text-opacity: 1;
+    color: rgb(153 27 27 / var(--tw-text-opacity, 1));
   }
 
   .hover\:text-white:hover {
@@ -4538,6 +4248,11 @@ select:focus-visible {
   cursor: not-allowed;
 }
 
+.disabled\:bg-gray-400:disabled {
+  --tw-bg-opacity: 1;
+  background-color: rgb(156 163 175 / var(--tw-bg-opacity, 1));
+}
+
 .disabled\:bg-gray-50:disabled {
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1));
@@ -4579,6 +4294,21 @@ select:focus-visible {
     --tw-scale-x: 1.1;
     --tw-scale-y: 1.1;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+
+  .group:hover .group-hover\:bg-gray-300 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(209 213 219 / var(--tw-bg-opacity, 1));
+  }
+
+  .group:hover .group-hover\:bg-primary-600 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(37 99 235 / var(--tw-bg-opacity, 1));
+  }
+
+  .group:hover .group-hover\:text-gray-700 {
+    --tw-text-opacity: 1;
+    color: rgb(55 65 81 / var(--tw-text-opacity, 1));
   }
 
   .group:hover .group-hover\:text-primary-400 {
@@ -4870,6 +4600,10 @@ select:focus-visible {
 
   .sm\:gap-3 {
     gap: 0.75rem;
+  }
+
+  .sm\:gap-4 {
+    gap: 1rem;
   }
 
   .sm\:gap-6 {
@@ -5169,12 +4903,21 @@ select:focus-visible {
     height: 2rem;
   }
 
+  .lg\:w-64 {
+    width: 16rem;
+  }
+
   .lg\:w-7 {
     width: 1.75rem;
   }
 
   .lg\:w-8 {
     width: 2rem;
+  }
+
+  .lg\:translate-x-0 {
+    --tw-translate-x: 0;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
 
   .lg\:grid-cols-2 {
@@ -5227,6 +4970,16 @@ select:focus-visible {
   .lg\:px-8 {
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+
+  .lg\:py-12 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .lg\:py-16 {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
   }
 
   .lg\:py-20 {

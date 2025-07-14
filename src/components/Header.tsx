@@ -143,10 +143,10 @@ const LoginButton: React.FC<LoginButtonProps> = ({
 };
 
 // ===============================
-// MAIN HEADER COMPONENT WITH INTEGRATED AUTH STATUS
+// MAIN HEADER COMPONENT WITH ROUTE AWARENESS
 // ===============================
 
-export default function EnhancedHeaderWithAuth(): JSX.Element {
+export default function EnhancedHeaderWithAuth(): JSX.Element | null {
   // ===============================
   // HOOKS & STATE
   // ===============================
@@ -163,6 +163,40 @@ export default function EnhancedHeaderWithAuth(): JSX.Element {
   console.log('📍 Current pathname:', pathname)
   console.log('🔒 Authentication state:', isAuthenticated)
   console.log('👤 User:', user?.name || 'Not authenticated')
+
+  // ===============================
+  // ROUTE DETECTION - PREVENT HEADER ON DASHBOARD/AUTH ROUTES
+  // ===============================
+  
+  /**
+   * CRITICAL: Header should NOT render on certain routes
+   * - Dashboard routes: Independent layout with sidebar
+   * - Auth routes: Clean full-screen layout
+   * - Profile routes: Dashboard-style layout
+   */
+  const isDashboardRoute = pathname.startsWith('/dashboard')
+  const authRoutes = ['/login', '/signup', '/forgot-password', '/reset-password', '/verify-email', '/welcome']
+  const isAuthRoute = authRoutes.some(route => pathname.startsWith(route))
+  const isProfileRoute = pathname.startsWith('/profile')
+  
+  const shouldHideHeader = isDashboardRoute || isAuthRoute || isProfileRoute
+  
+  console.log('🎯 Header Route Detection:', {
+    pathname,
+    isDashboardRoute,
+    isAuthRoute,
+    isProfileRoute,
+    shouldHideHeader
+  })
+  
+  // ===============================
+  // EARLY RETURN - DON'T RENDER HEADER ON SPECIFIC ROUTES
+  // ===============================
+  
+  if (shouldHideHeader) {
+    console.log('🚫 Header hidden for route:', pathname)
+    return null // Don't render header at all
+  }
 
   // ===============================
   // EFFECTS
@@ -249,7 +283,7 @@ export default function EnhancedHeaderWithAuth(): JSX.Element {
   const userFirstName = user?.name?.split(' ')[0] || 'User'
 
   // ===============================
-  // RENDER
+  // RENDER - ONLY FOR MAIN WEBSITE ROUTES
   // ===============================
 
   return (
@@ -421,7 +455,7 @@ export default function EnhancedHeaderWithAuth(): JSX.Element {
       </div>
 
       {/* ===============================
-          INTEGRATED AUTHENTICATION STATUS BAR
+          INTEGRATED AUTHENTICATION STATUS BAR - MAIN WEBSITE ONLY
           =============================== */}
       {isAuthenticated && user && (
         <div className="bg-gradient-to-r from-green-50 to-emerald-50 border-b border-green-200/50">
@@ -617,3 +651,43 @@ export default function EnhancedHeaderWithAuth(): JSX.Element {
     </header>
   )
 }
+
+/**
+ * ===============================
+ * HEADER ROUTE AWARENESS SUMMARY
+ * ===============================
+ * 
+ * 🎯 ROUTE DETECTION:
+ * - Dashboard routes (/dashboard*): Header returns null
+ * - Auth routes (/login, /signup, etc.): Header returns null
+ * - Profile routes (/profile*): Header returns null
+ * - Main website routes: Header renders normally
+ * 
+ * 🔍 BENEFITS:
+ * - Zero conflicts with dashboard layout
+ * - Clean auth page experience
+ * - Professional profile page layout
+ * - Complete layout independence
+ * 
+ * 📱 RESPONSIVE DESIGN:
+ * - Mobile: Touch-optimized (44px minimum targets)
+ * - Tablet: Balanced layout with proper spacing
+ * - Desktop: Full navigation with all features
+ * - Foldable: Adaptive layout for all orientations
+ * 
+ * ⚡ PERFORMANCE:
+ * - Early return prevents unnecessary rendering
+ * - Minimal JavaScript execution on hidden routes
+ * - Clean component lifecycle management
+ * - Memory efficient route detection
+ * 
+ * 🔐 AUTHENTICATION:
+ * - Proper user state integration
+ * - Secure logout functionality
+ * - Profile link management
+ * - Dashboard access for authenticated users
+ * 
+ * This updated header ensures complete layout independence
+ * for dashboard, auth, and profile routes while maintaining
+ * full functionality for main website routes.
+ */
