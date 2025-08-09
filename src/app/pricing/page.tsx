@@ -417,25 +417,25 @@ export default function EnhancedPricingPage(): JSX.Element {
   }, [selectedState, stateRequirements]);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-gray-900">
       <Header />
       
       <main className="pt-16 sm:pt-20" role="main">
         {/* Enhanced Hero Section */}
-        <section className="bg-gradient-to-br from-gray-50 to-white py-12 sm:py-16 md:py-20" role="banner">
+        <section className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 py-12 sm:py-16 md:py-20" role="banner">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
-              <div className="inline-flex items-center px-3 sm:px-4 py-2 rounded-full bg-primary-50 text-primary-700 text-sm font-medium mb-4 sm:mb-6 border border-primary-200">
+              <div className="inline-flex items-center px-3 sm:px-4 py-2 rounded-full bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-sm font-medium mb-4 sm:mb-6 border border-primary-200 dark:border-primary-800">
                 <DollarSign className="h-4 w-4 mr-2 flex-shrink-0" aria-hidden="true" />
                 <span>Transparent Pricing Across Australia</span>
               </div>
               
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 leading-tight">
                 Trust Account Audit
-                <span className="text-primary-600 block mt-2">Services by State</span>
+                <span className="text-primary-600 dark:text-primary-400 block mt-2">Services by State</span>
               </h1>
               
-              <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto mb-6 sm:mb-8 leading-relaxed">
+              <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-6 sm:mb-8 leading-relaxed">
                 Professional trust account auditing services across Australia with fixed pricing, 
                 government compliance, and fast turnaround times. Choose your state and service type below.
               </p>
@@ -449,18 +449,18 @@ export default function EnhancedPricingPage(): JSX.Element {
                 ].map((benefit, index) => (
                   <div 
                     key={index}
-                    className="flex flex-col items-center space-y-2 p-4 rounded-xl bg-white shadow-sm border border-gray-200 hover:shadow-md transition-all duration-200 group"
+                    className="flex flex-col items-center space-y-2 p-4 rounded-xl bg-white dark:bg-gray-800 shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-md transition-all duration-200 group"
                     role="article"
                     aria-labelledby={`benefit-${index}-title`}
                   >
-                    <benefit.icon className="h-6 w-6 text-primary-500 group-hover:scale-110 transition-transform duration-200" aria-hidden="true" />
+                    <benefit.icon className="h-6 w-6 text-primary-500 dark:text-primary-400 group-hover:scale-110 transition-transform duration-200" aria-hidden="true" />
                     <span 
                       id={`benefit-${index}-title`}
-                      className="text-gray-900 font-semibold text-sm sm:text-base"
+                      className="text-gray-900 dark:text-white font-semibold text-sm sm:text-base"
                     >
                       {benefit.text}
                     </span>
-                    <span className="text-gray-600 text-xs sm:text-sm">{benefit.subtext}</span>
+                    <span className="text-gray-600 dark:text-gray-300 text-xs sm:text-sm">{benefit.subtext}</span>
                   </div>
                 ))}
               </div>
@@ -469,14 +469,14 @@ export default function EnhancedPricingPage(): JSX.Element {
         </section>
 
         {/* Enhanced Filter Section */}
-        <section className="py-6 sm:py-8 bg-white border-b border-gray-200" role="complementary" aria-label="Service filters">
+        <section className="py-6 sm:py-8 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700" role="complementary" aria-label="Service filters">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col space-y-6">
               {/* State Filter */}
               <div className="flex flex-col space-y-3">
                 <div className="flex items-center space-x-2">
-                  <Filter className="h-5 w-5 text-gray-600" aria-hidden="true" />
-                  <label htmlFor="state-filter" className="text-sm font-medium text-gray-700">
+                  <Filter className="h-5 w-5 text-gray-600 dark:text-gray-400" aria-hidden="true" />
+                  <label htmlFor="state-filter" className="text-sm font-medium text-gray-700 dark:text-gray-300">
                     Filter by State or Territory
                   </label>
                 </div>
@@ -493,8 +493,8 @@ export default function EnhancedPricingPage(): JSX.Element {
                         focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2
                         disabled:opacity-50 disabled:cursor-not-allowed
                         ${selectedState === state.code
-                          ? 'border-primary-500 bg-primary-50 text-primary-700 shadow-md'
-                          : 'border-gray-200 bg-white text-gray-700 hover:border-primary-300 hover:shadow-sm'
+                          ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 shadow-md'
+                          : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:border-primary-300 dark:hover:border-primary-600 hover:shadow-sm'
                         }
                       `}
                       aria-pressed={selectedState === state.code}
@@ -518,8 +518,8 @@ export default function EnhancedPricingPage(): JSX.Element {
                         focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2
                         disabled:opacity-50 disabled:cursor-not-allowed
                         ${selectedState === state.code
-                          ? 'border-primary-500 bg-primary-50 text-primary-700 shadow-md'
-                          : 'border-gray-200 bg-white text-gray-700 hover:border-primary-300 hover:shadow-sm'
+                          ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 shadow-md'
+                          : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:border-primary-300 dark:hover:border-primary-600 hover:shadow-sm'
                         }
                       `}
                       aria-pressed={selectedState === state.code}
@@ -533,7 +533,7 @@ export default function EnhancedPricingPage(): JSX.Element {
 
               {/* Service Category Filter */}
               <div className="flex flex-col sm:flex-row sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
-                <label htmlFor="category-filter" className="text-sm font-medium text-gray-700 sm:whitespace-nowrap">
+                <label htmlFor="category-filter" className="text-sm font-medium text-gray-700 dark:text-gray-300 sm:whitespace-nowrap">
                   Filter by Service Type:
                 </label>
                 <select
@@ -541,7 +541,7 @@ export default function EnhancedPricingPage(): JSX.Element {
                   value={selectedCategory}
                   onChange={(e) => handleCategoryChange(e.target.value)}
                   disabled={isLoading}
-                  className="w-full sm:w-80 px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white text-gray-900 min-h-[44px] touch-manipulation disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full sm:w-80 px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white min-h-[44px] touch-manipulation disabled:opacity-50 disabled:cursor-not-allowed"
                   aria-label="Filter services by category"
                 >
                   <option value="all">All Services</option>
@@ -556,24 +556,24 @@ export default function EnhancedPricingPage(): JSX.Element {
         </section>
 
         {/* Enhanced Services Grid */}
-        <section className="py-12 sm:py-16 bg-gray-50" role="main" aria-label="Available services">
+        <section className="py-12 sm:py-16 bg-gray-50 dark:bg-gray-800" role="main" aria-label="Available services">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-8 sm:mb-12">
-              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-4">
                 Professional Audit Services
                 {selectedState !== 'all' && (
-                  <span className="block text-primary-600 mt-2">
+                  <span className="block text-primary-600 dark:text-primary-400 mt-2">
                     Available in {states.find(s => s.code === selectedState)?.name}
                   </span>
                 )}
               </h2>
-              <p className="text-gray-600 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
+              <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
                 Choose from our comprehensive range of trust account auditing services, 
                 tailored to meet the specific requirements of your industry and state.
               </p>
               
               {/* Results Counter */}
-              <div className="mt-4 text-sm text-gray-500">
+              <div className="mt-4 text-sm text-gray-500 dark:text-gray-400">
                 Showing {filteredServices.length} service{filteredServices.length !== 1 ? 's' : ''} 
                 {selectedState !== 'all' && ` for ${states.find(s => s.code === selectedState)?.shortName}`}
                 {selectedCategory !== 'all' && ` in ${selectedCategory} category`}
@@ -584,7 +584,7 @@ export default function EnhancedPricingPage(): JSX.Element {
             {isLoading && (
               <div className="flex justify-center items-center py-12" role="status" aria-live="polite">
                 <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-500"></div>
-                <span className="ml-3 text-gray-600">Loading services...</span>
+                <span className="ml-3 text-gray-600 dark:text-gray-300">Loading services...</span>
               </div>
             )}
 
@@ -601,11 +601,11 @@ export default function EnhancedPricingPage(): JSX.Element {
                   <article 
                     key={service.id}
                     className={`
-                      relative bg-white rounded-2xl shadow-sm border-2 transition-all duration-300
+                      relative bg-white dark:bg-gray-800 rounded-2xl shadow-sm border-2 transition-all duration-300
                       hover:shadow-xl hover:-translate-y-1 group
                       ${service.popular 
-                        ? 'border-primary-500 bg-gradient-to-br from-primary-50 to-white' 
-                        : 'border-gray-200 hover:border-primary-300'
+                        ? 'border-primary-500 bg-gradient-to-br from-primary-50 to-white dark:from-primary-900/30 dark:to-gray-800' 
+                        : 'border-gray-200 dark:border-gray-700 hover:border-primary-300 dark:hover:border-primary-600'
                       }
                     `}
                     role="article"
@@ -639,63 +639,63 @@ export default function EnhancedPricingPage(): JSX.Element {
                     <div className="p-6 sm:p-8">
                       {/* Service Header */}
                       <div className="flex items-start space-x-4 mb-6">
-                        <div className="p-3 sm:p-4 bg-primary-500 rounded-xl text-white flex-shrink-0 group-hover:scale-110 transition-transform duration-200">
+                        <div className="p-3 sm:p-4 bg-primary-500 dark:bg-primary-600 rounded-xl text-white flex-shrink-0 group-hover:scale-110 transition-transform duration-200">
                           <IconComponent className="h-6 w-6 sm:h-7 sm:w-7" aria-hidden="true" />
                         </div>
                         <div className="flex-1 min-w-0">
                           <h3 
                             id={`service-${index}-title`}
-                            className="text-xl sm:text-2xl font-bold text-gray-900 mb-2 leading-tight"
+                            className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-2 leading-tight"
                           >
                             {service.name}
                           </h3>
-                          <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+                          <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base leading-relaxed">
                             {service.description}
                           </p>
                         </div>
                       </div>
 
                       {/* Enhanced Pricing Section */}
-                      <div className="mb-6 p-4 sm:p-5 bg-gray-50 rounded-xl border border-gray-200">
+                      <div className="mb-6 p-4 sm:p-5 bg-gray-50 dark:bg-gray-700 rounded-xl border border-gray-200 dark:border-gray-600">
                         <div className="flex items-baseline justify-between mb-2">
                           <div className="flex items-baseline space-x-2">
-                            <span className="text-2xl sm:text-3xl font-bold text-primary-600">
+                            <span className="text-2xl sm:text-3xl font-bold text-primary-600 dark:text-primary-400">
                               ${service.price.toLocaleString()}
                             </span>
                             {service.gst && (
-                              <span className="text-sm text-gray-500">+ GST</span>
+                              <span className="text-sm text-gray-500 dark:text-gray-400">+ GST</span>
                             )}
                           </div>
                           <div className="text-right">
-                            <div className="text-xs text-gray-500">Estimated</div>
-                            <div className="text-sm font-semibold text-gray-700">
+                            <div className="text-xs text-gray-500 dark:text-gray-400">Estimated</div>
+                            <div className="text-sm font-semibold text-gray-700 dark:text-gray-300">
                               {service.estimatedHours}h work
                             </div>
                           </div>
                         </div>
                         
                         {service.gst && (
-                          <div className="text-sm text-gray-600 mb-3">
+                          <div className="text-sm text-gray-600 dark:text-gray-300 mb-3">
                             <strong>Total: ${totalPrice.toLocaleString()}</strong> (inc. GST)
                           </div>
                         )}
                         
                         <div className="flex items-center justify-between text-sm">
                           <div className="flex items-center space-x-2">
-                            <Calendar className="h-4 w-4 text-primary-500 flex-shrink-0" aria-hidden="true" />
-                            <span className="text-gray-600">7-14 business days</span>
+                            <Calendar className="h-4 w-4 text-primary-500 dark:text-primary-400 flex-shrink-0" aria-hidden="true" />
+                            <span className="text-gray-600 dark:text-gray-300">7-14 business days</span>
                           </div>
                           <div className="flex items-center space-x-2">
-                            <Shield className="h-4 w-4 text-green-500 flex-shrink-0" aria-hidden="true" />
-                            <span className="text-green-600 font-medium">ASIC Compliant</span>
+                            <Shield className="h-4 w-4 text-green-500 dark:text-green-400 flex-shrink-0" aria-hidden="true" />
+                            <span className="text-green-600 dark:text-green-400 font-medium">ASIC Compliant</span>
                           </div>
                         </div>
                       </div>
 
                       {/* Enhanced Features List */}
                       <div className="mb-8">
-                        <h4 className="font-semibold text-gray-900 mb-4 text-base sm:text-lg flex items-center">
-                          <CheckCircle className="h-5 w-5 text-primary-500 mr-2" aria-hidden="true" />
+                        <h4 className="font-semibold text-gray-900 dark:text-white mb-4 text-base sm:text-lg flex items-center">
+                          <CheckCircle className="h-5 w-5 text-primary-500 dark:text-primary-400 mr-2" aria-hidden="true" />
                           What's Included:
                         </h4>
                         <ul className="space-y-2" role="list">
@@ -705,14 +705,14 @@ export default function EnhancedPricingPage(): JSX.Element {
                               className="flex items-start space-x-3"
                               role="listitem"
                             >
-                              <div className="w-2 h-2 bg-primary-500 rounded-full mt-2 flex-shrink-0"></div>
-                              <span className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                              <div className="w-2 h-2 bg-primary-500 dark:bg-primary-400 rounded-full mt-2 flex-shrink-0"></div>
+                              <span className="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed">
                                 {feature}
                               </span>
                             </li>
                           ))}
                           {service.features.length > 6 && (
-                            <li className="text-sm text-primary-600 font-medium">
+                            <li className="text-sm text-primary-600 dark:text-primary-400 font-medium">
                               + {service.features.length - 6} more features included
                             </li>
                           )}
@@ -743,7 +743,7 @@ export default function EnhancedPricingPage(): JSX.Element {
                         {/* Quick Contact Button */}
                         <a
                           href="tel:1300283487"
-                          className="w-full py-2 px-4 rounded-lg font-medium text-sm border border-gray-300 text-gray-700 hover:border-primary-300 hover:text-primary-600 transition-all duration-200 text-center block min-h-[44px] touch-manipulation flex items-center justify-center"
+                          className="w-full py-2 px-4 rounded-lg font-medium text-sm border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-primary-300 dark:hover:border-primary-500 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-200 text-center block min-h-[44px] touch-manipulation flex items-center justify-center"
                           aria-label="Call for immediate assistance"
                         >
                           <Phone className="h-4 w-4 mr-2" aria-hidden="true" />
@@ -759,9 +759,9 @@ export default function EnhancedPricingPage(): JSX.Element {
             {/* No Results State */}
             {!isLoading && filteredServices.length === 0 && (
               <div className="text-center py-12" role="status">
-                <AlertCircle className="h-12 w-12 text-gray-400 mx-auto mb-4" aria-hidden="true" />
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">No services found</h3>
-                <p className="text-gray-600 mb-4">
+                <AlertCircle className="h-12 w-12 text-gray-400 dark:text-gray-500 mx-auto mb-4" aria-hidden="true" />
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">No services found</h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">
                   Try adjusting your filters to see available services.
                 </p>
                 <button
@@ -780,64 +780,64 @@ export default function EnhancedPricingPage(): JSX.Element {
 
         {/* Enhanced State Requirements */}
         {currentStateRequirements && (
-          <section className="py-12 sm:py-16 bg-white" role="complementary" aria-label="State specific requirements">
+          <section className="py-12 sm:py-16 bg-white dark:bg-gray-900" role="complementary" aria-label="State specific requirements">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="bg-gradient-to-br from-primary-50 to-blue-50 border border-primary-200 rounded-2xl p-6 sm:p-8">
+              <div className="bg-gradient-to-br from-primary-50 to-blue-50 dark:from-primary-900/30 dark:to-blue-900/30 border border-primary-200 dark:border-primary-800 rounded-2xl p-6 sm:p-8">
                 <div className="flex items-center space-x-3 mb-6">
-                  <MapPin className="h-6 w-6 text-primary-600" aria-hidden="true" />
-                  <h3 className="text-2xl sm:text-3xl font-bold text-gray-900">
+                  <MapPin className="h-6 w-6 text-primary-600 dark:text-primary-400" aria-hidden="true" />
+                  <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">
                     {currentStateRequirements.name} Requirements
                   </h3>
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-                  <div className="bg-white rounded-xl p-4 shadow-sm">
-                    <h4 className="font-semibold text-gray-900 mb-2 flex items-center">
-                      <Building className="h-4 w-4 mr-2 text-primary-500" aria-hidden="true" />
+                  <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm">
+                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2 flex items-center">
+                      <Building className="h-4 w-4 mr-2 text-primary-500 dark:text-primary-400" aria-hidden="true" />
                       Regulator
                     </h4>
-                    <p className="text-gray-700 text-sm leading-relaxed">
+                    <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
                       {currentStateRequirements.regulator}
                     </p>
                   </div>
                   
-                  <div className="bg-white rounded-xl p-4 shadow-sm">
-                    <h4 className="font-semibold text-gray-900 mb-2 flex items-center">
-                      <Calendar className="h-4 w-4 mr-2 text-primary-500" aria-hidden="true" />
+                  <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm">
+                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2 flex items-center">
+                      <Calendar className="h-4 w-4 mr-2 text-primary-500 dark:text-primary-400" aria-hidden="true" />
                       Frequency
                     </h4>
-                    <p className="text-gray-700 text-sm">
+                    <p className="text-gray-700 dark:text-gray-300 text-sm">
                       {currentStateRequirements.frequency}
                     </p>
                   </div>
                   
-                  <div className="bg-white rounded-xl p-4 shadow-sm">
-                    <h4 className="font-semibold text-gray-900 mb-2 flex items-center">
-                      <Clock className="h-4 w-4 mr-2 text-primary-500" aria-hidden="true" />
+                  <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm">
+                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2 flex items-center">
+                      <Clock className="h-4 w-4 mr-2 text-primary-500 dark:text-primary-400" aria-hidden="true" />
                       Deadline
                     </h4>
-                    <p className="text-gray-700 text-sm">
+                    <p className="text-gray-700 dark:text-gray-300 text-sm">
                       {currentStateRequirements.deadline}
                     </p>
                   </div>
                   
-                  <div className="bg-white rounded-xl p-4 shadow-sm">
-                    <h4 className="font-semibold text-gray-900 mb-2 flex items-center">
-                      <Phone className="h-4 w-4 mr-2 text-primary-500" aria-hidden="true" />
+                  <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm">
+                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2 flex items-center">
+                      <Phone className="h-4 w-4 mr-2 text-primary-500 dark:text-primary-400" aria-hidden="true" />
                       Emergency Contact
                     </h4>
                     <a 
                       href={`tel:${currentStateRequirements.emergencyContact}`}
-                      className="text-primary-600 hover:text-primary-700 text-sm font-medium"
+                      className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 text-sm font-medium"
                     >
                       {currentStateRequirements.emergencyContact}
                     </a>
                   </div>
                 </div>
                 
-                <div className="bg-white rounded-xl p-6 shadow-sm">
-                  <h4 className="font-semibold text-gray-900 mb-4 flex items-center">
-                    <FileText className="h-5 w-5 mr-2 text-primary-500" aria-hidden="true" />
+                <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm">
+                  <h4 className="font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
+                    <FileText className="h-5 w-5 mr-2 text-primary-500 dark:text-primary-400" aria-hidden="true" />
                     Key Legislation & Requirements
                   </h4>
                   <ul className="grid grid-cols-1 md:grid-cols-2 gap-3" role="list">
@@ -847,18 +847,18 @@ export default function EnhancedPricingPage(): JSX.Element {
                         className="flex items-start space-x-2"
                         role="listitem"
                       >
-                        <div className="w-2 h-2 bg-primary-500 rounded-full mt-2 flex-shrink-0"></div>
-                        <span className="text-gray-700 text-sm">{law}</span>
+                        <div className="w-2 h-2 bg-primary-500 dark:bg-primary-400 rounded-full mt-2 flex-shrink-0"></div>
+                        <span className="text-gray-700 dark:text-gray-300 text-sm">{law}</span>
                       </li>
                     ))}
                   </ul>
                   
-                  <div className="mt-4 pt-4 border-t border-gray-200">
+                  <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
                     <a
                       href={currentStateRequirements.websiteUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center text-primary-600 hover:text-primary-700 text-sm font-medium"
+                      className="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 text-sm font-medium"
                     >
                       <Globe className="h-4 w-4 mr-2" aria-hidden="true" />
                       Visit Official Regulator Website
@@ -872,13 +872,13 @@ export default function EnhancedPricingPage(): JSX.Element {
         )}
 
         {/* Enhanced Why Choose Us */}
-        <section className="py-12 sm:py-16 bg-gray-50" role="complementary" aria-label="Why choose us">
+        <section className="py-12 sm:py-16 bg-gray-50 dark:bg-gray-800" role="complementary" aria-label="Why choose us">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-8 sm:mb-12">
-              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-4">
                 Why Choose AuditsPro Australia?
               </h2>
-              <p className="text-gray-600 max-w-2xl mx-auto text-base sm:text-lg">
+              <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto text-base sm:text-lg">
                 Professional excellence backed by industry-leading credentials and customer satisfaction.
               </p>
             </div>
@@ -912,23 +912,23 @@ export default function EnhancedPricingPage(): JSX.Element {
               ].map((item, index) => (
                 <article 
                   key={index}
-                  className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 text-center hover:shadow-lg transition-all duration-300 group"
+                  className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 text-center hover:shadow-lg transition-all duration-300 group"
                   role="article"
                   aria-labelledby={`benefit-${index}-title`}
                 >
-                  <div className="inline-flex p-4 bg-primary-500 rounded-xl text-white mx-auto mb-4 group-hover:scale-110 transition-transform duration-200">
+                  <div className="inline-flex p-4 bg-primary-500 dark:bg-primary-600 rounded-xl text-white mx-auto mb-4 group-hover:scale-110 transition-transform duration-200">
                     <item.icon className="h-8 w-8" aria-hidden="true" />
                   </div>
                   <h3 
                     id={`benefit-${index}-title`}
-                    className="text-xl font-bold text-gray-900 mb-3"
+                    className="text-xl font-bold text-gray-900 dark:text-white mb-3"
                   >
                     {item.title}
                   </h3>
-                  <p className="text-gray-600 mb-4 text-sm sm:text-base leading-relaxed">
+                  <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm sm:text-base leading-relaxed">
                     {item.description}
                   </p>
-                  <div className="text-sm font-semibold text-primary-600 bg-primary-50 rounded-lg py-2 px-3">
+                  <div className="text-sm font-semibold text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30 rounded-lg py-2 px-3">
                     {item.stat}
                   </div>
                 </article>

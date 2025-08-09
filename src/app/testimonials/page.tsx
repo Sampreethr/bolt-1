@@ -140,32 +140,32 @@ export default function TestimonialsPage(): JSX.Element {
       
       {/* Page Header */}
       <section 
-        className="bg-gradient-to-br from-gray-50 to-white py-8 sm:py-12 border-b border-gray-200"
+        className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 py-8 sm:py-12 border-b border-gray-200 dark:border-gray-700"
         role="banner"
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
             Client
-            <span className="text-primary-600 block">Testimonials</span>
+            <span className="text-primary-600 dark:text-primary-400 block">Testimonials</span>
           </h1>
-          <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed mb-6">
+          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed mb-6">
             Discover why over 500 Australian businesses trust AuditsPro for their 
             trust account auditing needs. Read genuine feedback from our satisfied clients.
           </p>
           
           {/* Trust Statistics */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl mx-auto">
-            <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-200">
-              <div className="text-2xl font-bold text-primary-600 mb-1">4.9/5</div>
-              <div className="text-sm text-gray-600">Average Rating</div>
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-200 dark:border-gray-700">
+              <div className="text-2xl font-bold text-primary-600 dark:text-primary-400 mb-1">4.9/5</div>
+              <div className="text-sm text-gray-600 dark:text-gray-300">Average Rating</div>
             </div>
-            <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-200">
-              <div className="text-2xl font-bold text-primary-600 mb-1">500+</div>
-              <div className="text-sm text-gray-600">Happy Clients</div>
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-200 dark:border-gray-700">
+              <div className="text-2xl font-bold text-primary-600 dark:text-primary-400 mb-1">500+</div>
+              <div className="text-sm text-gray-600 dark:text-gray-300">Happy Clients</div>
             </div>
-            <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-200">
-              <div className="text-2xl font-bold text-primary-600 mb-1">98%</div>
-              <div className="text-sm text-gray-600">Retention Rate</div>
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-200 dark:border-gray-700">
+              <div className="text-2xl font-bold text-primary-600 dark:text-primary-400 mb-1">98%</div>
+              <div className="text-sm text-gray-600 dark:text-gray-300">Retention Rate</div>
             </div>
           </div>
         </div>
@@ -176,24 +176,24 @@ export default function TestimonialsPage(): JSX.Element {
 
       {/* Additional Reviews Section */}
       <section 
-        className="py-12 sm:py-16 bg-gray-50"
+        className="py-12 sm:py-16 bg-gray-50 dark:bg-gray-900"
         role="complementary"
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-4">
               More Client Success Stories
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
               Testimonials from across Australia spanning different industries and business sizes
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {/* Additional testimonials */}
-            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700">
               <div className="flex items-center mb-4">
-                <div className="flex text-primary-500">
+                <div className="flex text-primary-500 dark:text-primary-400">
                   {[...Array(5)].map((_, i) => (
                     <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 20 20">
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
@@ -201,21 +201,21 @@ export default function TestimonialsPage(): JSX.Element {
                   ))}
                 </div>
               </div>
-              <blockquote className="text-gray-700 mb-4 italic">
+              <blockquote className="text-gray-700 dark:text-gray-300 mb-4 italic">
                 "Outstanding service from start to finish. The team made our annual audit 
                 process seamless and stress-free. Highly professional and knowledgeable."
               </blockquote>
-              <div className="border-t pt-4">
-                <div className="font-semibold text-gray-900">Mark Rodriguez</div>
-                <div className="text-sm text-gray-600">Managing Director</div>
-                <div className="text-sm text-primary-600">Coastal Property Management</div>
-                <div className="text-xs text-gray-500">Gold Coast, QLD</div>
+              <div className="border-t border-gray-200 dark:border-gray-700 pt-4">
+                <div className="font-semibold text-gray-900 dark:text-white">Mark Rodriguez</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Managing Director</div>
+                <div className="text-sm text-primary-600 dark:text-primary-400">Coastal Property Management</div>
+                <div className="text-xs text-gray-500 dark:text-gray-500">Gold Coast, QLD</div>
               </div>
             </div>
             
-            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700">
               <div className="flex items-center mb-4">
-                <div className="flex text-primary-500">
+                <div className="flex text-primary-500 dark:text-primary-400">
                   {[...Array(5)].map((_, i) => (
                     <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 20 20">
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
@@ -223,21 +223,21 @@ export default function TestimonialsPage(): JSX.Element {
                   ))}
                 </div>
               </div>
-              <blockquote className="text-gray-700 mb-4 italic">
+              <blockquote className="text-gray-700 dark:text-gray-300 mb-4 italic">
                 "The expertise and attention to detail provided by AuditsPro is exceptional. 
                 They caught issues we hadn't noticed and helped us improve our processes."
               </blockquote>
-              <div className="border-t pt-4">
-                <div className="font-semibold text-gray-900">Jennifer Walsh</div>
-                <div className="text-sm text-gray-600">Senior Partner</div>
-                <div className="text-sm text-primary-600">Walsh & Associates Law</div>
-                <div className="text-xs text-gray-500">Perth, WA</div>
+              <div className="border-t border-gray-200 dark:border-gray-700 pt-4">
+                <div className="font-semibold text-gray-900 dark:text-white">Jennifer Walsh</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Senior Partner</div>
+                <div className="text-sm text-primary-600 dark:text-primary-400">Walsh & Associates Law</div>
+                <div className="text-xs text-gray-500 dark:text-gray-500">Perth, WA</div>
               </div>
             </div>
             
-            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700">
               <div className="flex items-center mb-4">
-                <div className="flex text-primary-500">
+                <div className="flex text-primary-500 dark:text-primary-400">
                   {[...Array(5)].map((_, i) => (
                     <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 20 20">
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
@@ -245,15 +245,15 @@ export default function TestimonialsPage(): JSX.Element {
                   ))}
                 </div>
               </div>
-              <blockquote className="text-gray-700 mb-4 italic">
+              <blockquote className="text-gray-700 dark:text-gray-300 mb-4 italic">
                 "Fast, reliable, and professional. AuditsPro completed our audit ahead of schedule 
                 and provided valuable insights for improving our compliance processes."
               </blockquote>
-              <div className="border-t pt-4">
-                <div className="font-semibold text-gray-900">Michael Park</div>
-                <div className="text-sm text-gray-600">Finance Director</div>
-                <div className="text-sm text-primary-600">Adelaide Conveyancing Group</div>
-                <div className="text-xs text-gray-500">Adelaide, SA</div>
+              <div className="border-t border-gray-200 dark:border-gray-700 pt-4">
+                <div className="font-semibold text-gray-900 dark:text-white">Michael Park</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Finance Director</div>
+                <div className="text-sm text-primary-600 dark:text-primary-400">Adelaide Conveyancing Group</div>
+                <div className="text-xs text-gray-500 dark:text-gray-500">Adelaide, SA</div>
               </div>
             </div>
           </div>
@@ -262,7 +262,7 @@ export default function TestimonialsPage(): JSX.Element {
 
       {/* Industry Statistics */}
       <section 
-        className="py-12 sm:py-16 bg-white"
+        className="py-12 sm:py-16 bg-white dark:bg-gray-900"
         role="complementary"
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

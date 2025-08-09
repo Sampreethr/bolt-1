@@ -1,13 +1,13 @@
 'use client'
 
 import { useState, useCallback } from 'react'
-import { 
-  FileCheck, 
-  Shield, 
-  MapPin, 
-  ArrowRight, 
-  CheckCircle, 
-  Clock, 
+import {
+  FileCheck,
+  Shield,
+  MapPin,
+  ArrowRight,
+  CheckCircle,
+  Clock,
   DollarSign,
   Building,
   Scale,
@@ -17,6 +17,7 @@ import {
   Phone,
   Briefcase
 } from 'lucide-react'
+import EmailSubscription from '@/src/components/EmailSubscription'
 
 interface BusinessType {
   id: string;
@@ -258,14 +259,14 @@ export default function AuditServiceSelector(): JSX.Element {
 
   const renderBusinessTypeStep = () => (
     <div className="space-y-6">
-      <div className="bg-white rounded-2xl p-6 lg:p-8 border-2 border-gray-200 shadow-sm">
+      <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 lg:p-8 border-2 border-gray-200 dark:border-gray-700 shadow-sm">
         <div className="flex items-start space-x-4 mb-6">
           <div className="p-3 bg-primary-500 rounded-xl">
             <FileCheck className="h-6 w-6 text-white" />
           </div>
           <div>
-            <h2 className="text-xl lg:text-2xl font-bold text-gray-900 mb-2">Company Type Classification</h2>
-            <p className="text-gray-600">
+            <h2 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-white mb-2">Company Type Classification</h2>
+            <p className="text-gray-600 dark:text-gray-300">
               Select the type of business to customize the audit workflow and document requirements.
             </p>
           </div>
@@ -280,9 +281,9 @@ export default function AuditServiceSelector(): JSX.Element {
                 onClick={() => handleBusinessTypeSelect(businessType.id)}
                 className={`
                   relative p-6 rounded-xl border-2 cursor-pointer transition-all duration-200 transform hover:scale-105 hover:shadow-md
-                  ${businessType.selected 
-                    ? 'border-primary-500 bg-primary-50 shadow-lg' 
-                    : 'border-gray-200 bg-white hover:border-primary-300'
+                  ${businessType.selected
+                    ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/20 shadow-lg'
+                    : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:border-primary-300 dark:hover:border-primary-600'
                   }
                 `}
               >
@@ -291,24 +292,22 @@ export default function AuditServiceSelector(): JSX.Element {
                     <CheckCircle className="h-6 w-6 text-primary-500" />
                   </div>
                 )}
-                
+
                 <div className="flex items-start space-x-4">
-                  <div className={`p-3 rounded-xl ${
-                    businessType.selected ? 'bg-primary-500' : 'bg-gray-100'
-                  }`}>
-                    <IconComponent className={`h-6 w-6 ${
-                      businessType.selected ? 'text-white' : 'text-gray-600'
-                    }`} />
+                  <div className={`p-3 rounded-xl ${businessType.selected ? 'bg-primary-500' : 'bg-gray-100 dark:bg-gray-700'
+                    }`}>
+                    <IconComponent className={`h-6 w-6 ${businessType.selected ? 'text-white' : 'text-gray-600 dark:text-gray-300'
+                      }`} />
                   </div>
-                  
+
                   <div className="flex-1">
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">
+                    <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
                       {businessType.name}
                     </h3>
-                    <p className="text-gray-600 text-sm mb-4">
+                    <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
                       {businessType.description}
                     </p>
-                    
+
                     <div className="space-y-2">
                       <div className="flex items-center text-sm">
                         <DollarSign className="h-4 w-4 text-green-600 mr-2" />
@@ -331,14 +330,14 @@ export default function AuditServiceSelector(): JSX.Element {
 
   const renderOperatingStatesStep = () => (
     <div className="space-y-6">
-      <div className="bg-white rounded-2xl p-6 lg:p-8 border-2 border-gray-200 shadow-sm">
+      <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 lg:p-8 border-2 border-gray-200 dark:border-gray-700 shadow-sm">
         <div className="flex items-start space-x-4 mb-6">
           <div className="p-3 bg-primary-500 rounded-xl">
             <MapPin className="h-6 w-6 text-white" />
           </div>
           <div>
-            <h2 className="text-xl lg:text-2xl font-bold text-gray-900 mb-2">Operating States</h2>
-            <p className="text-gray-600">
+            <h2 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-white mb-2">Operating States</h2>
+            <p className="text-gray-600 dark:text-gray-300">
               Select all states where this business operates. This will determine audit requirements.
             </p>
           </div>
@@ -351,9 +350,9 @@ export default function AuditServiceSelector(): JSX.Element {
               onClick={() => handleStateSelect(state.id)}
               className={`
                 relative p-4 rounded-xl border-2 cursor-pointer transition-all duration-200 transform hover:scale-105
-                ${state.selected 
-                  ? 'border-primary-500 bg-primary-50 shadow-md' 
-                  : 'border-gray-200 bg-white hover:border-primary-300'
+                ${state.selected
+                  ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/20 shadow-md'
+                  : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:border-primary-300 dark:hover:border-primary-600'
                 }
               `}
             >
@@ -362,26 +361,24 @@ export default function AuditServiceSelector(): JSX.Element {
                   <CheckCircle className="h-5 w-5 text-primary-500" />
                 </div>
               )}
-              
+
               <div className="flex items-start space-x-3">
-                <div className={`p-2 rounded-lg ${
-                  state.selected ? 'bg-primary-500' : 'bg-gray-100'
-                }`}>
-                  <MapPin className={`h-5 w-5 ${
-                    state.selected ? 'text-white' : 'text-gray-600'
-                  }`} />
+                <div className={`p-2 rounded-lg ${state.selected ? 'bg-primary-500' : 'bg-gray-100 dark:bg-gray-700'
+                  }`}>
+                  <MapPin className={`h-5 w-5 ${state.selected ? 'text-white' : 'text-gray-600 dark:text-gray-300'
+                    }`} />
                 </div>
-                
+
                 <div className="flex-1">
-                  <h3 className="text-gray-900 font-bold mb-1">
+                  <h3 className="text-gray-900 dark:text-white font-bold mb-1">
                     {state.name}
                   </h3>
-                  <p className="text-gray-500 text-sm mb-2">
+                  <p className="text-gray-500 dark:text-gray-400 text-sm mb-2">
                     {state.code}
                   </p>
-                  
+
                   {state.selected && (
-                    <div className="space-y-1 text-xs text-gray-600">
+                    <div className="space-y-1 text-xs text-gray-600 dark:text-gray-300">
                       <div><strong>Audit Period:</strong> {state.dueDates.auditPeriod}</div>
                       <div><strong>Due Date:</strong> {state.dueDates.submissionDeadline}</div>
                     </div>
@@ -393,18 +390,18 @@ export default function AuditServiceSelector(): JSX.Element {
         </div>
 
         {getSelectedStates().length > 0 && (
-          <div className="mt-6 p-4 bg-green-50 border-2 border-green-200 rounded-xl">
-            <h4 className="text-green-800 font-bold mb-2 flex items-center">
+          <div className="mt-6 p-4 bg-green-50 dark:bg-green-900/20 border-2 border-green-200 dark:border-green-700 rounded-xl">
+            <h4 className="text-green-800 dark:text-green-300 font-bold mb-2 flex items-center">
               <CheckCircle className="h-4 w-4 mr-2" />
               Selected States ({getSelectedStates().length})
             </h4>
             <div className="grid grid-cols-1 gap-2">
               {getSelectedStates().map((state) => (
-                <div key={state.id} className="bg-white rounded-lg p-3 border border-green-200">
+                <div key={state.id} className="bg-white dark:bg-gray-800 rounded-lg p-3 border border-green-200 dark:border-green-700">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-gray-900 font-semibold">{state.name} ({state.code})</span>
+                    <span className="text-gray-900 dark:text-white font-semibold">{state.name} ({state.code})</span>
                   </div>
-                  <div className="space-y-1 text-xs text-gray-600">
+                  <div className="space-y-1 text-xs text-gray-600 dark:text-gray-300">
                     <div><strong>Audit Period:</strong> {state.dueDates.auditPeriod}</div>
                     <div><strong>Submission:</strong> {state.dueDates.submissionDeadline}</div>
                     <div><strong>Requirements:</strong> {state.dueDates.requirements}</div>
@@ -421,46 +418,46 @@ export default function AuditServiceSelector(): JSX.Element {
   const renderSummaryStep = () => {
     const selectedBusinessType = getSelectedBusinessType()
     const selectedStates = getSelectedStates()
-    
+
     return (
       <div className="space-y-6">
-        <div className="bg-white rounded-2xl p-6 lg:p-8 border-2 border-gray-200 shadow-sm">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 lg:p-8 border-2 border-gray-200 dark:border-gray-700 shadow-sm">
           <div className="flex items-start space-x-4 mb-6">
             <div className="p-3 bg-green-500 rounded-xl">
               <CheckCircle className="h-6 w-6 text-white" />
             </div>
             <div>
-              <h2 className="text-xl lg:text-2xl font-bold text-gray-900 mb-2">Audit Configuration Summary</h2>
-              <p className="text-gray-600">
+              <h2 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-white mb-2">Audit Configuration Summary</h2>
+              <p className="text-gray-600 dark:text-gray-300">
                 Review your audit service configuration before proceeding.
               </p>
             </div>
           </div>
 
           {selectedBusinessType && (
-            <div className="mb-6 p-6 bg-gray-50 rounded-xl border border-gray-200">
-              <h3 className="text-lg font-bold text-gray-900 mb-3 flex items-center">
+            <div className="mb-6 p-6 bg-gray-50 dark:bg-gray-700 rounded-xl border border-gray-200 dark:border-gray-600">
+              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3 flex items-center">
                 <selectedBusinessType.icon className="h-5 w-5 mr-2 text-primary-500" />
                 {selectedBusinessType.name}
               </h3>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <div className="flex items-center">
-                  <DollarSign className="h-4 w-4 text-green-600 mr-2" />
-                  <span className="text-green-600 font-semibold">{selectedBusinessType.pricing}</span>
+                  <DollarSign className="h-4 w-4 text-green-600 dark:text-green-400 mr-2" />
+                  <span className="text-green-600 dark:text-green-400 font-semibold">{selectedBusinessType.pricing}</span>
                 </div>
                 <div className="flex items-center">
-                  <Clock className="h-4 w-4 text-blue-600 mr-2" />
-                  <span className="text-blue-600">{selectedBusinessType.duration}</span>
+                  <Clock className="h-4 w-4 text-blue-600 dark:text-blue-400 mr-2" />
+                  <span className="text-blue-600 dark:text-blue-400">{selectedBusinessType.duration}</span>
                 </div>
               </div>
-              
+
               <div>
-                <h4 className="text-gray-900 font-semibold mb-2">Audit Requirements:</h4>
+                <h4 className="text-gray-900 dark:text-white font-semibold mb-2">Audit Requirements:</h4>
                 <ul className="space-y-1">
                   {selectedBusinessType.requirements.map((requirement, index) => (
-                    <li key={index} className="text-gray-700 text-sm flex items-start">
-                      <CheckCircle className="h-3 w-3 text-green-500 mr-2 mt-1 flex-shrink-0" />
+                    <li key={index} className="text-gray-700 dark:text-gray-300 text-sm flex items-start">
+                      <CheckCircle className="h-3 w-3 text-green-500 dark:text-green-400 mr-2 mt-1 flex-shrink-0" />
                       {requirement}
                     </li>
                   ))}
@@ -469,20 +466,20 @@ export default function AuditServiceSelector(): JSX.Element {
             </div>
           )}
 
-          <div className="p-6 bg-gray-50 rounded-xl border border-gray-200">
-            <h3 className="text-lg font-bold text-gray-900 mb-3 flex items-center">
+          <div className="p-6 bg-gray-50 dark:bg-gray-700 rounded-xl border border-gray-200 dark:border-gray-600">
+            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3 flex items-center">
               <MapPin className="h-5 w-5 mr-2 text-primary-500" />
               Operating States ({selectedStates.length})
             </h3>
-            
+
             <div className="space-y-3">
               {selectedStates.map((state) => (
-                <div key={state.id} className="bg-white rounded-lg p-3 border border-gray-200">
+                <div key={state.id} className="bg-white dark:bg-gray-800 rounded-lg p-3 border border-gray-200 dark:border-gray-600">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-gray-900 font-semibold">{state.name}</span>
-                    <span className="text-primary-600 text-sm font-semibold">{state.code}</span>
+                    <span className="text-gray-900 dark:text-white font-semibold">{state.name}</span>
+                    <span className="text-primary-600 dark:text-primary-400 text-sm font-semibold">{state.code}</span>
                   </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs text-gray-600">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs text-gray-600 dark:text-gray-300">
                     <div><strong>Audit Period:</strong> {state.dueDates.auditPeriod}</div>
                     <div><strong>Due Date:</strong> {state.dueDates.submissionDeadline}</div>
                     <div className="md:col-span-2"><strong>Submission:</strong> {state.dueDates.requirements}</div>
@@ -497,7 +494,7 @@ export default function AuditServiceSelector(): JSX.Element {
               <FileCheck className="h-5 w-5 mr-2" />
               Book Audit Service
             </button>
-            
+
             <button className="flex-1 border-2 border-primary-500 text-primary-600 hover:bg-primary-500 hover:text-white font-bold py-4 px-6 rounded-xl transition-all duration-200 flex items-center justify-center">
               <Shield className="h-5 w-5 mr-2" />
               Request Quote
@@ -509,19 +506,19 @@ export default function AuditServiceSelector(): JSX.Element {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 lg:py-12">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8 lg:py-12">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         <div className="text-center mb-8">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary-50 text-primary-700 text-sm font-semibold mb-4 border border-primary-200">
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 text-sm font-semibold mb-4 border border-primary-200 dark:border-primary-700">
             <Shield className="h-4 w-4 mr-2" />
             <span>Professional Audit Configuration</span>
           </div>
-          
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
             Trust Account Audit Setup
           </h1>
-          <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto text-lg">
             Configure your professional audit service by selecting your business type and operating locations.
           </p>
         </div>
@@ -535,20 +532,19 @@ export default function AuditServiceSelector(): JSX.Element {
             ].map((item, index) => {
               const IconComponent = item.icon
               const isActive = workflow.currentStep === item.step
-              const isCompleted = 
+              const isCompleted =
                 (item.step === 'businessType' && workflow.businessTypes.some(t => t.selected)) ||
                 (item.step === 'operatingStates' && workflow.operatingStates.some(s => s.selected)) ||
                 (item.step === 'summary' && workflow.currentStep === 'summary')
-              
+
               return (
                 <div key={item.step} className="flex items-center">
-                  <div className={`flex items-center space-x-2 px-4 py-2 rounded-full transition-all duration-200 ${
-                    isActive 
-                      ? 'bg-primary-500 text-white' 
-                      : isCompleted 
-                      ? 'bg-green-500 text-white' 
-                      : 'bg-gray-200 text-gray-600'
-                  }`}>
+                  <div className={`flex items-center space-x-2 px-4 py-2 rounded-full transition-all duration-200 ${isActive
+                      ? 'bg-primary-500 text-white'
+                      : isCompleted
+                        ? 'bg-green-500 text-white'
+                        : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300'
+                    }`}>
                     <IconComponent className="h-4 w-4" />
                     <span className="font-semibold text-sm">{item.label}</span>
                   </div>
@@ -572,11 +568,11 @@ export default function AuditServiceSelector(): JSX.Element {
             <button
               onClick={handlePreviousStep}
               disabled={workflow.currentStep === 'businessType'}
-              className="px-6 py-3 text-gray-600 hover:text-gray-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200 font-semibold"
+              className="px-6 py-3 text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200 font-semibold"
             >
               ← Previous
             </button>
-            
+
             <button
               onClick={handleNextStep}
               disabled={!canProceedToNextStep()}
@@ -588,18 +584,28 @@ export default function AuditServiceSelector(): JSX.Element {
           </div>
         )}
 
-        <div className="mt-8 bg-red-50 border-2 border-red-200 rounded-xl p-6">
+        {/* Email Subscription Section */}
+        <div className="mt-8">
+          <EmailSubscription 
+            title="Stay Updated with Australian Compliance Changes"
+            description="Get the latest updates on trust account regulations, compliance requirements, and industry news delivered to your inbox."
+            placeholder="Enter your email address"
+            buttonText="Subscribe Now"
+          />
+        </div>
+
+        <div className="mt-8 bg-red-50 dark:bg-red-900/20 border-2 border-red-200 dark:border-red-700 rounded-xl p-6">
           <div className="flex items-start space-x-3">
-            <AlertCircle className="h-5 w-5 text-red-600 mt-0.5 flex-shrink-0" />
+            <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 flex-shrink-0" />
             <div className="flex-1">
-              <h4 className="text-red-800 font-bold mb-1">Emergency Audit Support</h4>
-              <p className="text-red-700 text-sm mb-2">
+              <h4 className="text-red-800 dark:text-red-300 font-bold mb-1">Emergency Audit Support</h4>
+              <p className="text-red-700 dark:text-red-300 text-sm mb-2">
                 Need urgent compliance assistance? Our 24/7 emergency audit service is available for immediate support.
               </p>
-              
+
               <a
                 href="tel:1300283487"
-                className="inline-flex items-center text-red-700 hover:text-red-800 font-semibold text-sm transition-colors duration-200"
+                className="inline-flex items-center text-red-700 dark:text-red-300 hover:text-red-800 dark:hover:text-red-200 font-semibold text-sm transition-colors duration-200"
               >
                 <Phone className="h-4 w-4 mr-1" />
                 <span>Call 1300 AUDITS</span>

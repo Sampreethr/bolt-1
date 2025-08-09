@@ -96,9 +96,9 @@ export default function Footer(): JSX.Element | null {
   // ===============================
 
   return (
-    <footer className="bg-gray-900 text-white relative overflow-hidden">
+    <footer className="bg-gray-900 dark:bg-gray-950 text-white relative overflow-hidden">
       {/* Background Pattern */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 opacity-50"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 opacity-50"></div>
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary-500 via-blue-500 to-primary-600"></div>
       
       <div className="relative">
@@ -244,9 +244,9 @@ export default function Footer(): JSX.Element | null {
               </ul>
 
               {/* Professional Certifications with Enhanced Icons */}
-              <div className="bg-gray-800 rounded-2xl p-4 border border-gray-600">
+              <div className="bg-gray-800 dark:bg-gray-900 rounded-2xl p-4 border border-gray-600 dark:border-gray-700">
                 <h4 className="font-semibold text-white mb-3">Certified & Registered</h4>
-                <div className="space-y-2 text-sm text-gray-300">
+                <div className="space-y-2 text-sm text-gray-300 dark:text-gray-400">
                   {certifications.map((cert, index) => {
                     const IconComponent = cert.icon
                     return (

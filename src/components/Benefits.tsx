@@ -25,19 +25,19 @@ export default function Benefits() {
   ]
 
   return (
-    <section className="py-16 md:py-20 lg:py-24 bg-gray-50">
+    <section className="py-16 md:py-20 lg:py-24 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary-50 text-primary-700 text-sm font-medium mb-6 border border-primary-200">
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-sm font-medium mb-6 border border-primary-200 dark:border-primary-800">
             <Award className="h-4 w-4 mr-2" />
             Why Choose AuditsPro
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
             Three Pillars of
-            <span className="text-primary-600 block">Excellence</span>
+            <span className="text-primary-600 dark:text-primary-400 block">Excellence</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             We've built our reputation on three core promises that set us apart from other auditing firms.
           </p>
         </div>
@@ -47,18 +47,18 @@ export default function Benefits() {
           {benefits.map((benefit, index) => (
             <div key={index} className="group relative">
               {/* Professional Card with enhanced borders and shadows to match other components */}
-              <div className="bg-white rounded-2xl p-6 sm:p-8 h-full border-2 border-gray-200 shadow-md hover:shadow-lg hover:border-primary-300 transition-all duration-300 transform hover:-translate-y-1">
+              <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 sm:p-8 h-full border-2 border-gray-200 dark:border-gray-700 shadow-md hover:shadow-lg hover:border-primary-300 dark:hover:border-primary-600 transition-all duration-300 transform hover:-translate-y-1">
                 {/* Icon with consistent sizing across all screen sizes */}
-                <div className="inline-flex p-3 sm:p-4 rounded-2xl bg-primary-500 text-white mb-6 transform transition-transform duration-200 group-hover:scale-105 shadow-sm">
+                <div className="inline-flex p-3 sm:p-4 rounded-2xl bg-primary-500 dark:bg-primary-600 text-white mb-6 transform transition-transform duration-200 group-hover:scale-105 shadow-sm">
                   <benefit.icon className="h-6 w-6 sm:h-8 sm:w-8" />
                 </div>
                 
                 {/* Content with responsive typography */}
-                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 leading-tight">
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">
                   {benefit.title}
                 </h3>
                 
-                <p className="text-gray-600 mb-6 leading-relaxed text-sm sm:text-base">
+                <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed text-sm sm:text-base">
                   {benefit.description}
                 </p>
 
@@ -66,69 +66,69 @@ export default function Benefits() {
                 <ul className="space-y-3">
                   {benefit.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start space-x-3">
-                      <CheckCircle className="h-4 w-4 sm:h-5 sm:w-5 text-primary-500 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-700 text-sm leading-relaxed">{feature}</span>
+                      <CheckCircle className="h-4 w-4 sm:h-5 sm:w-5 text-primary-500 dark:text-primary-400 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">{feature}</span>
                     </li>
                   ))}
                 </ul>
 
                 {/* Professional hover effect - subtle and clean */}
-                <div className="absolute inset-0 rounded-2xl bg-primary-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                <div className="absolute inset-0 rounded-2xl bg-primary-50/50 dark:bg-primary-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
               </div>
             </div>
           ))}
         </div>
 
         {/* Trust Icons Section with enhanced professional borders */}
-        <div className="bg-white rounded-2xl p-6 sm:p-8 md:p-12 text-center border-2 border-gray-200 shadow-md">
-          <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 leading-tight">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 sm:p-8 md:p-12 text-center border-2 border-gray-200 dark:border-gray-700 shadow-md">
+          <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-8 leading-tight">
             Trusted by Australia's Leading Businesses
           </h3>
           
           {/* Responsive grid that works on all screen sizes */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-8">
             <div className="flex flex-col items-center space-y-3">
-              <div className="p-3 sm:p-4 bg-primary-500 rounded-2xl text-white">
+              <div className="p-3 sm:p-4 bg-primary-500 dark:bg-primary-600 rounded-2xl text-white">
                 <Shield className="h-6 w-6 sm:h-8 sm:w-8" />
               </div>
               <div className="text-center">
-                <div className="font-bold text-gray-900 text-sm sm:text-base">ASIC Registered</div>
-                <div className="text-xs sm:text-sm text-gray-600">Auditor #12345</div>
+                <div className="font-bold text-gray-900 dark:text-white text-sm sm:text-base">ASIC Registered</div>
+                <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Auditor #12345</div>
               </div>
             </div>
             
             <div className="flex flex-col items-center space-y-3">
-              <div className="p-3 sm:p-4 bg-primary-500 rounded-2xl text-white">
+              <div className="p-3 sm:p-4 bg-primary-500 dark:bg-primary-600 rounded-2xl text-white">
                 <Award className="h-6 w-6 sm:h-8 sm:w-8" />
               </div>
               <div className="text-center">
-                <div className="font-bold text-gray-900 text-sm sm:text-base">CPA Australia</div>
-                <div className="text-xs sm:text-sm text-gray-600">Member Firm</div>
+                <div className="font-bold text-gray-900 dark:text-white text-sm sm:text-base">CPA Australia</div>
+                <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Member Firm</div>
               </div>
             </div>
             
             <div className="flex flex-col items-center space-y-3">
-              <div className="p-3 sm:p-4 bg-primary-500 rounded-2xl text-white">
+              <div className="p-3 sm:p-4 bg-primary-500 dark:bg-primary-600 rounded-2xl text-white">
                 <CheckCircle className="h-6 w-6 sm:h-8 sm:w-8" />
               </div>
               <div className="text-center">
-                <div className="font-bold text-gray-900 text-sm sm:text-base">ISO Certified</div>
-                <div className="text-xs sm:text-sm text-gray-600">Quality Assured</div>
+                <div className="font-bold text-gray-900 dark:text-white text-sm sm:text-base">ISO Certified</div>
+                <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Quality Assured</div>
               </div>
             </div>
             
             <div className="flex flex-col items-center space-y-3 col-span-2 lg:col-span-1">
-              <div className="p-3 sm:p-4 bg-primary-500 rounded-2xl text-white">
+              <div className="p-3 sm:p-4 bg-primary-500 dark:bg-primary-600 rounded-2xl text-white">
                 <Users className="h-6 w-6 sm:h-8 sm:w-8" />
               </div>
               <div className="text-center">
-                <div className="font-bold text-gray-900 text-sm sm:text-base">500+ Clients</div>
-                <div className="text-xs sm:text-sm text-gray-600">Australia Wide</div>
+                <div className="font-bold text-gray-900 dark:text-white text-sm sm:text-base">500+ Clients</div>
+                <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Australia Wide</div>
               </div>
             </div>
           </div>
 
-          <p className="text-gray-600 mb-6 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
+          <p className="text-gray-600 dark:text-gray-300 mb-6 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
             Join hundreds of law firms and real estate agencies who trust AuditsPro for their annual compliance requirements.
           </p>
           

@@ -1,10 +1,11 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
-import { Menu, X, Shield, Phone, Home, Briefcase, Users, Star, Mail, LogIn, User, CheckCircle } from 'lucide-react'
+import { Menu, X, Shield, Phone, Home, Briefcase, Users, Star, Mail, LogIn, User, CheckCircle, LayoutDashboard } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
-import { useAuth } from '@/src/context/AuthContext'
+import { useAuth } from '@/hooks/useAuth'
+import ThemeToggle from '@/src/components/ThemeToggle'
 
 // ===============================
 // TYPE DEFINITIONS
@@ -53,6 +54,67 @@ const navigation: readonly NavigationItem[] = [
     ariaLabel: 'Contact our team' 
   },
 ] as const
+
+// ===============================
+// DASHBOARD BUTTON COMPONENT
+// ===============================
+
+interface DashboardButtonProps {
+  readonly isAuthenticated?: boolean;
+  readonly className?: string;
+}
+
+const DashboardButton: React.FC<DashboardButtonProps> = ({ 
+  isAuthenticated = false, 
+  className = '' 
+}) => {
+  const router = useRouter()
+  
+  const handleClick = useCallback(() => {
+    console.log('🎯 Dashboard button clicked - direct access enabled!')
+    try {
+      router.push('/dashboard')
+      console.log('✅ Navigation to /dashboard initiated')
+    } catch (error) {
+      console.error('❌ Dashboard navigation error:', error)
+    }
+  }, [router]);
+
+  return (
+    <button
+      onClick={handleClick}
+      className={`
+        group relative inline-flex items-center justify-center
+        min-h-[44px] min-w-[44px] touch-manipulation
+        font-semibold text-sm transition-all duration-200
+        focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2
+        rounded-lg hover:scale-105 transform
+        bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700
+        text-white shadow-lg hover:shadow-xl
+        ${className}
+      `}
+      aria-label={isAuthenticated ? 'Go to dashboard' : 'Login to access dashboard'}
+      type="button"
+    >
+      {/* Desktop & Tablet: Icon + Text */}
+      <span className="hidden sm:flex items-center space-x-2 px-3 sm:px-4 py-2">
+        <LayoutDashboard className="h-4 w-4 flex-shrink-0" aria-hidden="true" />
+        <span className="font-medium">Dashboard</span>
+      </span>
+
+      {/* Mobile: Icon Only */}
+      <span className="sm:hidden flex items-center justify-center w-full h-full">
+        <LayoutDashboard className="h-5 w-5" aria-hidden="true" />
+      </span>
+
+      {/* Subtle hover effect */}
+      <span 
+        className="absolute inset-0 rounded-lg bg-white/10 dark:bg-gray-700/20 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none"
+        aria-hidden="true"
+      />
+    </button>
+  );
+};
 
 // ===============================
 // LOGIN BUTTON COMPONENT
@@ -104,8 +166,8 @@ const LoginButton: React.FC<LoginButtonProps> = ({
         focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2
         rounded-lg hover:scale-105 transform
         ${isAuthenticated 
-          ? 'text-gray-700 hover:text-primary-600 bg-gray-50 hover:bg-primary-50 border border-gray-200 hover:border-primary-300' 
-          : 'text-primary-600 hover:text-white hover:bg-primary-600 bg-white border-2 border-primary-500 hover:border-primary-600'
+          ? 'text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 bg-gray-50 dark:bg-gray-800 hover:bg-primary-50 dark:hover:bg-primary-900/20 border border-gray-200 dark:border-gray-700 hover:border-primary-300 dark:hover:border-primary-600' 
+          : 'text-primary-600 dark:text-primary-400 hover:text-white dark:hover:text-white hover:bg-primary-600 dark:hover:bg-primary-600 bg-white dark:bg-gray-800 border-2 border-primary-500 dark:border-primary-600 hover:border-primary-600 dark:hover:border-primary-600'
         }
         ${className}
       `}
@@ -291,8 +353,8 @@ export default function EnhancedHeaderWithAuth(): JSX.Element | null {
       className={`
         fixed top-0 w-full z-50 transition-all duration-300
         ${isScrolled 
-          ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200' 
-          : 'bg-white/90 backdrop-blur-sm border-b border-gray-100'
+          ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg border-b border-gray-200 dark:border-gray-700' 
+          : 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-b border-gray-100 dark:border-gray-800'
         }
       `}
       role="banner"
@@ -341,8 +403,8 @@ export default function EnhancedHeaderWithAuth(): JSX.Element | null {
                       min-h-[44px] flex items-center space-x-2 touch-manipulation
                       focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2
                       ${isActive 
-                        ? 'text-primary-600 bg-primary-50 font-semibold shadow-sm' 
-                        : 'text-gray-700 hover:text-primary-600 hover:bg-primary-50'
+                        ? 'text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/20 font-semibold shadow-sm' 
+                        : 'text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/10'
                       }
                     `}
                     aria-label={item.ariaLabel}
@@ -372,17 +434,26 @@ export default function EnhancedHeaderWithAuth(): JSX.Element | null {
           {/* Desktop Actions */}
           <div className="hidden lg:flex items-center space-x-3 xl:space-x-4 flex-shrink-0 order-3">
             {/* Phone Display */}
-            <div className="flex items-center space-x-2 text-sm text-gray-700 bg-gray-50 hover:bg-gray-100 px-3 py-2 rounded-lg border border-gray-200 hover:border-primary-300 transition-all duration-200">
-              <Phone className="h-4 w-4 text-primary-500" aria-hidden="true" />
+            <div className="flex items-center space-x-2 text-sm text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-primary-300 dark:hover:border-primary-600 transition-all duration-200">
+              <Phone className="h-4 w-4 text-primary-500 dark:text-primary-400" aria-hidden="true" />
               <a 
                 href="tel:1300283487"
-                className="font-semibold hover:text-primary-600 transition-colors duration-200"
+                className="font-semibold hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
                 aria-label="Call AuditsPro at 1300 AUDITS"
                 onClick={() => console.log('📞 Phone number clicked')}
               >
                 1300 AUDITS
               </a>
             </div>
+            
+            {/* Theme Toggle */}
+            <ThemeToggle variant="compact" className="mr-1" />
+            
+            {/* Dashboard Button */}
+            <DashboardButton
+              isAuthenticated={isAuthenticated}
+              className="mr-2"
+            />
             
             {/* Authentication Actions */}
             {isAuthenticated ? (
@@ -415,11 +486,20 @@ export default function EnhancedHeaderWithAuth(): JSX.Element | null {
 
           {/* Mobile Menu Button */}
           <div className="lg:hidden flex items-center space-x-2 flex-shrink-0 order-3">
+            {/* Mobile Theme Toggle */}
+            <ThemeToggle variant="icon-only" className="mr-1" />
+            
+            {/* Mobile Dashboard Button */}
+            <DashboardButton
+              isAuthenticated={isAuthenticated}
+              className="mr-1"
+            />
+            
             {/* Mobile Profile/Login Button */}
             {isAuthenticated ? (
               <Link
                 href="/profile"
-                className="group relative inline-flex items-center justify-center min-h-[44px] min-w-[44px] touch-manipulation font-semibold text-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg hover:scale-105 transform text-gray-700 hover:text-primary-600 bg-gray-50 hover:bg-primary-50 border border-gray-200 hover:border-primary-300 mr-2"
+                className="group relative inline-flex items-center justify-center min-h-[44px] min-w-[44px] touch-manipulation font-semibold text-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg hover:scale-105 transform text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 bg-gray-50 dark:bg-gray-800 hover:bg-primary-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 hover:border-primary-300 dark:hover:border-primary-600 mr-2"
                 aria-label="Go to profile settings"
                 onClick={() => console.log('👤 Mobile profile icon clicked')}
               >
@@ -439,15 +519,15 @@ export default function EnhancedHeaderWithAuth(): JSX.Element | null {
             {/* Mobile Menu Toggle */}
             <button
               onClick={handleMenuToggle}
-              className="p-2 rounded-lg bg-gray-50 hover:bg-gray-100 border border-gray-200 hover:border-primary-300 transition-all duration-200 min-h-[44px] min-w-[44px] flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 touch-manipulation"
+              className="p-2 rounded-lg bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 hover:border-primary-300 dark:hover:border-primary-600 transition-all duration-200 min-h-[44px] min-w-[44px] flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 touch-manipulation"
               aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
               aria-expanded={isOpen}
               aria-controls="mobile-navigation"
             >
               {isOpen ? (
-                <X className="h-6 w-6 text-gray-700" aria-hidden="true" />
+                <X className="h-6 w-6 text-gray-700 dark:text-gray-300" aria-hidden="true" />
               ) : (
-                <Menu className="h-6 w-6 text-gray-700" aria-hidden="true" />
+                <Menu className="h-6 w-6 text-gray-700 dark:text-gray-300" aria-hidden="true" />
               )}
             </button>
           </div>
@@ -509,7 +589,7 @@ export default function EnhancedHeaderWithAuth(): JSX.Element | null {
           
           <div 
             id="mobile-navigation"
-            className="fixed top-full left-0 right-0 bg-white border-t border-gray-200 z-50 lg:hidden max-h-[calc(100vh-80px)] overflow-y-auto animate-in slide-in-from-top-2 duration-200 shadow-xl"
+            className="fixed top-full left-0 right-0 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 z-50 lg:hidden max-h-[calc(100vh-80px)] overflow-y-auto animate-in slide-in-from-top-2 duration-200 shadow-xl"
             role="menu"
             aria-label="Mobile navigation menu"
           >
@@ -556,12 +636,27 @@ export default function EnhancedHeaderWithAuth(): JSX.Element | null {
                     </Link>
                   )
                 })}
+                
+                {/* Mobile Dashboard Link */}
+                <button
+                  onClick={() => {
+                    console.log('📱 Mobile dashboard nav clicked - direct access enabled')
+                    router.push('/dashboard')
+                    handleMobileNavClick()
+                  }}
+                  className="w-full flex items-center space-x-3 font-medium py-3 px-4 rounded-lg min-h-[44px] transition-all duration-200 touch-manipulation bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white shadow-lg"
+                  aria-label="Go to dashboard"
+                  role="menuitem"
+                >
+                  <LayoutDashboard className="h-5 w-5 flex-shrink-0" aria-hidden="true" />
+                  <span className="flex-1">Dashboard</span>
+                </button>
               </div>
               
               {/* Mobile Authentication Section */}
-              <div className="space-y-3 pt-4 border-t border-gray-200">
+              <div className="space-y-3 pt-4 border-t border-gray-200 dark:border-gray-700">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm font-medium text-gray-700">Account</span>
+                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Account</span>
                   {isAuthenticated && (
                     <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full font-medium">
                       Logged In
@@ -589,7 +684,7 @@ export default function EnhancedHeaderWithAuth(): JSX.Element | null {
                     
                     <Link
                       href="/dashboard"
-                      className="w-full border-2 border-gray-200 hover:border-primary-300 text-gray-700 hover:text-primary-600 font-medium py-3 px-4 rounded-lg transition-colors text-center block"
+                      className="w-full border-2 border-gray-200 dark:border-gray-700 hover:border-primary-300 dark:hover:border-primary-600 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium py-3 px-4 rounded-lg transition-colors text-center block"
                       onClick={handleMobileNavClick}
                     >
                       Go to Dashboard
@@ -600,7 +695,7 @@ export default function EnhancedHeaderWithAuth(): JSX.Element | null {
                         handleLogoutClick();
                         handleMobileNavClick();
                       }}
-                      className="w-full border-2 border-gray-200 hover:border-red-300 text-gray-700 hover:text-red-600 font-medium py-3 px-4 rounded-lg transition-colors text-center"
+                      className="w-full border-2 border-gray-200 dark:border-gray-700 hover:border-red-300 dark:hover:border-red-600 text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-400 font-medium py-3 px-4 rounded-lg transition-colors text-center"
                     >
                       Sign Out
                     </button>
@@ -619,7 +714,7 @@ export default function EnhancedHeaderWithAuth(): JSX.Element | null {
               </div>
               
               {/* Contact Information */}
-              <div className="flex items-center space-x-2 text-sm text-gray-600 pt-4 mt-4 border-t border-gray-200 bg-gray-50 px-4 py-3 rounded-lg">
+              <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400 pt-4 mt-4 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 px-4 py-3 rounded-lg">
                 <Phone className="h-4 w-4 text-primary-500" aria-hidden="true" />
                 <a 
                   href="tel:1300283487"

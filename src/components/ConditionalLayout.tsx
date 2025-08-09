@@ -4,6 +4,8 @@ import { usePathname } from 'next/navigation'
 import { ReactNode } from 'react'
 import Header from '@/src/components/Header'
 import Footer from '@/src/components/Footer'
+import DashboardLayout from '@/src/components/dashboard/DashboardLayout'
+import { useNavigation } from '@/src/contexts/NavigationContext'
 
 /**
  * CONDITIONAL LAYOUT COMPONENT
@@ -31,19 +33,39 @@ interface ConditionalLayoutProps {
 
 export default function ConditionalLayout({ children }: ConditionalLayoutProps): JSX.Element {
   const pathname = usePathname()
+  const { isDashboardOrigin, navigationHistory } = useNavigation()
   
   /**
-   * ROUTE DETECTION LOGIC
+   * ENHANCED ROUTE DETECTION LOGIC
    * 
-   * Define which routes should NOT have header/footer:
-   * 1. Dashboard routes - Independent layout with sidebar
-   * 2. Auth routes - Clean full-screen layout
-   * 3. Welcome routes - Clean post-signup layout
-   * 4. Profile routes - Treated as dashboard routes
+   * Define different layout types:
+   * 1. Dashboard routes - Dashboard layout with sidebar
+   * 2. Dashboard-accessed routes - Dashboard layout with sidebar
+   * 3. Auth routes - Clean full-screen layout
+   * 4. Main website routes - Header and footer layout
    */
   
-  // Dashboard routes (complete independence from main website)
+  // Dashboard routes (always get dashboard layout)
   const isDashboardRoute = pathname.startsWith('/dashboard')
+  
+  // Routes that should get dashboard layout when accessed from dashboard
+  const dashboardAccessibleRoutes = [
+    '/audits',
+    '/audit-calendar',
+    '/profile',
+    '/documents',
+    '/compliance',
+    '/reports',
+    '/progress',
+    '/analytics',
+    '/team',
+    '/settings',
+    '/support'
+  ]
+  
+  const isDashboardAccessibleRoute = dashboardAccessibleRoutes.some(route => 
+    pathname.startsWith(route)
+  )
   
   // Auth routes (clean full-screen layout)
   const authRoutes = [
@@ -56,40 +78,37 @@ export default function ConditionalLayout({ children }: ConditionalLayoutProps):
   ]
   const isAuthRoute = authRoutes.some(route => pathname.startsWith(route))
   
-  // Profile routes (treated as dashboard-style)
-  const isProfileRoute = pathname.startsWith('/profile')
+  // Determine if this page should use dashboard layout
+  const shouldUseDashboardLayout = isDashboardRoute || 
+    (isDashboardAccessibleRoute && isDashboardOrigin)
   
   // Combine all routes that shouldn't have header/footer
-  const shouldHideLayout = isDashboardRoute || isAuthRoute || isProfileRoute
+  const shouldHideLayout = shouldUseDashboardLayout || isAuthRoute
   
   console.log('🎯 ConditionalLayout Debug:', {
     pathname,
     isDashboardRoute,
-    isAuthRoute, 
-    isProfileRoute,
+    isDashboardAccessibleRoute,
+    isDashboardOrigin,
+    isAuthRoute,
+    shouldUseDashboardLayout,
     shouldHideLayout
   })
 
   /**
-   * DASHBOARD ROUTES - INDEPENDENT LAYOUT
+   * DASHBOARD LAYOUT - WITH PERSISTENT SIDEBAR
    * 
-   * Dashboard routes get completely independent layout:
-   * - No main website header
-   * - No main website footer  
-   * - Clean container with dashboard-specific styling
-   * - Full height layout for sidebar integration
+   * Dashboard routes and dashboard-accessed routes get dashboard layout:
+   * - Persistent sidebar navigation
+   * - No main website header/footer
+   * - Professional dashboard styling
+   * - Responsive sidebar behavior
    */
-  if (isDashboardRoute) {
+  if (shouldUseDashboardLayout) {
     return (
-      <div className="dashboard-layout min-h-screen bg-gray-50">
-        <main 
-          className="dashboard-spacing min-h-screen"
-          data-dashboard="true"
-          id="dashboard-content"
-        >
-          {children}
-        </main>
-      </div>
+      <DashboardLayout>
+        {children}
+      </DashboardLayout>
     )
   }
 
@@ -104,7 +123,7 @@ export default function ConditionalLayout({ children }: ConditionalLayoutProps):
    */
   if (isAuthRoute) {
     return (
-      <div className="auth-layout min-h-screen bg-gray-50">
+      <div className="auth-layout min-h-screen bg-gray-50 dark:bg-gray-900">
         <main 
           className="auth-page min-h-screen"
           id="auth-content"
@@ -115,26 +134,7 @@ export default function ConditionalLayout({ children }: ConditionalLayoutProps):
     )
   }
 
-  /**
-   * PROFILE ROUTES - DASHBOARD-STYLE LAYOUT
-   * 
-   * Profile routes get similar treatment to dashboard:
-   * - No main website header/footer
-   * - Clean independent layout
-   * - Professional appearance
-   */
-  if (isProfileRoute) {
-    return (
-      <div className="profile-layout min-h-screen bg-gray-50">
-        <main 
-          className="profile-spacing min-h-screen"
-          id="profile-content"
-        >
-          {children}
-        </main>
-      </div>
-    )
-  }
+
 
   /**
    * MAIN WEBSITE ROUTES - FULL LAYOUT

@@ -1,7 +1,6 @@
 import { Metadata } from 'next'
 import Hero from '@/src/components/Hero'
 import Benefits from '@/src/components/Benefits'
-import ProtectedHomePage from '@/src/components/ProtectedHomePage'
 
 /**
  * Home Page Metadata
@@ -169,19 +168,19 @@ export default function HomePage(): JSX.Element {
 
       {/* Call-to-Action Section */}
       <section 
-        className="py-12 sm:py-16 lg:py-20 bg-white border-t border-gray-100"
+        className="py-12 sm:py-16 lg:py-20 bg-white dark:bg-gray-800 border-t border-gray-100 dark:border-gray-700"
         role="complementary"
         aria-labelledby="cta-heading"
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 
             id="cta-heading"
-            className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 sm:mb-6"
+            className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6"
           >
             Ready to Ensure Your Trust Account Compliance?
           </h2>
           
-          <p className="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed">
             Join over 500 satisfied clients who trust AuditsPro Australia for their annual trust account auditing requirements. 
             Professional, reliable, and fully compliant across all Australian states.
           </p>
@@ -216,16 +215,16 @@ export default function HomePage(): JSX.Element {
           {/* Quick Stats */}
           <div className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
             <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-bold text-primary-600 mb-2">500+</div>
-              <div className="text-sm sm:text-base text-gray-600">Satisfied Clients</div>
+              <div className="text-2xl sm:text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2">500+</div>
+              <div className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Satisfied Clients</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-bold text-primary-600 mb-2">15+</div>
-              <div className="text-sm sm:text-base text-gray-600">Years Experience</div>
+              <div className="text-2xl sm:text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2">15+</div>
+              <div className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Years Experience</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-bold text-primary-600 mb-2">7-14</div>
-              <div className="text-sm sm:text-base text-gray-600">Days Turnaround</div>
+              <div className="text-2xl sm:text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2">7-14</div>
+              <div className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Days Turnaround</div>
             </div>
           </div>
         </div>

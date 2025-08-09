@@ -1,8 +1,277 @@
 'use client'
 
-import { ArrowRight, CheckCircle, Shield, Award, Users, Phone, Star, TrendingUp, BarChart3, Calendar, Building, Clock } from 'lucide-react'
+import { ArrowRight, CheckCircle, Shield, Award, Users, Phone, Star, TrendingUp, BarChart3, Calendar, Building, Clock, Mail, FileText, Send, Lock, Eye, EyeOff } from 'lucide-react'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
+import { AnimatedCard } from '@/src/components/ui/AnimatedCard'
+import { GlowingButton } from '@/src/components/ui/GlowingButton'
+import { FloatingElements } from '@/src/components/ui/FloatingElements'
+
+// Tax Return Request Form Component
+function TaxReturnRequestForm(): JSX.Element {
+  const [email, setEmail] = useState<string>('')
+  const [otp, setOtp] = useState<string>('')
+  const [step, setStep] = useState<'email' | 'otp' | 'success'>('email')
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [showOtp, setShowOtp] = useState<boolean>(false)
+  const [countdown, setCountdown] = useState<number>(0)
+  const [mounted, setMounted] = useState<boolean>(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  useEffect(() => {
+    if (countdown > 0) {
+      const timer = setTimeout(() => setCountdown(countdown - 1), 1000)
+      return () => clearTimeout(timer)
+    }
+  }, [countdown])
+
+  const handleSendCode = async () => {
+    if (!email || !email.includes('@')) return
+    
+    setIsLoading(true)
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1500))
+    setStep('otp')
+    setCountdown(60)
+    setIsLoading(false)
+  }
+
+  const handleVerifyOtp = async () => {
+    if (!otp || otp.length < 6) return
+    
+    setIsLoading(true)
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1000))
+    setStep('success')
+    setIsLoading(false)
+  }
+
+  const handleResendCode = async () => {
+    setIsLoading(true)
+    await new Promise(resolve => setTimeout(resolve, 1000))
+    setCountdown(60)
+    setIsLoading(false)
+  }
+
+  if (!mounted) {
+    return (
+      <div className="bg-white rounded-2xl p-6 lg:p-8 border-2 border-gray-200 shadow-lg">
+        <div className="animate-pulse">
+          <div className="h-6 bg-gray-200 rounded mb-4"></div>
+          <div className="h-4 bg-gray-200 rounded mb-6"></div>
+          <div className="h-12 bg-gray-200 rounded mb-4"></div>
+          <div className="h-10 bg-gray-200 rounded"></div>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 lg:p-8 border-2 border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-all duration-300">
+      {/* Header */}
+      <div className="flex items-center justify-between mb-6">
+        <div>
+          <h3 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-white mb-1 flex items-center">
+            <FileText className="h-6 w-6 text-primary-500 dark:text-primary-400 mr-2" />
+            Join AuditsPro Now..
+          </h3>
+          <p className="text-gray-600 dark:text-gray-300 text-sm lg:text-base">
+            {step === 'email' && 'Enter your email address to receive a verification code'}
+            {step === 'otp' && 'Enter the verification code sent to your email'}
+            {step === 'success' && 'Verification successful! Redirecting to dashboard...'}
+          </p>
+        </div>
+      </div>
+
+      {/* Email Step */}
+      {step === 'email' && (
+        <div className="space-y-6">
+          <div>
+            <label htmlFor="email" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
+              Enter Your Email Address
+            </label>
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <Mail className="h-5 w-5 text-gray-400 dark:text-gray-500" />
+              </div>
+              <input
+                id="email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email address"
+                className="w-full pl-10 pr-4 py-3 border-2 border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 bg-white dark:bg-gray-700"
+                disabled={isLoading}
+              />
+            </div>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-2 flex items-center">
+              <Shield className="h-4 w-4 mr-1" />
+              We'll send you a verification code to get started
+            </p>
+          </div>
+
+          <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-xl p-4">
+            <div className="flex items-center">
+              <CheckCircle className="h-5 w-5 text-green-500 dark:text-green-400 mr-2" />
+              <span className="text-sm text-green-700 dark:text-green-300 font-medium">Security Verification</span>
+            </div>
+            <p className="text-sm text-green-600 dark:text-green-400 mt-1">
+              Your information is protected with bank-level security
+            </p>
+          </div>
+
+          <button
+            onClick={handleSendCode}
+            disabled={!email || !email.includes('@') || isLoading}
+            className="w-full bg-primary-500 hover:bg-primary-600 disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:scale-105 disabled:transform-none"
+          >
+            {isLoading ? (
+              <>
+                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                Sending Code...
+              </>
+            ) : (
+              <>
+                <Send className="h-5 w-5 mr-2" />
+                Send Verification Code
+              </>
+            )}
+          </button>
+        </div>
+      )}
+
+      {/* OTP Step */}
+      {step === 'otp' && (
+        <div className="space-y-6">
+          <div>
+            <label htmlFor="otp" className="block text-sm font-semibold text-gray-700 mb-3">
+              Enter Verification Code
+            </label>
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <Lock className="h-5 w-5 text-gray-400" />
+              </div>
+              <input
+                id="otp"
+                type={showOtp ? 'text' : 'password'}
+                value={otp}
+                onChange={(e) => setOtp(e.target.value.replace(/\D/g, '').slice(0, 6))}
+                placeholder="Enter 6-digit code"
+                className="w-full pl-10 pr-12 py-3 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 text-gray-900 placeholder-gray-500 text-center text-lg tracking-widest"
+                disabled={isLoading}
+                maxLength={6}
+              />
+              <button
+                type="button"
+                onClick={() => setShowOtp(!showOtp)}
+                className="absolute inset-y-0 right-0 pr-3 flex items-center"
+              >
+                {showOtp ? (
+                  <EyeOff className="h-5 w-5 text-gray-400 hover:text-gray-600" />
+                ) : (
+                  <Eye className="h-5 w-5 text-gray-400 hover:text-gray-600" />
+                )}
+              </button>
+            </div>
+            <p className="text-sm text-gray-500 mt-2">
+              Code sent to: <span className="font-medium">{email}</span>
+            </p>
+          </div>
+
+          <div className="flex items-center justify-between">
+            <p className="text-sm text-gray-600">
+              Didn't receive the code?
+            </p>
+            {countdown > 0 ? (
+              <span className="text-sm text-gray-500">
+                Resend in {countdown}s
+              </span>
+            ) : (
+              <button
+                onClick={handleResendCode}
+                disabled={isLoading}
+                className="text-sm text-primary-600 hover:text-primary-700 font-medium disabled:opacity-50"
+              >
+                Resend Code
+              </button>
+            )}
+          </div>
+
+          <button
+            onClick={handleVerifyOtp}
+            disabled={otp.length < 6 || isLoading}
+            className="w-full bg-primary-500 hover:bg-primary-600 disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:scale-105 disabled:transform-none"
+          >
+            {isLoading ? (
+              <>
+                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                Verifying...
+              </>
+            ) : (
+              <>
+                <CheckCircle className="h-5 w-5 mr-2" />
+                Verify & Continue
+              </>
+            )}
+          </button>
+
+          <button
+            onClick={() => setStep('email')}
+            className="w-full text-gray-600 hover:text-gray-800 font-medium py-2 transition-colors duration-200"
+          >
+            ← Back to Email
+          </button>
+        </div>
+      )}
+
+      {/* Success Step */}
+      {step === 'success' && (
+        <div className="text-center space-y-6">
+          <div className="mx-auto w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
+            <CheckCircle className="h-8 w-8 text-green-500" />
+          </div>
+          
+          <div>
+            <h4 className="text-xl font-bold text-gray-900 mb-2">Verification Successful!</h4>
+            <p className="text-gray-600">
+              Your tax return request has been initiated. Redirecting to your dashboard...
+            </p>
+          </div>
+
+          <div className="bg-primary-50 border border-primary-200 rounded-xl p-4">
+            <div className="flex items-center justify-center">
+              <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-primary-500 mr-2"></div>
+              <span className="text-primary-700 font-medium">Preparing your dashboard...</span>
+            </div>
+          </div>
+
+          <div className="text-sm text-gray-500">
+            <p>You'll be automatically redirected in a few seconds</p>
+            <p className="mt-1">
+              Or <Link href="/dashboard" className="text-primary-600 hover:text-primary-700 font-medium">click here to continue</Link>
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* Footer */}
+      <div className="mt-6 pt-4 border-t border-gray-200">
+        <div className="flex items-center justify-between text-sm">
+          <div className="flex items-center text-gray-500">
+            <Shield className="h-4 w-4 mr-1" />
+            <span>Secure & Encrypted</span>
+          </div>
+          <div className="text-gray-500">
+            Need help? <Link href="/support" className="text-primary-600 hover:text-primary-700 font-medium">Contact Support</Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 export default function CleanHero(): JSX.Element {
   const [activeFeature, setActiveFeature] = useState<number>(0)
@@ -60,15 +329,26 @@ export default function CleanHero(): JSX.Element {
   return (
     <section 
       id="home" 
-      className="hero-clean bg-gradient-to-br from-gray-50 to-white min-h-screen relative"
+      className="hero-clean bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 min-h-screen relative overflow-hidden"
       role="banner"
       aria-labelledby="hero-heading"
     >
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary-50/30 via-white to-secondary-50/20"></div>
-      <div className="absolute top-20 left-10 w-20 h-20 bg-primary-100/40 rounded-full blur-3xl"></div>
-      <div className="absolute top-40 right-20 w-32 h-32 bg-primary-200/30 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-20 left-1/4 w-16 h-16 bg-primary-300/20 rounded-full blur-3xl"></div>
+      {/* Enhanced Background with FloatingElements */}
+      <FloatingElements
+        count={6}
+        variant="mixed"
+        size="mixed"
+        speed="slow"
+        opacity={0.4}
+        color="primary"
+        className="absolute inset-0"
+      />
+      
+      {/* Static background elements */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary-50/30 via-white to-secondary-50/20 dark:from-primary-900/20 dark:via-gray-900 dark:to-gray-800/50"></div>
+      <div className="absolute top-20 left-10 w-20 h-20 bg-primary-100/40 dark:bg-primary-800/30 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute top-40 right-20 w-32 h-32 bg-primary-200/30 dark:bg-primary-700/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+      <div className="absolute bottom-20 left-1/4 w-16 h-16 bg-primary-300/20 dark:bg-primary-600/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -77,7 +357,7 @@ export default function CleanHero(): JSX.Element {
           <div className="text-center lg:text-left space-y-6 lg:space-y-8">
             
             {/* Professional Badge */}
-            <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary-100 text-primary-700 text-sm font-medium border border-primary-200 hover:bg-primary-200 transition-colors duration-300">
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-sm font-medium border border-primary-200 dark:border-primary-800 hover:bg-primary-200 dark:hover:bg-primary-900/50 transition-colors duration-300">
               <Shield className="h-4 w-4 mr-2 flex-shrink-0" aria-hidden="true" />
               <span>Australia's Trusted Trust Account Auditors</span>
             </div>
@@ -89,20 +369,20 @@ export default function CleanHero(): JSX.Element {
                 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight"
                 aria-label="Trust Account Audits Made Simple for Australia"
               >
-                <span className="block text-gray-900 leading-tight">
+                <span className="block text-gray-900 dark:text-white leading-tight">
                   Trust Account
                 </span>
-                <span className="block text-primary-600 leading-tight">
+                <span className="block text-primary-600 dark:text-primary-400 leading-tight">
                   Audits Made Simple
                 </span>
-                <span className="block text-gray-700 leading-tight">
+                <span className="block text-gray-700 dark:text-gray-300 leading-tight">
                   for Australia
                 </span>
               </h1>
               
-              <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-medium">
+              <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-medium">
                 Professional trust account auditing for law firms and real estate agencies across Australia. 
-                <span className="text-primary-600 font-semibold"> Fast turnaround, government compliant, fixed pricing.</span>
+                <span className="text-primary-600 dark:text-primary-400 font-semibold"> Fast turnaround, government compliant, fixed pricing.</span>
               </p>
             </div>
 
@@ -111,21 +391,21 @@ export default function CleanHero(): JSX.Element {
               {keyBenefits.map((benefit, index) => (
                 <div 
                   key={index}
-                  className="bg-white border-2 border-gray-200 hover:border-primary-300 transition-all duration-300 p-4 lg:p-6 rounded-xl hover:shadow-lg transform hover:-translate-y-1"
+                  className="bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 hover:border-primary-300 dark:hover:border-primary-600 transition-all duration-300 p-4 lg:p-6 rounded-xl hover:shadow-lg transform hover:-translate-y-1"
                   onMouseEnter={() => mounted && setActiveFeature(index)}
                 >
                   <div className="flex items-start space-x-4">
-                    <div className="p-3 bg-primary-100 rounded-lg flex-shrink-0 hover:scale-105 transition-transform duration-200">
-                      <benefit.icon className="h-6 w-6 text-primary-600" aria-hidden="true" />
+                    <div className="p-3 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex-shrink-0 hover:scale-105 transition-transform duration-200">
+                      <benefit.icon className="h-6 w-6 text-primary-600 dark:text-primary-400" aria-hidden="true" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-semibold text-gray-900 text-sm sm:text-base">
+                      <h3 className="font-semibold text-gray-900 dark:text-white text-sm sm:text-base">
                         {benefit.title}
                       </h3>
-                      <p className="text-gray-600 text-xs sm:text-sm">
+                      <p className="text-gray-600 dark:text-gray-300 text-xs sm:text-sm">
                         {benefit.description}
                       </p>
-                      <span className="inline-flex items-center px-2 py-1 rounded-md bg-primary-50 text-primary-700 text-xs font-medium mt-1">
+                      <span className="inline-flex items-center px-2 py-1 rounded-md bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 text-xs font-medium mt-1">
                         {benefit.highlight}
                       </span>
                     </div>
@@ -134,44 +414,50 @@ export default function CleanHero(): JSX.Element {
               ))}
             </div>
 
-            {/* CTA Buttons */}
+            {/* Enhanced CTA Buttons with GlowingButton */}
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
-              <Link 
-                href="/services" 
-                className="bg-primary-500 hover:bg-primary-600 text-white font-semibold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center group"
+              <GlowingButton
+                variant="primary"
+                size="lg"
+                glow="medium"
+                href="/services"
+                rightIcon={<ArrowRight className="h-5 w-5" />}
+                className="flex-1 sm:flex-none"
                 aria-label="Book a trust account audit"
               >
-                <span>Book an Audit</span>
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
-              </Link>
+                Book an Audit
+              </GlowingButton>
               
-              <a 
-                href="tel:1300283487" 
-                className="border-2 border-primary-500 text-primary-600 hover:bg-primary-500 hover:text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 inline-flex items-center justify-center group"
+              <GlowingButton
+                variant="ghost"
+                size="lg"
+                glow="subtle"
+                href="tel:1300283487"
+                leftIcon={<Phone className="h-5 w-5" />}
+                className="flex-1 sm:flex-none border-2 border-primary-500 text-primary-600 hover:bg-primary-500 hover:text-white"
                 aria-label="Call AuditsPro at 1300 AUDITS"
               >
-                <Phone className="mr-2 h-5 w-5 flex-shrink-0" aria-hidden="true" />
-                <span>Call 1300 AUDITS</span>
-              </a>
+                Call 1300 AUDITS
+              </GlowingButton>
             </div>
 
             {/* Trust Indicators */}
-            <div className="pt-4 border-t border-gray-200">
-              <p className="text-sm text-gray-600 mb-3 font-medium">
+            <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
+              <p className="text-sm text-gray-600 dark:text-gray-400 mb-3 font-medium">
                 Trusted by leading Australian businesses:
               </p>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                 {trustIndicators.map((indicator, index) => (
                   <div 
                     key={index}
-                    className="bg-white/80 border border-gray-200/50 p-2 text-center hover:bg-primary-50 hover:border-primary-200 transition-all duration-300 rounded-lg hover:scale-105"
+                    className="bg-white/80 dark:bg-gray-800/80 border border-gray-200/50 dark:border-gray-700/50 p-2 text-center hover:bg-primary-50 dark:hover:bg-primary-900/20 hover:border-primary-200 dark:hover:border-primary-800 transition-all duration-300 rounded-lg hover:scale-105"
                   >
-                    <indicator.icon className="h-5 w-5 text-primary-600 mx-auto mb-1" aria-hidden="true" />
-                    <span className="text-xs font-medium text-gray-700 block">
+                    <indicator.icon className="h-5 w-5 text-primary-600 dark:text-primary-400 mx-auto mb-1" aria-hidden="true" />
+                    <span className="text-xs font-medium text-gray-700 dark:text-gray-300 block">
                       {indicator.label}
                     </span>
                     {indicator.verified && (
-                      <CheckCircle className="h-3 w-3 text-green-600 mx-auto mt-1" aria-hidden="true" />
+                      <CheckCircle className="h-3 w-3 text-green-600 dark:text-green-400 mx-auto mt-1" aria-hidden="true" />
                     )}
                   </div>
                 ))}
@@ -179,120 +465,45 @@ export default function CleanHero(): JSX.Element {
             </div>
           </div>
 
-          {/* Right Column - Professional Report Card */}
+          {/* Right Column - Tax Return Request Form */}
           <div className="relative mt-8 lg:mt-0">
             <div className="relative z-10">
-              {/* Professional Report Card */}
-              <div className="bg-white rounded-2xl p-6 lg:p-8 border-2 border-gray-200 shadow-lg">
-                
-                {/* Header Section */}
-                <div className="flex items-center justify-between mb-6">
-                  <div>
-                    <h3 className="text-xl lg:text-2xl font-bold text-gray-900 mb-1">Trust Account Analytics</h3>
-                    <p className="text-gray-600 text-sm lg:text-base">AuditsPro Australia • Executive Dashboard</p>
-                  </div>
-                  <div className="p-3 bg-primary-500 rounded-xl text-white">
-                    <BarChart3 className="h-6 w-6 lg:h-8 lg:w-8" aria-hidden="true" />
-                  </div>
-                </div>
-
-                {/* Simple Chart Area */}
-                <div className="bg-gray-50 rounded-xl p-4 lg:p-6 mb-6">
-                  <div className="flex items-end justify-between h-24 lg:h-32 mb-3">
-                    {[65, 85, 92, 78, 95, 88, 100].map((height, i) => (
-                      <div key={i} className="flex flex-col items-center">
-                        <div 
-                          className="w-6 lg:w-8 bg-primary-500 rounded-t-sm"
-                          style={{ height: `${height}%` }}
-                        ></div>
-                        <span className="text-xs text-gray-600 mt-2">Q{i + 1}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="text-center">
-                    <p className="font-semibold text-gray-900 text-sm lg:text-base">Compliance Performance Trend</p>
-                    <p className="text-xs lg:text-sm text-gray-600">Real-time Analytics</p>
-                  </div>
-                </div>
-
-                {/* Key Metrics */}
-                <div className="grid grid-cols-2 gap-4 lg:gap-6 mb-6">
-                  <div className="bg-gray-50 rounded-xl p-4 lg:p-6">
-                    <div className="text-sm lg:text-base text-gray-600 mb-1">Portfolio Value</div>
-                    <div className="text-2xl lg:text-3xl font-bold text-gray-900">$2.8M</div>
-                    <div className="text-xs lg:text-sm text-green-600">↗ +12.5% YoY</div>
-                  </div>
-                  
-                  <div className="bg-gray-50 rounded-xl p-4 lg:p-6">
-                    <div className="text-sm lg:text-base text-gray-600 mb-1">Compliance Score</div>
-                    <div className="text-2xl lg:text-3xl font-bold text-gray-900">100%</div>
-                    <div className="text-xs lg:text-sm text-green-600">Perfect Record</div>
-                  </div>
-                </div>
-
-                {/* Status Information */}
-                <div className="grid grid-cols-2 gap-4 lg:gap-6 mb-6">
-                  <div>
-                    <div className="text-xs lg:text-sm text-gray-600">Audit Period</div>
-                    <div className="font-semibold text-gray-900 text-sm lg:text-base">FY 2024</div>
-                  </div>
-                  <div>
-                    <div className="text-xs lg:text-sm text-gray-600">Delivery Time</div>
-                    <div className="font-semibold text-gray-900 text-sm lg:text-base">7 Days</div>
-                  </div>
-                  <div>
-                    <div className="text-xs lg:text-sm text-gray-600">Service Level</div>
-                    <div className="font-semibold text-primary-600 text-sm lg:text-base">Premium</div>
-                  </div>
-                  <div>
-                    <div className="text-xs lg:text-sm text-gray-600">Status</div>
-                    <div className="font-semibold text-green-600 text-sm lg:text-base">Complete</div>
-                  </div>
-                </div>
-
-                {/* Footer */}
-                <div className="flex items-center justify-between pt-4 border-t border-gray-200">
-                  <div>
-                    <div className="text-sm lg:text-base font-semibold text-gray-900">AuditsPro Australia</div>
-                    <div className="text-xs lg:text-sm text-gray-600">ASIC Registered Auditor #12345</div>
-                  </div>
-                  <div className="text-right">
-                    <div className="text-xs lg:text-sm text-gray-600">Fixed Price</div>
-                    <div className="text-lg lg:text-xl font-bold text-primary-600">$499 + GST</div>
-                  </div>
-                </div>
-              </div>
+              <TaxReturnRequestForm />
             </div>
           </div>
         </div>
 
-        {/* Statistics Section */}
+        {/* Enhanced Statistics Section with AnimatedCard */}
         <div className="section-clean-spacing">
           <div className="text-center mb-6">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-4">
               Trusted by Australia's Leading Businesses
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
               Our numbers speak for themselves - delivering excellence in trust account auditing since 2008
             </p>
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
             {statistics.map((stat, index) => (
-              <div 
+              <AnimatedCard
                 key={index}
-                className="bg-white/80 border border-gray-200/50 text-center hover:bg-primary-50 hover:border-primary-200 transition-all duration-300 rounded-xl p-4 hover:shadow-md hover:-translate-y-1"
+                variant="glass"
+                hoverEffect="lift"
+                animationDelay={index * 100}
+                className="text-center p-4"
+                aria-label={`${stat.label}: ${stat.value}`}
               >
-                <div className="text-3xl sm:text-4xl font-bold text-primary-600 mb-2">
+                <div className="text-3xl sm:text-4xl font-bold text-primary-600 dark:text-primary-400 mb-2">
                   {stat.value}
                 </div>
-                <div className="text-base font-semibold text-gray-900 mb-1">
+                <div className="text-base font-semibold text-gray-900 dark:text-white mb-1">
                   {stat.label}
                 </div>
-                <div className="text-sm text-gray-600">
+                <div className="text-sm text-gray-600 dark:text-gray-300">
                   {stat.sublabel}
                 </div>
-              </div>
+              </AnimatedCard>
             ))}
           </div>
         </div>
@@ -302,27 +513,33 @@ export default function CleanHero(): JSX.Element {
           <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">
             Ready to Ensure Your Trust Account Compliance?
           </h3>
-          <p className="text-primary-100 mb-6 max-w-2xl mx-auto">
+          <p className="text-white/90 mb-6 max-w-2xl mx-auto">
             Join over 500 satisfied clients who trust AuditsPro Australia for their annual trust account auditing requirements.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link
+            <GlowingButton
+              variant="ghost"
+              size="lg"
+              glow="medium"
               href="/services"
-              className="bg-white text-primary-600 hover:bg-primary-50 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 font-semibold py-3 px-6 rounded-xl inline-flex items-center"
+              rightIcon={<ArrowRight className="h-5 w-5" />}
+              className="bg-white text-primary-600 hover:bg-primary-50 border-0"
               aria-label="View our professional auditing services"
             >
-              <span>View Our Services</span>
-              <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
-            </Link>
+              View Our Services
+            </GlowingButton>
             
-            <Link
+            <GlowingButton
+              variant="ghost"
+              size="lg"
+              glow="subtle"
               href="/contact"
-              className="border-2 border-white text-white hover:bg-white hover:text-primary-600 transition-all duration-300 font-semibold py-3 px-6 rounded-xl inline-flex items-center"
+              className="border-2 border-white text-white hover:bg-white hover:text-primary-600"
               aria-label="Get free consultation"
             >
-              <span>Get Free Consultation</span>
-            </Link>
+              Get Free Consultation
+            </GlowingButton>
           </div>
           
           <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4 text-primary-100 text-sm">

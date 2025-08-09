@@ -31,10 +31,10 @@ export default function Stats() {
   ]
 
   return (
-    <section className="section-padding gradient-primary relative overflow-hidden">
+    <section className="section-padding gradient-primary dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
-        <div className="w-full h-full bg-white bg-opacity-5 bg-[radial-gradient(circle_at_1px_1px,_rgba(255,255,255,0.15)_1px,_transparent_0)] bg-[length:20px_20px]"></div>
+        <div className="w-full h-full bg-white dark:bg-gray-800 bg-opacity-5 dark:bg-opacity-10 bg-[radial-gradient(circle_at_1px_1px,_rgba(255,255,255,0.15)_1px,_transparent_0)] dark:bg-[radial-gradient(circle_at_1px_1px,_rgba(255,255,255,0.05)_1px,_transparent_0)] bg-[length:20px_20px]"></div>
       </div>
       
       <div className="relative max-w-7xl mx-auto container-padding">
@@ -50,8 +50,8 @@ export default function Stats() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {stats.map((stat, index) => (
             <div key={index} className="text-center group">
-              <div className="bg-white bg-opacity-10 backdrop-blur-lg rounded-3xl p-8 hover-lift border border-white border-opacity-20 clean-shadow">
-                <div className="inline-flex p-4 rounded-2xl bg-white bg-opacity-20 text-white mb-6 hover-scale">
+              <div className="bg-white dark:bg-gray-800 bg-opacity-10 dark:bg-opacity-20 backdrop-blur-lg rounded-3xl p-8 hover-lift border border-white dark:border-gray-600 border-opacity-20 clean-shadow">
+                <div className="inline-flex p-4 rounded-2xl bg-white dark:bg-gray-700 bg-opacity-20 dark:bg-opacity-30 text-white mb-6 hover-scale">
                   <stat.icon className="h-8 w-8" />
                 </div>
                 
@@ -73,18 +73,18 @@ export default function Stats() {
 
         {/* Bottom CTA */}
         <div className="text-center mt-16">
-          <div className="bg-white bg-opacity-10 backdrop-blur-lg rounded-3xl p-8 md:p-12 max-w-4xl mx-auto border border-white border-opacity-20 clean-shadow-lg">
+          <div className="bg-white dark:bg-gray-800 bg-opacity-10 dark:bg-opacity-20 backdrop-blur-lg rounded-3xl p-8 md:p-12 max-w-4xl mx-auto border border-white dark:border-gray-600 border-opacity-20 clean-shadow-lg">
             <h3 className="text-3xl font-bold text-white mb-4">
               Join Our Growing Family of Satisfied Clients
             </h3>
-            <p className="text-blue-100 text-lg mb-8">
+            <p className="text-blue-100 dark:text-gray-300 text-lg mb-8">
               Experience the difference that professional, reliable trust account auditing makes for your business.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="#contact" className="bg-white text-primary-700 font-bold py-4 px-8 rounded-xl hover:bg-blue-50 transition-colors duration-300 hover-lift clean-shadow">
+              <a href="#contact" className="bg-white dark:bg-gray-200 text-primary-700 dark:text-primary-800 font-bold py-4 px-8 rounded-xl hover:bg-blue-50 dark:hover:bg-gray-100 transition-colors duration-300 hover-lift clean-shadow">
                 Get Your Free Consultation
               </a>
-              <a href="tel:1300283487" className="border-2 border-white text-white font-bold py-4 px-8 rounded-xl hover:bg-white hover:text-primary-700 transition-all duration-300 hover-lift">
+              <a href="tel:1300283487" className="border-2 border-white dark:border-gray-300 text-white dark:text-gray-200 font-bold py-4 px-8 rounded-xl hover:bg-white dark:hover:bg-gray-200 hover:text-primary-700 dark:hover:text-primary-800 transition-all duration-300 hover-lift">
                 Call 1300 AUDITS
               </a>
             </div>

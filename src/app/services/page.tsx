@@ -220,15 +220,15 @@ export default function ServicesPage(): JSX.Element {
       
       {/* Page Header for Context */}
       <section 
-        className="bg-gradient-to-br from-gray-50 to-white py-8 sm:py-12 border-b border-gray-200"
+        className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 py-8 sm:py-12 border-b border-gray-200 dark:border-gray-700"
         role="banner"
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
             Professional Trust Account
-            <span className="text-primary-600 block">Auditing Services</span>
+            <span className="text-primary-600 dark:text-primary-400 block">Auditing Services</span>
           </h1>
-          <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
             Comprehensive auditing solutions across Australia with transparent pricing, 
             fast turnaround times, and full regulatory compliance.
           </p>
@@ -240,22 +240,22 @@ export default function ServicesPage(): JSX.Element {
 
       {/* Additional Information Section */}
       <section 
-        className="py-12 sm:py-16 bg-white border-t border-gray-200"
+        className="py-12 sm:py-16 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700"
         role="complementary"
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-4">
               Why Choose Our Auditing Services?
             </h2>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-gray-50 rounded-xl p-6 sm:p-8">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">
+            <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 sm:p-8">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
                 🏆 Industry Expertise
               </h3>
-              <ul className="space-y-2 text-gray-700">
+              <ul className="space-y-2 text-gray-700 dark:text-gray-300">
                 <li>• 15+ years of specialized experience</li>
                 <li>• ASIC registered professional auditors</li>
                 <li>• Deep understanding of Australian regulations</li>
@@ -263,11 +263,11 @@ export default function ServicesPage(): JSX.Element {
               </ul>
             </div>
             
-            <div className="bg-gray-50 rounded-xl p-6 sm:p-8">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">
+            <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 sm:p-8">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
                 ⚡ Fast & Reliable
               </h3>
-              <ul className="space-y-2 text-gray-700">
+              <ul className="space-y-2 text-gray-700 dark:text-gray-300">
                 <li>• 7-14 business day turnaround</li>
                 <li>• Express services available</li>
                 <li>• Real-time progress tracking</li>
@@ -275,11 +275,11 @@ export default function ServicesPage(): JSX.Element {
               </ul>
             </div>
             
-            <div className="bg-gray-50 rounded-xl p-6 sm:p-8">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">
+            <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 sm:p-8">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
                 💯 Complete Compliance
               </h3>
-              <ul className="space-y-2 text-gray-700">
+              <ul className="space-y-2 text-gray-700 dark:text-gray-300">
                 <li>• 100% regulatory compliance guaranteed</li>
                 <li>• State-specific requirements covered</li>
                 <li>• Comprehensive audit reports</li>
@@ -287,11 +287,11 @@ export default function ServicesPage(): JSX.Element {
               </ul>
             </div>
             
-            <div className="bg-gray-50 rounded-xl p-6 sm:p-8">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">
+            <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 sm:p-8">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
                 🎯 Transparent Pricing
               </h3>
-              <ul className="space-y-2 text-gray-700">
+              <ul className="space-y-2 text-gray-700 dark:text-gray-300">
                 <li>• Fixed pricing with no hidden fees</li>
                 <li>• Upfront cost estimates</li>
                 <li>• Flexible payment options</li>

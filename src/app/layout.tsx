@@ -3,7 +3,13 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 
 // Import Authentication Provider
-import { AuthProvider } from '@/src/context/AuthContext'
+import { AuthProvider } from '@/hooks/useAuth'
+
+// Import Theme Provider for dark mode support
+import { ThemeProvider } from '@/src/components/ThemeProvider'
+
+// Import Navigation Provider for back button functionality
+import { NavigationProvider } from '@/src/contexts/NavigationContext'
 
 // Import your ConditionalLayout component
 import ConditionalLayout from '@/src/components/ConditionalLayout'
@@ -232,12 +238,12 @@ export default function RootLayout({
         className={`
           ${inter.className} 
           font-sans antialiased 
-          text-gray-900 
-          bg-white 
-          selection:bg-primary-500 
-          selection:text-white
+          text-gray-900 dark:text-gray-100
+          bg-white dark:bg-gray-900
+          selection:bg-primary-500 selection:text-white
           overflow-x-hidden
           min-h-screen
+          transition-colors duration-300
         `}
         suppressHydrationWarning
       >
@@ -250,25 +256,47 @@ export default function RootLayout({
         </a>
         
         {/* 
-          AUTHENTICATION PROVIDER
-          Wraps the entire app to provide global authentication state
-          This enables:
-          - Global authentication state management
-          - Automatic session restoration
-          - Protected routes functionality
-          - User state across all components
+          THEME PROVIDER
+          Provides dark/light mode functionality across the entire app
+          Features:
+          - System preference detection
+          - Persistent theme storage
+          - Smooth theme transitions
+          - SSR-safe hydration
         */}
-        <AuthProvider>
+        <ThemeProvider>
           {/* 
-            CONDITIONAL LAYOUT
-            Handles header/footer display based on route type:
-            - Shows header/footer on regular pages (for authenticated users)
-            - Hides header/footer on auth pages (login, signup, etc.)
+            AUTHENTICATION PROVIDER
+            Wraps the entire app to provide global authentication state
+            This enables:
+            - Global authentication state management
+            - Automatic session restoration
+            - Protected routes functionality
+            - User state across all components
           */}
-          <ConditionalLayout>
-            {children}
-          </ConditionalLayout>
-        </AuthProvider>
+          <AuthProvider>
+            {/* 
+              NAVIGATION PROVIDER
+              Provides navigation history tracking and back button functionality
+              Features:
+              - Navigation history stack management
+              - Dashboard-originated navigation detection
+              - Smart back navigation
+              - Browser integration
+            */}
+            <NavigationProvider>
+              {/* 
+                CONDITIONAL LAYOUT
+                Handles header/footer display based on route type:
+                - Shows header/footer on regular pages (for authenticated users)
+                - Hides header/footer on auth pages (login, signup, etc.)
+              */}
+              <ConditionalLayout>
+                {children}
+              </ConditionalLayout>
+            </NavigationProvider>
+          </AuthProvider>
+        </ThemeProvider>
         
         {/* FIXED: Client-side font loading without hydration mismatch */}
         <ClientSideFontLoader />

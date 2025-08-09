@@ -2,6 +2,7 @@
 
 import { useState, useCallback } from 'react'
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle, Calendar, MessageSquare, AlertCircle, User, Building, Shield } from 'lucide-react'
+import { FloatingBackButton } from '@/src/components/ui/BackButton'
 
 // ===============================
 // TYPESCRIPT INTERFACE DEFINITIONS
@@ -350,30 +351,30 @@ export default function Contact(): JSX.Element {
     
     const inputBaseClasses = `
       w-full h-14 px-4 ${Icon ? 'pl-12' : 'px-4'} 
-      bg-white border-2 rounded-xl 
-      text-gray-900 text-base font-medium
-      placeholder:text-gray-500 placeholder:font-normal
+      bg-white dark:bg-gray-700 border-2 rounded-xl 
+      text-gray-900 dark:text-white text-base font-medium
+      placeholder:text-gray-500 dark:placeholder:text-gray-400 placeholder:font-normal
       transition-all duration-200 ease-in-out
       focus:outline-none focus:ring-0
-      disabled:bg-gray-50 disabled:text-gray-500 disabled:cursor-not-allowed
+      disabled:bg-gray-50 dark:disabled:bg-gray-800 disabled:text-gray-500 dark:disabled:text-gray-400 disabled:cursor-not-allowed
       ${fieldError 
-        ? 'border-red-300 focus:border-red-500 bg-red-50' 
-        : 'border-gray-200 focus:border-primary-500 hover:border-gray-300'
+        ? 'border-red-300 focus:border-red-500 bg-red-50 dark:bg-red-900/20 dark:border-red-600' 
+        : 'border-gray-200 dark:border-gray-600 focus:border-primary-500 hover:border-gray-300 dark:hover:border-gray-500'
       }
     `
     
     const textareaClasses = `
       w-full min-h-[120px] px-4 py-3 
-      bg-white border-2 rounded-xl 
-      text-gray-900 text-base font-medium leading-relaxed
-      placeholder:text-gray-500 placeholder:font-normal
+      bg-white dark:bg-gray-700 border-2 rounded-xl 
+      text-gray-900 dark:text-white text-base font-medium leading-relaxed
+      placeholder:text-gray-500 dark:placeholder:text-gray-400 placeholder:font-normal
       transition-all duration-200 ease-in-out
       focus:outline-none focus:ring-0
-      disabled:bg-gray-50 disabled:text-gray-500 disabled:cursor-not-allowed
+      disabled:bg-gray-50 dark:disabled:bg-gray-800 disabled:text-gray-500 dark:disabled:text-gray-400 disabled:cursor-not-allowed
       resize-y
       ${fieldError 
-        ? 'border-red-300 focus:border-red-500 bg-red-50' 
-        : 'border-gray-200 focus:border-primary-500 hover:border-gray-300'
+        ? 'border-red-300 focus:border-red-500 bg-red-50 dark:bg-red-900/20 dark:border-red-600' 
+        : 'border-gray-200 dark:border-gray-600 focus:border-primary-500 hover:border-gray-300 dark:hover:border-gray-500'
       }
     `
     
@@ -381,7 +382,7 @@ export default function Contact(): JSX.Element {
       <div className={containerClasses}>
         <label 
           htmlFor={field} 
-          className="block text-sm font-semibold text-gray-700 mb-2"
+          className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
         >
           {label} {required && (
             <span className="text-red-500 ml-1">*</span>
@@ -467,20 +468,23 @@ export default function Contact(): JSX.Element {
   // ===============================
   
   return (
-    <section id="contact" className="min-h-screen bg-gray-50 py-12 sm:py-16 lg:py-20">
+    <section id="contact" className="min-h-screen bg-gray-50 dark:bg-gray-900 py-12 sm:py-16 lg:py-20">
+      {/* Back Button for Dashboard Navigation */}
+      <FloatingBackButton />
+      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Enhanced Header */}
         <div className="text-center mb-12 sm:mb-16">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary-50 text-primary-700 text-sm font-semibold mb-6 border border-primary-200">
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-sm font-semibold mb-6 border border-primary-200 dark:border-primary-800">
             <MessageSquare className="h-4 w-4 mr-2" />
             Contact Us
           </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
             Ready to Book Your
-            <span className="text-primary-600 block">Trust Account Audit?</span>
+            <span className="text-primary-600 dark:text-primary-400 block">Trust Account Audit?</span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Get started with a free consultation. Our team is ready to help you achieve complete compliance and peace of mind.
           </p>
         </div>
@@ -493,22 +497,22 @@ export default function Contact(): JSX.Element {
             {contactInfo.map((info, index) => (
               <div 
                 key={index} 
-                className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm hover:shadow-md hover:border-primary-300 transition-all duration-300 transform hover:-translate-y-1"
+                className="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md hover:border-primary-300 dark:hover:border-primary-600 transition-all duration-300 transform hover:-translate-y-1"
               >
-                <div className="inline-flex p-3 rounded-xl bg-primary-500 text-white mb-4 shadow-md">
+                <div className="inline-flex p-3 rounded-xl bg-primary-500 dark:bg-primary-600 text-white mb-4 shadow-md">
                   <info.icon className="h-6 w-6" />
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-3">
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
                   {info.title}
                 </h3>
                 {info.details.map((detail, detailIndex) => (
-                  <p key={detailIndex} className="text-gray-600 mb-1 leading-relaxed">
+                  <p key={detailIndex} className="text-gray-600 dark:text-gray-300 mb-1 leading-relaxed">
                     {detail}
                   </p>
                 ))}
                 <a
                   href={info.action}
-                  className="inline-flex items-center text-primary-600 font-semibold hover:text-primary-700 transition-colors duration-200 mt-3"
+                  className="inline-flex items-center text-primary-600 dark:text-primary-400 font-semibold hover:text-primary-700 dark:hover:text-primary-300 transition-colors duration-200 mt-3"
                 >
                   {info.actionText}
                   <CheckCircle className="ml-2 h-4 w-4" />
@@ -517,12 +521,12 @@ export default function Contact(): JSX.Element {
             ))}
 
             {/* Emergency Contact */}
-            <div className="bg-gradient-to-br from-red-50 to-orange-50 rounded-2xl p-6 border border-red-200 shadow-sm hover:shadow-md transition-all duration-300">
+            <div className="bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 rounded-2xl p-6 border border-red-200 dark:border-red-800 shadow-sm hover:shadow-md transition-all duration-300">
               <div className="flex items-center space-x-3 mb-4">
                 <AlertCircle className="h-6 w-6 text-red-600" />
-                <h3 className="text-lg font-bold text-gray-900">Emergency Audit Required?</h3>
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white">Emergency Audit Required?</h3>
               </div>
-              <p className="text-gray-600 mb-4 text-sm leading-relaxed">
+              <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm leading-relaxed">
                 Need an urgent audit due to regulatory deadlines or compliance issues?
               </p>
               <a
@@ -537,17 +541,17 @@ export default function Contact(): JSX.Element {
 
           {/* Contact Form Panel */}
           <div className="xl:col-span-2">
-            <div className="bg-white rounded-2xl p-6 sm:p-8 border border-gray-200 shadow-sm">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 sm:p-8 border border-gray-200 dark:border-gray-700 shadow-sm">
               <div className="flex items-center space-x-3 mb-8">
-                <Calendar className="h-6 w-6 text-primary-600" />
-                <h2 className="text-2xl font-bold text-gray-900">
+                <Calendar className="h-6 w-6 text-primary-600 dark:text-primary-400" />
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
                   Book Your Audit
                 </h2>
               </div>
               
               {/* General Error Message */}
               {errors.general && (
-                <div className="mb-6 bg-red-50 border border-red-200 rounded-xl p-4">
+                <div className="mb-6 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl p-4">
                   <div className="flex items-start">
                     <AlertCircle className="h-5 w-5 text-red-500 mr-3 mt-0.5" />
                     <div>
@@ -562,7 +566,7 @@ export default function Contact(): JSX.Element {
                 
                 {/* Personal Information Section */}
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-6 pb-3 border-b border-gray-200">
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-6 pb-3 border-b border-gray-200 dark:border-gray-700">
                     Personal Information
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -606,7 +610,7 @@ export default function Contact(): JSX.Element {
 
                 {/* Business Information Section */}
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-6 pb-3 border-b border-gray-200">
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-6 pb-3 border-b border-gray-200 dark:border-gray-700">
                     Business Information
                   </h3>
                   
@@ -644,13 +648,13 @@ export default function Contact(): JSX.Element {
 
                 {/* Service Preferences Section */}
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-6 pb-3 border-b border-gray-200">
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-6 pb-3 border-b border-gray-200 dark:border-gray-700">
                     Service Preferences
                   </h3>
                   
                   {/* Urgency Level */}
                   <div className="mb-8">
-                    <label className="block text-sm font-semibold text-gray-700 mb-4">
+                    <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-4">
                       Urgency Level <span className="text-red-500">*</span>
                     </label>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -667,14 +671,14 @@ export default function Contact(): JSX.Element {
                           />
                           <div className={`p-4 border-2 rounded-xl transition-all duration-200 ${
                             formData.urgency === level.value 
-                              ? 'border-primary-500 bg-primary-50 shadow-md' 
-                              : 'border-gray-200 hover:border-primary-300 hover:bg-gray-50'
+                              ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/20 shadow-md' 
+                              : 'border-gray-200 dark:border-gray-600 hover:border-primary-300 dark:hover:border-primary-600 hover:bg-gray-50 dark:hover:bg-gray-700'
                           }`}>
-                            <div className="font-semibold text-gray-900 mb-1">
+                            <div className="font-semibold text-gray-900 dark:text-white mb-1">
                               {level.label}
                             </div>
                             {level.description && (
-                              <div className="text-sm text-gray-600">
+                              <div className="text-sm text-gray-600 dark:text-gray-300">
                                 {level.description}
                               </div>
                             )}
@@ -686,7 +690,7 @@ export default function Contact(): JSX.Element {
 
                   {/* Preferred Contact Method */}
                   <div className="mb-8">
-                    <label className="block text-sm font-semibold text-gray-700 mb-4">
+                    <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-4">
                       Preferred Contact Method
                     </label>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -703,16 +707,16 @@ export default function Contact(): JSX.Element {
                           />
                           <div className={`p-4 border-2 rounded-xl transition-all duration-200 flex items-center space-x-3 ${
                             formData.preferredContact === method.value 
-                              ? 'border-primary-500 bg-primary-50 shadow-md' 
-                              : 'border-gray-200 hover:border-primary-300 hover:bg-gray-50'
+                              ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/20 shadow-md' 
+                              : 'border-gray-200 dark:border-gray-600 hover:border-primary-300 dark:hover:border-primary-600 hover:bg-gray-50 dark:hover:bg-gray-700'
                           }`}>
-                            <method.icon className="h-5 w-5 text-primary-600 flex-shrink-0" />
+                            <method.icon className="h-5 w-5 text-primary-600 dark:text-primary-400 flex-shrink-0" />
                             <div className="flex-1 min-w-0">
-                              <div className="font-semibold text-gray-900">
+                              <div className="font-semibold text-gray-900 dark:text-white">
                                 {method.label}
                               </div>
                               {method.description && (
-                                <div className="text-sm text-gray-600">
+                                <div className="text-sm text-gray-600 dark:text-gray-300">
                                   {method.description}
                                 </div>
                               )}
@@ -726,7 +730,7 @@ export default function Contact(): JSX.Element {
 
                 {/* Message Section */}
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-6 pb-3 border-b border-gray-200">
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-6 pb-3 border-b border-gray-200 dark:border-gray-700">
                     Additional Information
                   </h3>
                   
@@ -791,7 +795,7 @@ export default function Contact(): JSX.Element {
                     </div>
                   )}
 
-                  <p className="text-sm text-gray-600 text-center mt-4">
+                  <p className="text-sm text-gray-600 dark:text-gray-300 text-center mt-4">
                     We typically respond within 2 hours during business hours. For urgent matters, please call us directly at 1300 AUDITS.
                   </p>
                 </div>
@@ -810,7 +814,7 @@ export default function Contact(): JSX.Element {
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
               Frequently Asked Questions
             </h2>
-            <p className="text-lg text-gray-600 leading-relaxed">
+            <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
               Quick answers to common questions about our auditing services
             </p>
           </div>
@@ -819,12 +823,12 @@ export default function Contact(): JSX.Element {
             {faqItems.map((faq, index) => (
               <div 
                 key={index} 
-                className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm hover:shadow-md hover:border-gray-300 transition-all duration-200"
+                className="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-200"
               >
-                <h3 className="text-lg font-bold text-gray-900 mb-3">
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
                   {faq.question}
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                   {faq.answer}
                 </p>
               </div>
@@ -834,10 +838,10 @@ export default function Contact(): JSX.Element {
           {/* Additional Help */}
           <div className="mt-12 text-center">
             <div className="bg-primary-50 rounded-2xl p-8 border border-primary-200">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
                 Still have questions?
               </h3>
-              <p className="text-gray-600 mb-6 leading-relaxed">
+              <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
                 Our team is here to help. Get in touch for personalized assistance with your auditing needs.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -866,7 +870,7 @@ export default function Contact(): JSX.Element {
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
               Service Areas
             </h2>
-            <p className="text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto">
               We provide professional trust account auditing services across all Australian states and territories.
             </p>
           </div>
@@ -884,12 +888,12 @@ export default function Contact(): JSX.Element {
             ].map((state, index) => (
               <div 
                 key={index}
-                className="bg-white rounded-xl p-4 border border-gray-200 shadow-sm hover:shadow-md hover:border-primary-300 transition-all duration-200 text-center"
+                className="bg-white dark:bg-gray-800 rounded-xl p-4 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md hover:border-primary-300 dark:hover:border-primary-600 transition-all duration-200 text-center"
               >
-                <div className="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <MapPin className="h-4 w-4 text-primary-600" />
+                <div className="w-8 h-8 bg-primary-100 dark:bg-primary-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <MapPin className="h-4 w-4 text-primary-600 dark:text-primary-400" />
                 </div>
-                <h3 className="font-semibold text-gray-900 text-sm">
+                <h3 className="font-semibold text-gray-900 dark:text-white text-sm">
                   {state}
                 </h3>
               </div>
@@ -899,12 +903,12 @@ export default function Contact(): JSX.Element {
 
         {/* Trust Indicators */}
         <div className="mt-16 lg:mt-24">
-          <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700 shadow-sm">
             <div className="text-center mb-8">
-              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-4">
                 Why Choose AuditsPro Australia?
               </h2>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                 Trusted by over 500 Australian businesses for professional trust account auditing
               </p>
             </div>
@@ -933,13 +937,13 @@ export default function Contact(): JSX.Element {
                 }
               ].map((feature, index) => (
                 <div key={index} className="text-center">
-                  <div className="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-                    <feature.icon className="h-6 w-6 text-primary-600" />
+                  <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <feature.icon className="h-6 w-6 text-primary-600 dark:text-primary-400" />
                   </div>
-                  <h3 className="font-bold text-gray-900 mb-2">
+                  <h3 className="font-bold text-gray-900 dark:text-white mb-2">
                     {feature.title}
                   </h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">
+                  <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
                     {feature.description}
                   </p>
                 </div>

@@ -13,8 +13,8 @@ module.exports = {
     './index.html',
   ],
   
-  // Enhanced dark mode configuration
-  darkMode: ['class', '[data-theme="dark"]'],
+  // Enhanced dark mode configuration with class-based switching
+  darkMode: 'class',
   
   theme: {
     extend: {

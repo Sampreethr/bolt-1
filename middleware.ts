@@ -3,11 +3,20 @@ import { NextRequest, NextResponse } from 'next/server'
 
 
 const publicRoutes = [
+  '/',
+  '/about',
+  '/services',
+  '/services/compliance-consulting',
+  '/services/financial-reporting', 
+  '/services/setup-training',
+  '/contact',
+  '/pricing',
+  '/testimonials',
+  '/dashboard',
   '/login',
   '/signup', 
   '/forgot-password',
   '/reset-password',
-  
 ] as const
 
 
@@ -19,11 +28,15 @@ const authRoutes = [
 ] as const
 
 
-const redirectToHomeWhenAuthenticated = [
-  '/',
-  '/welcome'
+const protectedRoutes = [
+  '/profile',
+  '/audits',
+  '/payment'
 ] as const
 
+const redirectToHomeWhenAuthenticated = [
+  '/welcome'
+] as const
 
 const protectedApiRoutes = [
   '/api/user',
@@ -42,6 +55,10 @@ function isAuthRoute(pathname: string): boolean {
 }
 
 
+function isProtectedRoute(pathname: string): boolean {
+  return protectedRoutes.some(route => pathname === route || pathname.startsWith(`${route}/`))
+}
+
 function shouldRedirectWhenAuth(pathname: string): boolean {
   return redirectToHomeWhenAuthenticated.some(route => pathname === route)
 }
@@ -53,32 +70,37 @@ function isProtectedApiRoute(pathname: string): boolean {
   return protectedApiRoutes.some(route => pathname.startsWith(route))
 }
 
-
-function validateAppwriteSession(request: NextRequest): boolean {
+/**
+ * Validate AWS Cognito session from secure HTTP-only cookies
+ */
+function validateCognitoSession(request: NextRequest): boolean {
   try {
-    // Check for Appwrite session cookies
-    // Appwrite automatically stores session in cookies with specific names
+    // Check for AWS Cognito session cookies (HTTP-only, secure)
     const sessionCookies = [
-      'a_session', // Appwrite session cookie
-      'a_session_legacy', // Legacy session cookie
-      'a_project_' // Project-specific cookies
+      'access_token',    // AWS Cognito access token
+      'id_token',        // AWS Cognito ID token
+      'refresh_token'    // AWS Cognito refresh token
     ]
     
-    // Check if any session cookie exists
-    const hasSession = sessionCookies.some(cookieName => {
-      const cookie = request.cookies.get(cookieName)
-      return cookie && cookie.value && cookie.value.length > 0
-    })
+    // Check if access token exists (minimum requirement for authentication)
+    const accessToken = request.cookies.get('access_token')
     
-    // Additional check for any cookie that starts with 'a_session'
-    const allCookies = request.cookies.getAll()
-    const hasAppwriteSession = allCookies.some(cookie => 
-      cookie.name.startsWith('a_session') && 
-      cookie.value && 
-      cookie.value.length > 10 // Basic validation
-    )
+    if (!accessToken || !accessToken.value || accessToken.value.length < 10) {
+      return false
+    }
     
-    return hasSession || hasAppwriteSession
+    // Basic JWT format validation (should start with 'eyJ')
+    if (!accessToken.value.startsWith('eyJ')) {
+      return false
+    }
+    
+    // Check if token has proper JWT structure (3 parts separated by dots)
+    const tokenParts = accessToken.value.split('.')
+    if (tokenParts.length !== 3) {
+      return false
+    }
+    
+    return true
   } catch (error) {
     console.error('Session validation error:', error)
     return false
@@ -139,7 +161,7 @@ export default async function middleware(request: NextRequest): Promise<NextResp
   }
   
   // Validate user session
-  const isAuthenticated = validateAppwriteSession(request)
+  const isAuthenticated = validateCognitoSession(request)
   
   if (process.env.NODE_ENV === 'development') {
     console.log(`🔐 Auth status: ${isAuthenticated ? 'Authenticated' : 'Not authenticated'}`)
@@ -160,42 +182,46 @@ export default async function middleware(request: NextRequest): Promise<NextResp
     return NextResponse.next()
   }
   
-  // 2. Handle public routes (always allow)
-  if (isPublicRoute(pathname)) {
-    return NextResponse.next()
-  }
-  
-  // 3. Handle unauthenticated users on protected routes
-  if (!isAuthenticated) {
-    const loginUrl = new URL('/login', request.url)
-    
-    // Add return URL for better UX (where to redirect after login)
-    loginUrl.searchParams.set('returnUrl', pathname)
-    
-    // Add device info for responsive login page
-    if (isMobile) {
-      loginUrl.searchParams.set('device', 'mobile')
-    }
-    
-    console.log(`🚫 Redirecting unauthenticated user from ${pathname} to /login`)
-    return NextResponse.redirect(loginUrl)
-  }
-  
-  // 4. Handle authenticated users on auth routes (redirect to dashboard)
+  // 2. Handle authenticated users on auth routes (redirect to dashboard)
   if (isAuthenticated && isAuthRoute(pathname)) {
     const dashboardUrl = new URL('/dashboard', request.url)
     console.log(`✅ Redirecting authenticated user from ${pathname} to /dashboard`)
     return NextResponse.redirect(dashboardUrl)
   }
   
-  // 5. Handle authenticated users on home/welcome (redirect to dashboard)
+  // 3. Handle authenticated users on welcome route (redirect to dashboard)
   if (isAuthenticated && shouldRedirectWhenAuth(pathname)) {
     const dashboardUrl = new URL('/dashboard', request.url)
     console.log(`🏠 Redirecting authenticated user from ${pathname} to /dashboard`)
     return NextResponse.redirect(dashboardUrl)
   }
   
-  // 6. Allow access to all other routes for authenticated users
+  // 4. Handle protected routes - require authentication
+  if (isProtectedRoute(pathname)) {
+    if (!isAuthenticated) {
+      const loginUrl = new URL('/login', request.url)
+      
+      // Add return URL for better UX (where to redirect after login)
+      loginUrl.searchParams.set('returnUrl', pathname)
+      
+      // Add device info for responsive login page
+      if (isMobile) {
+        loginUrl.searchParams.set('device', 'mobile')
+      }
+      
+      console.log(`🚫 Redirecting unauthenticated user from ${pathname} to /login`)
+      return NextResponse.redirect(loginUrl)
+    }
+    // Allow access to protected routes for authenticated users
+    return NextResponse.next()
+  }
+  
+  // 5. Handle public routes (always allow)
+  if (isPublicRoute(pathname)) {
+    return NextResponse.next()
+  }
+  
+  // 6. Default: allow access to any other routes
   return NextResponse.next()
 }
 

@@ -209,15 +209,15 @@ export default function AboutPage(): JSX.Element {
       
       {/* Page Header */}
       <section 
-        className="bg-gradient-to-br from-gray-50 to-white py-8 sm:py-12 border-b border-gray-200"
+        className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 py-8 sm:py-12 border-b border-gray-200 dark:border-gray-700"
         role="banner"
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
             About
-            <span className="text-primary-600 block">AuditsPro Australia</span>
+            <span className="text-primary-600 dark:text-primary-400 block">AuditsPro Australia</span>
           </h1>
-          <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
             Australia's leading trust account auditing specialists with 15+ years of experience, 
             ASIC registered auditors, and a commitment to excellence in compliance.
           </p>
@@ -229,15 +229,15 @@ export default function AboutPage(): JSX.Element {
 
       {/* Company Timeline Section */}
       <section 
-        className="py-12 sm:py-16 bg-white border-t border-gray-200"
+        className="py-12 sm:py-16 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700"
         role="complementary"
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-4">
               Our Journey
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
               From humble beginnings to Australia's most trusted trust account auditing firm
             </p>
           </div>
@@ -245,13 +245,13 @@ export default function AboutPage(): JSX.Element {
           <div className="space-y-8">
             <div className="flex flex-col md:flex-row md:items-center gap-6">
               <div className="md:w-32 flex-shrink-0">
-                <div className="bg-primary-500 text-white rounded-lg px-4 py-2 text-center font-bold">
+                <div className="bg-primary-500 dark:bg-primary-600 text-white rounded-lg px-4 py-2 text-center font-bold">
                   2008
                 </div>
               </div>
               <div className="flex-1">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Company Founded</h3>
-                <p className="text-gray-600">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Company Founded</h3>
+                <p className="text-gray-600 dark:text-gray-300">
                   AuditsPro Australia was established with a mission to provide professional, 
                   reliable trust account auditing services across Australia.
                 </p>
@@ -260,13 +260,13 @@ export default function AboutPage(): JSX.Element {
             
             <div className="flex flex-col md:flex-row md:items-center gap-6">
               <div className="md:w-32 flex-shrink-0">
-                <div className="bg-primary-500 text-white rounded-lg px-4 py-2 text-center font-bold">
+                <div className="bg-primary-500 dark:bg-primary-600 text-white rounded-lg px-4 py-2 text-center font-bold">
                   2012
                 </div>
               </div>
               <div className="flex-1">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">ASIC Registration</h3>
-                <p className="text-gray-600">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">ASIC Registration</h3>
+                <p className="text-gray-600 dark:text-gray-300">
                   Achieved ASIC registration for company auditing, establishing our 
                   credentials as certified professional auditors.
                 </p>
@@ -275,13 +275,13 @@ export default function AboutPage(): JSX.Element {
             
             <div className="flex flex-col md:flex-row md:items-center gap-6">
               <div className="md:w-32 flex-shrink-0">
-                <div className="bg-primary-500 text-white rounded-lg px-4 py-2 text-center font-bold">
+                <div className="bg-primary-500 dark:bg-primary-600 text-white rounded-lg px-4 py-2 text-center font-bold">
                   2018
                 </div>
               </div>
               <div className="flex-1">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">National Expansion</h3>
-                <p className="text-gray-600">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">National Expansion</h3>
+                <p className="text-gray-600 dark:text-gray-300">
                   Expanded services to cover all Australian states and territories, 
                   becoming a truly national auditing firm.
                 </p>
@@ -290,13 +290,13 @@ export default function AboutPage(): JSX.Element {
             
             <div className="flex flex-col md:flex-row md:items-center gap-6">
               <div className="md:w-32 flex-shrink-0">
-                <div className="bg-primary-500 text-white rounded-lg px-4 py-2 text-center font-bold">
+                <div className="bg-primary-500 dark:bg-primary-600 text-white rounded-lg px-4 py-2 text-center font-bold">
                   2024
                 </div>
               </div>
               <div className="flex-1">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">500+ Clients Milestone</h3>
-                <p className="text-gray-600">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">500+ Clients Milestone</h3>
+                <p className="text-gray-600 dark:text-gray-300">
                   Reached the milestone of serving over 500 satisfied clients across Australia, 
                   cementing our position as industry leaders.
                 </p>
@@ -308,53 +308,53 @@ export default function AboutPage(): JSX.Element {
 
       {/* Certifications and Memberships */}
       <section 
-        className="py-12 sm:py-16 bg-gray-50"
+        className="py-12 sm:py-16 bg-gray-50 dark:bg-gray-900"
         role="complementary"
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-4">
               Professional Certifications & Memberships
             </h2>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-xl p-6 sm:p-8 shadow-sm border border-gray-200">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 sm:p-8 shadow-sm border border-gray-200 dark:border-gray-700">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
                 🏛️ Government Registrations
               </h3>
               <ul className="space-y-3">
                 <li className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-primary-500 rounded-full mt-2 flex-shrink-0"></div>
-                  <span className="text-gray-700">ASIC Registered Company Auditor #12345</span>
+                  <div className="w-2 h-2 bg-primary-500 dark:bg-primary-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <span className="text-gray-700 dark:text-gray-300">ASIC Registered Company Auditor #12345</span>
                 </li>
                 <li className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-primary-500 rounded-full mt-2 flex-shrink-0"></div>
-                  <span className="text-gray-700">Australian Business Number (ABN): 12 345 678 901</span>
+                  <div className="w-2 h-2 bg-primary-500 dark:bg-primary-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <span className="text-gray-700 dark:text-gray-300">Australian Business Number (ABN): 12 345 678 901</span>
                 </li>
                 <li className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-primary-500 rounded-full mt-2 flex-shrink-0"></div>
-                  <span className="text-gray-700">Professional Indemnity Insurance: $10M Coverage</span>
+                  <div className="w-2 h-2 bg-primary-500 dark:bg-primary-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <span className="text-gray-700 dark:text-gray-300">Professional Indemnity Insurance: $10M Coverage</span>
                 </li>
               </ul>
             </div>
             
-            <div className="bg-white rounded-xl p-6 sm:p-8 shadow-sm border border-gray-200">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 sm:p-8 shadow-sm border border-gray-200 dark:border-gray-700">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
                 🎓 Professional Memberships
               </h3>
               <ul className="space-y-3">
                 <li className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-primary-500 rounded-full mt-2 flex-shrink-0"></div>
-                  <span className="text-gray-700">CPA Australia Member Firm</span>
+                  <div className="w-2 h-2 bg-primary-500 dark:bg-primary-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <span className="text-gray-700 dark:text-gray-300">CPA Australia Member Firm</span>
                 </li>
                 <li className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-primary-500 rounded-full mt-2 flex-shrink-0"></div>
-                  <span className="text-gray-700">Institute of Chartered Accountants Australia</span>
+                  <div className="w-2 h-2 bg-primary-500 dark:bg-primary-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <span className="text-gray-700 dark:text-gray-300">Institute of Chartered Accountants Australia</span>
                 </li>
                 <li className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-primary-500 rounded-full mt-2 flex-shrink-0"></div>
-                  <span className="text-gray-700">ISO 9001:2015 Quality Management Certified</span>
+                  <div className="w-2 h-2 bg-primary-500 dark:bg-primary-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <span className="text-gray-700 dark:text-gray-300">ISO 9001:2015 Quality Management Certified</span>
                 </li>
               </ul>
             </div>
@@ -364,14 +364,14 @@ export default function AboutPage(): JSX.Element {
 
       {/* Call to Action */}
       <section 
-        className="py-12 sm:py-16 bg-white border-t border-gray-200"
+        className="py-12 sm:py-16 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700"
         role="complementary"
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-4">
             Ready to Work with Australia's Leading Auditors?
           </h2>
-          <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
             Join over 500 satisfied clients who trust AuditsPro Australia for their 
             trust account auditing needs. Experience the difference professional expertise makes.
           </p>

@@ -1,0 +1,16 @@
+[
+  {
+    "email": "test@example.com",
+    "subscribedAt": "2025-08-07T04:32:57.771Z",
+    "source": "test",
+    "status": "active",
+    "confirmationSent": true
+  },
+  {
+    "email": "newtest@example.com",
+    "subscribedAt": "2025-08-07T04:40:17.410Z",
+    "source": "debug_test",
+    "status": "active",
+    "confirmationSent": true
+  }
+]

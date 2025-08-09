@@ -144,19 +144,19 @@ export default function ContactPage(): JSX.Element {
           __html: JSON.stringify(contactStructuredData),
         }}
       />
-      
+
       {/* FIXED: Page Header - REMOVED border-b */}
-      <section 
-        className="bg-gradient-to-br from-gray-50 to-white py-8 sm:py-12"
+      <section
+        className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 py-8 sm:py-12"
         role="banner"
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
             Contact
-            <span className="text-primary-600 block">AuditsPro Australia</span>
+            <span className="text-primary-600 dark:text-primary-400 block">AuditsPro Australia</span>
           </h1>
-          <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Ready to ensure your trust account compliance? Get in touch with our expert team 
+          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
+            Ready to ensure your trust account compliance? Get in touch with our expert team
             for a free consultation and personalized audit solution.
           </p>
         </div>
@@ -166,31 +166,31 @@ export default function ContactPage(): JSX.Element {
       <Contact />
 
       {/* Additional Contact Information */}
-      <section 
-        className="py-12 sm:py-16 bg-white border-t border-gray-200"
+      <section
+        className="py-12 sm:py-16 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700"
         role="complementary"
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-4">
               Multiple Ways to Connect
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
               Choose the contact method that works best for you. We're here to help with all your trust account auditing needs.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Immediate Response */}
-            <div className="bg-green-50 border border-green-200 rounded-xl p-6">
+            <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-xl p-6">
               <div className="text-center">
                 <div className="inline-flex p-3 bg-green-500 rounded-xl text-white mb-4">
                   <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">Immediate Response</h3>
-                <p className="text-green-700 text-sm mb-4">
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">Immediate Response</h3>
+                <p className="text-green-700 dark:text-green-300 text-sm mb-4">
                   Call now for immediate assistance and quote
                 </p>
                 <a
@@ -204,15 +204,15 @@ export default function ContactPage(): JSX.Element {
             </div>
 
             {/* Email Response */}
-            <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
+            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-6">
               <div className="text-center">
                 <div className="inline-flex p-3 bg-blue-500 rounded-xl text-white mb-4">
                   <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">Email Response</h3>
-                <p className="text-blue-700 text-sm mb-4">
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">Email Response</h3>
+                <p className="text-blue-700 dark:text-blue-300 text-sm mb-4">
                   Detailed responses within 2 hours during business hours
                 </p>
                 <a
@@ -226,7 +226,7 @@ export default function ContactPage(): JSX.Element {
             </div>
 
             {/* Office Visit */}
-            <div className="bg-purple-50 border border-purple-200 rounded-xl p-6">
+            <div className="bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800 rounded-xl p-6">
               <div className="text-center">
                 <div className="inline-flex p-3 bg-purple-500 rounded-xl text-white mb-4">
                   <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -234,8 +234,8 @@ export default function ContactPage(): JSX.Element {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">Office Visit</h3>
-                <p className="text-purple-700 text-sm mb-4">
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">Office Visit</h3>
+                <p className="text-purple-700 dark:text-purple-300 text-sm mb-4">
                   Meet our team in person at our Melbourne office
                 </p>
                 <a
@@ -254,44 +254,44 @@ export default function ContactPage(): JSX.Element {
       </section>
 
       {/* Office Hours and Location */}
-      <section 
-        className="py-12 sm:py-16 bg-gray-50"
+      <section
+        className="py-12 sm:py-16 bg-gray-50 dark:bg-gray-900"
         role="complementary"
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Office Hours */}
-            <div className="bg-white rounded-xl p-6 sm:p-8 shadow-sm border border-gray-200">
-              <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
-                <svg className="h-6 w-6 text-primary-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 sm:p-8 shadow-sm border border-gray-200 dark:border-gray-700">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+                <svg className="h-6 w-6 text-primary-500 dark:text-primary-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 Business Hours
               </h3>
               <div className="space-y-3">
-                <div className="flex justify-between items-center py-2 border-b border-gray-100">
-                  <span className="text-gray-700">Monday - Friday</span>
-                  <span className="font-semibold text-gray-900">8:00 AM - 6:00 PM</span>
+                <div className="flex justify-between items-center py-2 border-b border-gray-100 dark:border-gray-700">
+                  <span className="text-gray-700 dark:text-gray-300">Monday - Friday</span>
+                  <span className="font-semibold text-gray-900 dark:text-white">8:00 AM - 6:00 PM</span>
                 </div>
-                <div className="flex justify-between items-center py-2 border-b border-gray-100">
-                  <span className="text-gray-700">Saturday</span>
-                  <span className="font-semibold text-gray-900">By Appointment</span>
+                <div className="flex justify-between items-center py-2 border-b border-gray-100 dark:border-gray-700">
+                  <span className="text-gray-700 dark:text-gray-300">Saturday</span>
+                  <span className="font-semibold text-gray-900 dark:text-white">By Appointment</span>
                 </div>
-                <div className="flex justify-between items-center py-2 border-b border-gray-100">
-                  <span className="text-gray-700">Sunday</span>
-                  <span className="font-semibold text-gray-900">Closed</span>
+                <div className="flex justify-between items-center py-2 border-b border-gray-100 dark:border-gray-700">
+                  <span className="text-gray-700 dark:text-gray-300">Sunday</span>
+                  <span className="font-semibold text-gray-900 dark:text-white">Closed</span>
                 </div>
                 <div className="flex justify-between items-center py-2">
-                  <span className="text-gray-700">Emergency Support</span>
-                  <span className="font-semibold text-green-600">24/7 Available</span>
+                  <span className="text-gray-700 dark:text-gray-300">Emergency Support</span>
+                  <span className="font-semibold text-green-600 dark:text-green-400">24/7 Available</span>
                 </div>
               </div>
             </div>
 
             {/* Office Location */}
-            <div className="bg-white rounded-xl p-6 sm:p-8 shadow-sm border border-gray-200">
-              <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
-                <svg className="h-6 w-6 text-primary-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 sm:p-8 shadow-sm border border-gray-200 dark:border-gray-700">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+                <svg className="h-6 w-6 text-primary-500 dark:text-primary-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
@@ -299,22 +299,22 @@ export default function ContactPage(): JSX.Element {
               </h3>
               <div className="space-y-4">
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-2">Melbourne Head Office</h4>
-                  <p className="text-gray-700">
+                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Melbourne Head Office</h4>
+                  <p className="text-gray-700 dark:text-gray-300">
                     Level 25, 123 Collins Street<br />
                     Melbourne, VIC 3000<br />
                     Australia
                   </p>
                 </div>
-                <div className="pt-4 border-t border-gray-200">
-                  <p className="text-sm text-gray-600 mb-3">
+                <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
                     Located in the heart of Melbourne's CBD with easy access to public transport.
                   </p>
                   <a
                     href="https://maps.google.com/?q=Level+25,+123+Collins+Street,+Melbourne+VIC+3000"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-primary-600 hover:text-primary-700 font-medium text-sm inline-flex items-center"
+                    className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium text-sm inline-flex items-center"
                     aria-label="View location on Google Maps"
                   >
                     <span>View on Google Maps</span>
@@ -330,41 +330,41 @@ export default function ContactPage(): JSX.Element {
       </section>
 
       {/* FAQ Section */}
-      <section 
-        className="py-12 sm:py-16 bg-white border-t border-gray-200"
+      <section
+        className="py-12 sm:py-16 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700"
         role="complementary"
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-4">
               Frequently Asked Questions
             </h2>
-            <p className="text-gray-600">
+            <p className="text-gray-600 dark:text-gray-300">
               Quick answers to common questions about our auditing services
             </p>
           </div>
-          
+
           <div className="space-y-6">
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="font-semibold text-gray-900 mb-2">How quickly can you complete our audit?</h3>
-              <p className="text-gray-700">
-                Our standard turnaround time is 7-14 business days. We also offer express services 
+            <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+              <h3 className="font-semibold text-gray-900 dark:text-white mb-2">How quickly can you complete our audit?</h3>
+              <p className="text-gray-700 dark:text-gray-300">
+                Our standard turnaround time is 7-14 business days. We also offer express services
                 for urgent requirements, which can be completed within 5-7 business days.
               </p>
             </div>
-            
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="font-semibold text-gray-900 mb-2">Do you service all Australian states?</h3>
-              <p className="text-gray-700">
-                Yes, we provide trust account auditing services across all Australian states and territories. 
+
+            <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+              <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Do you service all Australian states?</h3>
+              <p className="text-gray-700 dark:text-gray-300">
+                Yes, we provide trust account auditing services across all Australian states and territories.
                 Our team is familiar with the specific requirements for each jurisdiction.
               </p>
             </div>
-            
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="font-semibold text-gray-900 mb-2">What information do you need to get started?</h3>
-              <p className="text-gray-700">
-                We'll need your trust account statements, transaction records, and reconciliation 
+
+            <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+              <h3 className="font-semibold text-gray-900 dark:text-white mb-2">What information do you need to get started?</h3>
+              <p className="text-gray-700 dark:text-gray-300">
+                We'll need your trust account statements, transaction records, and reconciliation
                 documents for the audit period. We'll provide a comprehensive checklist once you engage our services.
               </p>
             </div>
